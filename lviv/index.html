@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONNO — Стоматологія у Львові для українців за кордоном</title>
+<meta name="description" content="Якісне стоматологічне лікування у Львові, за 70 км від польського кордону. Трансфер і проживання за потреби. Асистент відповість на ваші запитання українською, російською або англійською.">
+<meta property="og:title" content="ONNO — Стоматологія у Львові">
+<meta property="og:description" content="Стоматологічне лікування у Львові для українців, які зараз живуть за кордоном. Прозорі умови, трансфер, проживання.">
+<meta property="og:type" content="website">
+
+<style>
+  :root {
+    --teal:    #11DDDD;
+    --teal-d:  #0BADAD;
+    --navy:    #1E1E1E;
+    --navy-m:  #333333;
+    --green:   #2EAA6E;
+    --green-d: #1E7A4E;
+    --white:   #FFFFFF;
+    --off:     #F5F7F7;
+    --gray:    #6D6D6D;
+    --border:  #E2E7E7;
+    --text:    #232323;
+    --radius:  14px;
+    --shadow:  0 4px 32px rgba(20,20,20,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── TYPOGRAPHY ── */
+  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.15; }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; line-height: 1.2; }
+  h3 { font-size: 1.15rem; font-weight: 600; }
+  p  { font-size: 1rem; color: var(--gray); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 90px 0; }
+
+  /* ── LANGUAGE TOGGLE ── */
+  body.en .ru, body.en .ua { display: none !important; }
+  body.ru .en, body.ru .ua { display: none !important; }
+  body.ua .en, body.ua .ru { display: none !important; }
+  .lang-switcher { display: flex; gap: 4px; }
+  .lang-btn { background: var(--off); border: 1px solid var(--border); border-radius: 6px; padding: 4px 9px; font-size: 0.78rem; font-weight: 700; color: var(--navy); cursor: pointer; transition: all 0.2s; }
+  .lang-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .lang-btn.active { background: var(--teal); border-color: var(--teal); color: white; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(13,43,69,0.12); }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.25rem; font-weight: 700; color: var(--navy);
+  }
+  .logo-icon {
+    width: 38px; height: 38px; background: var(--teal);
+    border-radius: 10px; display: grid; place-items: center;
+  }
+  .logo-icon svg { width: 22px; height: 22px; fill: white; }
+  .logo-img { height: 34px; width: auto; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--navy-m); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal); color: white; padding: 9px 22px;
+    border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--teal-d); transform: translateY(-1px); }
+  .lang-btn {
+    background: var(--off); border: 1px solid var(--border);
+    border-radius: 7px; padding: 5px 11px; font-size: 0.82rem;
+    font-weight: 600; color: var(--navy); cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .lang-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    padding-top: 130px; padding-bottom: 80px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-m) 60%, #0F4A6E 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 80% 50%, rgba(0,180,180,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(46,170,110,0.12) 0%, transparent 70%);
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center; position: relative;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,180,180,0.18); border: 1px solid rgba(0,180,180,0.4);
+    border-radius: 50px; padding: 6px 16px; margin-bottom: 22px;
+    font-size: 0.82rem; font-weight: 600; color: #7EE8E8; letter-spacing: 0.04em;
+  }
+  .hero-badge span:first-child { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; flex-shrink: 0; display: inline-block; }
+  .hero h1 { color: white; margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: var(--teal); }
+  .hero > .container > .hero-inner > .hero-text > p {
+    color: rgba(255,255,255,0.72); font-size: 1.08rem; margin-bottom: 36px;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal); color: white;
+    padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,180,180,0.4);
+  }
+  .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,180,180,0.45); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+    color: white; padding: 14px 28px; border-radius: 10px;
+    font-size: 1rem; font-weight: 600; transition: background 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.18); }
+  .hero-stats {
+    display: flex; gap: 28px; margin-top: 44px; padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat { }
+  .stat-num { font-size: 1.9rem; font-weight: 700; color: white; line-height: 1; }
+  .stat-num span { color: var(--teal); }
+  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 22px 26px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s;
+  }
+  .hero-card:hover { transform: translateY(-3px); }
+  .hero-card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .hero-card-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .hero-card-icon svg { width: 24px; height: 24px; }
+  .hero-card-icon.teal  { background: rgba(0,180,180,0.25); }
+  .hero-card-icon.green { background: rgba(46,170,110,0.25); }
+  .hero-card-icon.navy  { background: rgba(255,255,255,0.15); }
+  .hero-card h3 { color: white; font-size: 1rem; }
+  .hero-card p { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 2px; }
+  .hero-card-save {
+    display: inline-block; background: rgba(46,170,110,0.25);
+    border: 1px solid rgba(46,170,110,0.4); border-radius: 6px;
+    padding: 3px 10px; font-size: 0.78rem; font-weight: 600; color: #72E0A8; margin-top: 8px;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar { padding: 32px 0; border-bottom: 1px solid var(--border); }
+  .trust-inner {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 36px;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem; font-weight: 600; color: var(--navy);
+  }
+  .trust-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    display: grid; place-items: center;
+  }
+  .trust-icon svg { width: 18px; height: 18px; }
+  .trust-icon.t { background: #E0F8F8; }
+  .trust-icon.t svg { stroke: var(--teal); fill: none; stroke-width: 2; }
+  .trust-icon.g { background: #E0F5EC; }
+  .trust-icon.g svg { stroke: var(--green); fill: none; stroke-width: 2; }
+  .trust-icon.n { background: #E8EEF4; }
+  .trust-icon.n svg { stroke: var(--navy); fill: none; stroke-width: 2; }
+
+  /* ── SERVICES ── */
+  .services { background: var(--off); }
+  .section-label {
+    display: inline-block; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 12px;
+  }
+  .section-title { color: var(--navy); margin-bottom: 14px; }
+  .section-sub { max-width: 540px; margin-bottom: 56px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .service-card {
+    background: white; border-radius: 20px; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 48px rgba(13,43,69,0.14); }
+  .service-thumb {
+    height: 200px; display: grid; place-items: center; position: relative; overflow: hidden;
+  }
+  .service-thumb.t { background: linear-gradient(135deg, #003D4F 0%, #006B7A 100%); }
+  .service-thumb.g { background: linear-gradient(135deg, #0A2E1A 0%, #1E6B40 100%); }
+  .service-thumb.n { background: linear-gradient(135deg, #0D2B45 0%, #163D5E 100%); }
+  .service-thumb-icon { width: 72px; height: 72px; }
+  .service-thumb-icon svg { width: 72px; height: 72px; }
+  .service-save-badge {
+    position: absolute; top: 14px; right: 14px;
+    background: var(--green); color: white;
+    border-radius: 8px; padding: 4px 12px;
+    font-size: 0.78rem; font-weight: 700;
+  }
+  .service-body { padding: 26px; }
+  .service-body h3 { color: var(--navy); margin-bottom: 10px; font-size: 1.2rem; }
+  .service-body p { font-size: 0.9rem; margin-bottom: 18px; }
+  .service-features { list-style: none; margin-bottom: 22px; }
+  .service-features li {
+    display: flex; align-items: flex-start; gap: 9px;
+    font-size: 0.87rem; color: var(--text); padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .service-features li:last-child { border-bottom: none; }
+  .check {
+    width: 18px; height: 18px; border-radius: 5px;
+    background: #E0F5EC; display: grid; place-items: center; flex-shrink: 0; margin-top: 1px;
+  }
+  .check svg { width: 11px; height: 11px; stroke: var(--green); fill: none; stroke-width: 2.5; }
+  .service-cta {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--off); border-radius: 10px; padding: 12px 16px;
+  }
+  .service-cta-price { }
+  .service-cta-price .from { font-size: 0.75rem; color: var(--gray); display: block; }
+  .service-cta-price .amount { font-size: 1.2rem; font-weight: 700; color: var(--navy); }
+  .service-cta-link {
+    background: var(--teal); color: white; border: none; border-radius: 8px;
+    padding: 9px 18px; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .service-cta-link:hover { background: var(--teal-d); }
+
+  /* ── WHY TURKEY ── */
+  .why { }
+  .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .why-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .why-stat-card {
+    background: white; border: 1px solid var(--border); border-radius: 16px;
+    padding: 24px; text-align: center;
+    box-shadow: 0 2px 16px rgba(13,43,69,0.07);
+    transition: transform 0.3s;
+  }
+  .why-stat-card:hover { transform: translateY(-4px); }
+  .why-stat-card:first-child { grid-column: 1 / -1; background: var(--navy); border-color: var(--navy); }
+  .why-stat-card:first-child .wnum { color: var(--teal); }
+  .why-stat-card:first-child .wlabel { color: rgba(255,255,255,0.65); }
+  .wnum { font-size: 2.2rem; font-weight: 700; color: var(--teal); line-height: 1; }
+  .wlabel { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
+  .why-points { list-style: none; margin-top: 30px; }
+  .why-points li {
+    display: flex; gap: 14px; padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .why-points li:last-child { border-bottom: none; }
+  .wp-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .wp-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .wp-icon.t { background: #E0F8F8; color: var(--teal); }
+  .wp-icon.g { background: #E0F5EC; color: var(--green); }
+  .wp-icon.n { background: #E8EEF4; color: var(--navy); }
+  .wp-text strong { font-size: 0.95rem; color: var(--navy); display: block; margin-bottom: 2px; }
+  .wp-text span { font-size: 0.85rem; color: var(--gray); }
+
+  /* ── PROCESS ── */
+  .process { background: var(--navy); }
+  .process .section-label { color: var(--teal); }
+  .process .section-title { color: white; }
+  .process .section-sub { color: rgba(255,255,255,0.6); }
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; margin-top: 56px; }
+  .steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 10%; right: 10%;
+    height: 2px; background: linear-gradient(90deg, var(--teal), var(--green));
+    z-index: 0;
+  }
+  .step { text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--navy); border: 2px solid var(--teal);
+    color: var(--teal); font-size: 1.1rem; font-weight: 700;
+    display: grid; place-items: center; margin: 0 auto 16px;
+  }
+  .step:nth-child(3) .step-num { background: var(--teal); color: white; border-color: var(--teal); }
+  .step h3 { color: white; font-size: 0.92rem; margin-bottom: 8px; }
+  .step p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--off); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .tcard {
+    background: white; border-radius: 18px; padding: 28px;
+    box-shadow: var(--shadow); transition: transform 0.3s;
+  }
+  .tcard:hover { transform: translateY(-4px); }
+  .tcard-stars { color: #F59E0B; font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
+  .tcard blockquote { font-size: 0.92rem; color: var(--text); line-height: 1.65; font-style: italic; margin-bottom: 20px; }
+  .tcard-author { display: flex; align-items: center; gap: 12px; }
+  .tcard-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 1.1rem; font-weight: 700;
+    color: white; flex-shrink: 0;
+  }
+  .tcard-avatar.t { background: linear-gradient(135deg, var(--teal), var(--teal-d)); }
+  .tcard-avatar.g { background: linear-gradient(135deg, var(--green), var(--green-d)); }
+  .tcard-avatar.n { background: linear-gradient(135deg, var(--navy), var(--navy-m)); }
+  .tcard-name { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
+  .tcard-loc { font-size: 0.78rem; color: var(--gray); margin-top: 1px; }
+  .tcard-service {
+    display: inline-block; margin-top: 6px;
+    font-size: 0.72rem; font-weight: 600; color: var(--teal);
+    background: #E0F8F8; border-radius: 5px; padding: 2px 8px;
+  }
+
+  /* ── FAQ ── */
+  .faq-grid { max-width: 780px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid var(--border); overflow: hidden;
+  }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0; cursor: pointer; gap: 16px;
+    font-size: 0.97rem; font-weight: 600; color: var(--navy);
+    background: none; border: none; width: 100%; text-align: left;
+  }
+  .faq-q:hover { color: var(--teal); }
+  .faq-chevron {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: var(--off); border: 1px solid var(--border);
+    display: grid; place-items: center; flex-shrink: 0;
+    transition: background 0.2s, transform 0.3s;
+  }
+  .faq-chevron svg { width: 14px; height: 14px; stroke: var(--navy); fill: none; stroke-width: 2; transition: transform 0.3s; }
+  .faq-item.open .faq-chevron { background: var(--teal); border-color: var(--teal); }
+  .faq-item.open .faq-chevron svg { stroke: white; transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+  }
+  .faq-a-inner { padding-bottom: 18px; font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+  .faq-item.open .faq-a { max-height: 300px; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--teal-d) 0%, var(--teal) 60%, #00D4B4 100%);
+    padding: 72px 0; text-align: center;
+  }
+  .cta-banner h2 { color: white; margin-bottom: 14px; }
+  .cta-banner p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 36px; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white; color: var(--teal-d);
+    padding: 15px 32px; border-radius: 10px; font-size: 1rem; font-weight: 700;
+    transition: transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+  .btn-outline-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.5);
+    color: white; padding: 15px 32px; border-radius: 10px;
+    font-size: 1rem; font-weight: 600; transition: background 0.2s;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); padding: 56px 0 28px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.88rem; margin-top: 14px; max-width: 280px; }
+  .footer-col h4 { color: white; font-size: 0.9rem; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.5); font-size: 0.85rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--teal); }
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 24px; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+  .footer-socials { display: flex; gap: 12px; }
+  .footer-social {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    display: grid; place-items: center; transition: background 0.2s;
+  }
+  .footer-social:hover { background: var(--teal); border-color: var(--teal); }
+  .footer-social svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.6); fill: none; stroke-width: 2; }
+  .footer-social:hover svg { stroke: white; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
+  .footer-logo span { font-size: 1.1rem; font-weight: 700; color: white; }
+
+  /* ── CALCULATOR ── */
+  .calc-section { background: var(--navy); }
+  .calc-section .section-label { color: var(--teal); }
+  .calc-section .section-title { color: white; }
+  .calc-section .section-sub { color: rgba(255,255,255,0.6); }
+  .calc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .calc-services { display: flex; flex-direction: column; gap: 12px; }
+  .calc-service-btn {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; padding: 16px 20px; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s; text-align: left;
+  }
+  .calc-service-btn:hover { background: rgba(0,180,180,0.1); border-color: rgba(0,180,180,0.3); }
+  .calc-service-btn.active { background: rgba(0,180,180,0.15); border-color: var(--teal); }
+  .calc-service-btn .csb-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .calc-service-btn .csb-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+  .calc-service-btn.active .csb-icon { background: rgba(0,180,180,0.25); color: var(--teal); }
+  .calc-service-btn:not(.active) .csb-icon { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); }
+  .calc-service-btn h4 { font-size: 0.97rem; font-weight: 600; color: white; }
+  .calc-service-btn p { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .calc-service-btn.active h4 { color: #7EE8E8; }
+  .calc-controls { margin-top: 20px; }
+  .calc-control-group { margin-bottom: 20px; }
+  .calc-control-group label { display: flex; justify-content: space-between; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+  .calc-control-group label span { color: var(--teal); font-weight: 600; }
+  input[type=range].calc-slider {
+    width: 100%; -webkit-appearance: none; appearance: none;
+    height: 4px; border-radius: 4px; background: rgba(255,255,255,0.15); outline: none;
+  }
+  input[type=range].calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--teal); cursor: pointer; box-shadow: 0 0 0 4px rgba(0,180,180,0.2);
+  }
+  .calc-toggle-row { display: flex; gap: 10px; }
+  .calc-toggle-btn {
+    flex: 1; padding: 10px; border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05); border-radius: 10px;
+    color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .calc-toggle-btn.active { background: rgba(0,180,180,0.2); border-color: var(--teal); color: var(--teal); }
+  .calc-result {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 32px; position: sticky; top: 88px;
+  }
+  .calc-result-title { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
+  .calc-price-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .calc-price-row:last-of-type { border-bottom: none; }
+  .calc-price-row .label { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+  .calc-price-row .val { font-size: 1.05rem; font-weight: 600; }
+  .calc-price-row .val.our { color: var(--teal); font-size: 1.4rem; }
+  .calc-price-row .val.uk { color: rgba(255,255,255,0.35); text-decoration: line-through; font-size: 0.95rem; }
+  .calc-price-row .val.save { color: var(--green); font-weight: 700; }
+  .calc-savings-bar { margin: 20px 0; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+  .calc-savings-bar-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--green)); border-radius: 4px; transition: width 0.5s ease; }
+  .calc-savings-label { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 6px; }
+  .calc-cta-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; margin-top: 24px; background: var(--teal); color: white;
+    border: none; border-radius: 10px; padding: 14px; font-size: 0.95rem;
+    font-weight: 600; cursor: pointer; transition: background 0.2s;
+    text-decoration: none;
+  }
+  .calc-cta-btn:hover { background: var(--teal-d); }
+  .calc-disclaimer { font-size: 0.72rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 10px; line-height: 1.5; }
+  @media (max-width: 768px) {
+    .calc-inner { grid-template-columns: 1fr; }
+    .calc-result { position: static; }
+  }
+
+  /* ── BOOKING FORM ── */
+  .booking-section { background: var(--off); }
+  .booking-section .section-title { color: var(--navy); }
+  .booking-wrap { max-width: 760px; margin: 0 auto; }
+  .booking-steps { display: flex; gap: 0; margin-bottom: 40px; position: relative; }
+  .booking-steps::before {
+    content: ''; position: absolute; top: 20px; left: 0; right: 0;
+    height: 2px; background: var(--border); z-index: 0;
+  }
+  .bstep {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    position: relative; z-index: 1;
+  }
+  .bstep-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: white; border: 2px solid var(--border);
+    display: grid; place-items: center; font-size: 0.88rem; font-weight: 700;
+    color: var(--gray); transition: all 0.3s;
+  }
+  .bstep.active .bstep-num { background: var(--teal); border-color: var(--teal); color: white; }
+  .bstep.done .bstep-num { background: var(--green); border-color: var(--green); color: white; }
+  .bstep-label { font-size: 0.72rem; font-weight: 600; color: var(--gray); text-align: center; }
+  .bstep.active .bstep-label { color: var(--teal); }
+  .bstep.done .bstep-label { color: var(--green); }
+  .booking-card {
+    background: white; border-radius: 20px; padding: 36px;
+    box-shadow: 0 4px 32px rgba(13,43,69,0.08);
+  }
+  .booking-panel { display: none; }
+  .booking-panel.active { display: block; }
+  .booking-panel h3 { color: var(--navy); margin-bottom: 6px; font-size: 1.15rem; }
+  .booking-panel > p { color: var(--gray); font-size: 0.88rem; margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-row.full { grid-template-columns: 1fr; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px;
+    font-size: 0.92rem; color: var(--text); background: white;
+    transition: border-color 0.2s; outline: none; font-family: inherit;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7A8B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+  .service-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .service-pick-btn {
+    border: 1.5px solid var(--border); border-radius: 12px; padding: 14px 12px;
+    background: white; cursor: pointer; text-align: center; transition: all 0.2s;
+  }
+  .service-pick-btn:hover { border-color: var(--teal); }
+  .service-pick-btn.selected { border-color: var(--teal); background: #E0F8F8; }
+  .service-pick-btn .spb-icon { font-size: 1.5rem; margin-bottom: 6px; }
+  .service-pick-btn h4 { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+  .service-pick-btn.selected h4 { color: var(--teal-d); }
+  .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .timeslots { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .timeslot {
+    padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-size: 0.82rem; font-weight: 600; color: var(--gray); cursor: pointer;
+    background: white; transition: all 0.2s;
+  }
+  .timeslot:hover { border-color: var(--teal); color: var(--teal); }
+  .timeslot.selected { background: var(--teal); border-color: var(--teal); color: white; }
+  .privacy-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 8px; }
+  .privacy-row input[type=checkbox] { margin-top: 3px; accent-color: var(--teal); flex-shrink: 0; width: 16px; height: 16px; }
+  .privacy-row span { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+  .privacy-row a { color: var(--teal); }
+  .booking-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; gap: 12px; }
+  .btn-back {
+    background: var(--off); border: 1.5px solid var(--border); color: var(--navy);
+    padding: 12px 24px; border-radius: 10px; font-size: 0.92rem; font-weight: 600;
+    cursor: pointer; transition: border-color 0.2s;
+  }
+  .btn-back:hover { border-color: var(--teal); color: var(--teal); }
+  .btn-next {
+    flex: 1; background: var(--teal); color: white; border: none;
+    padding: 13px 28px; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-next:hover { background: var(--teal-d); }
+  .booking-success {
+    text-align: center; padding: 20px 0;
+  }
+  .booking-success .success-icon {
+    width: 72px; height: 72px; background: #E0F5EC; border-radius: 50%;
+    display: grid; place-items: center; margin: 0 auto 20px;
+  }
+  .booking-success .success-icon svg { width: 36px; height: 36px; stroke: var(--green); fill: none; stroke-width: 2; }
+  .booking-success h3 { color: var(--navy); margin-bottom: 10px; }
+  .booking-success p { max-width: 400px; margin: 0 auto 24px; }
+  @media (max-width: 640px) {
+    .form-row { grid-template-columns: 1fr; }
+    .service-picker { grid-template-columns: 1fr 1fr; }
+    .booking-card { padding: 24px 20px; }
+    .date-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── AI CHAT WIDGET ── */
+  .chat-widget {
+    position: fixed; bottom: 28px; left: 28px; z-index: 200;
+  }
+  .chat-fab {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--navy); border: 2px solid var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(13,43,69,0.4);
+  }
+  .chat-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(13,43,69,0.5); }
+  .chat-fab svg { width: 26px; height: 26px; stroke: var(--teal); fill: none; stroke-width: 2; }
+  .chat-badge {
+    position: absolute; top: -4px; right: -4px; width: 18px; height: 18px;
+    background: var(--green); border-radius: 50%; border: 2px solid white;
+    font-size: 0.62rem; font-weight: 700; color: white;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .chat-panel {
+    position: absolute; bottom: 70px; left: 0;
+    width: 320px; background: white; border-radius: 18px;
+    box-shadow: 0 8px 48px rgba(13,43,69,0.2); overflow: hidden;
+    display: none; flex-direction: column;
+    border: 1px solid var(--border);
+  }
+  .chat-panel.open { display: flex; }
+  .chat-header {
+    background: var(--navy); padding: 16px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .chat-header-left { display: flex; align-items: center; gap: 10px; }
+  .chat-avatar {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 50%;
+    display: grid; place-items: center;
+  }
+  .chat-avatar svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 2; }
+  .chat-header h4 { color: white; font-size: 0.9rem; margin-bottom: 2px; }
+  .chat-status { font-size: 0.72rem; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 5px; }
+  .chat-status::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; display: inline-block; }
+  .chat-close { background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer; padding: 4px; font-size: 1.2rem; line-height: 1; }
+  .chat-close:hover { color: white; }
+  .chat-beta { background: rgba(0,180,180,0.15); border-bottom: 1px solid var(--border); padding: 7px 18px; font-size: 0.7rem; color: var(--teal); font-weight: 600; text-align: center; }
+  .chat-messages { padding: 16px; display: flex; flex-direction: column; gap: 12px; max-height: 240px; overflow-y: auto; }
+  .chat-msg { max-width: 85%; }
+  .chat-msg.bot .chat-bubble {
+    background: var(--off); border: 1px solid var(--border);
+    border-radius: 0 12px 12px 12px; padding: 10px 14px;
+    font-size: 0.85rem; color: var(--text); line-height: 1.5;
+  }
+  .chat-msg.user { align-self: flex-end; }
+  .chat-msg.user .chat-bubble {
+    background: var(--teal); color: white;
+    border-radius: 12px 12px 0 12px; padding: 10px 14px;
+    font-size: 0.85rem; line-height: 1.5;
+  }
+  .chat-msg .chat-time { font-size: 0.68rem; color: var(--gray); margin-top: 4px; }
+  .chat-msg.user .chat-time { text-align: right; }
+  .chat-quick-actions { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 7px; }
+  .chat-quick-label { font-size: 0.7rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .chat-quick-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--off); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 12px; font-size: 0.82rem; color: var(--navy); font-weight: 500;
+    cursor: pointer; transition: all 0.2s; text-align: left;
+  }
+  .chat-quick-btn:hover { border-color: var(--teal); color: var(--teal); background: #E0F8F8; }
+  .chat-quick-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+  .chat-input-row { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+  .chat-input {
+    flex: 1; border: 1.5px solid var(--border); border-radius: 8px;
+    padding: 8px 12px; font-size: 0.85rem; outline: none; font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: var(--teal); }
+  .chat-send {
+    width: 36px; height: 36px; background: var(--teal); border: none;
+    border-radius: 8px; cursor: pointer; display: grid; place-items: center;
+    flex-shrink: 0; transition: background 0.2s;
+  }
+  .chat-send:hover { background: var(--teal-d); }
+  .chat-send svg { width: 16px; height: 16px; stroke: white; fill: none; stroke-width: 2; }
+  .chat-disclaimer { padding: 8px 16px; font-size: 0.65rem; color: var(--gray); text-align: center; border-top: 1px solid var(--border); line-height: 1.4; }
+
+  /* ── WHATSAPP FAB ── */
+  .wa-fab {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #25D366; box-shadow: 0 4px 24px rgba(37,211,102,0.5);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-fab:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.6); }
+  .wa-fab svg { width: 32px; height: 32px; fill: white; }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; z-index: 99;
+    background: white; padding: 28px 24px; flex-direction: column; gap: 8px;
+    overflow-y: auto;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 14px 0; font-size: 1.05rem; font-weight: 500;
+    color: var(--navy); border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu a:hover { color: var(--teal); }
+  .mobile-menu .btn-primary { margin-top: 12px; justify-content: center; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-9px); }
+  }
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.6); opacity: 0.5; }
+  }
+
+  /* Hero entrance chain */
+  .hero-badge  { animation: fadeUp 0.55s ease both; animation-delay: 0.05s; }
+  .hero-text h1 { animation: fadeUp 0.6s ease both; animation-delay: 0.2s; }
+  .hero-text > p { animation: fadeUp 0.6s ease both; animation-delay: 0.35s; }
+  .hero-actions { animation: fadeUp 0.6s ease both; animation-delay: 0.5s; }
+  .hero-stats  { animation: fadeUp 0.6s ease both; animation-delay: 0.65s; }
+
+  /* Hero cards floating — staggered */
+  .hero-card:nth-child(1) { animation: floatY 4.2s ease-in-out infinite; }
+  .hero-card:nth-child(2) { animation: floatY 4.2s ease-in-out infinite; animation-delay: 0.9s; }
+  .hero-card:nth-child(3) { animation: floatY 4.2s ease-in-out infinite; animation-delay: 1.8s; }
+
+  /* Badge dot pulse */
+  .hero-badge span:first-child { animation: dotPulse 2s ease-in-out infinite; }
+
+  /* Respect reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .why-inner { grid-template-columns: 1fr; }
+    .why-visual { display: none; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .steps::before { display: none; }
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 60px 0; }
+    .services-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .hero-stats { flex-wrap: wrap; gap: 20px; }
+  }
+</style>
+<body class="ua">
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo" aria-label="ONNO">
+      <img src="../assets/onno-logo.svg" alt="ONNO" class="logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="#services" class="en">Services</a>
+      <a href="#services" class="ua">Послуги</a>
+      <a href="#services" class="ru">Услуги</a>
+      <a href="#why" class="en">Why Lviv</a>
+      <a href="#why" class="ua">Чому Львів</a>
+      <a href="#why" class="ru">Почему Львов</a>
+      <a href="#process" class="en">How It Works</a>
+      <a href="#process" class="ua">Як це працює</a>
+      <a href="#process" class="ru">Как это работает</a>
+      <a href="#faq" class="en">FAQ</a>
+      <a href="#faq" class="ua">Питання</a>
+      <a href="#faq" class="ru">Вопросы</a>
+      <div class="lang-switcher">
+        <button class="lang-btn" id="lb-ua" onclick="setLang('ua')">UA</button>
+        <button class="lang-btn" id="lb-ru" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" id="lb-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="https://t.me/REPLACE_TELEGRAM" class="nav-cta en">Message on Telegram</a>
+      <a href="https://t.me/REPLACE_TELEGRAM" class="nav-cta ua">Написати в Telegram</a>
+      <a href="https://t.me/REPLACE_TELEGRAM" class="nav-cta ru">Написать в Telegram</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" onclick="closeMenu()" class="en">Services</a>
+  <a href="#services" onclick="closeMenu()" class="ua">Послуги</a>
+  <a href="#services" onclick="closeMenu()" class="ru">Услуги</a>
+  <a href="#why" onclick="closeMenu()" class="en">Why Lviv</a>
+  <a href="#why" onclick="closeMenu()" class="ua">Чому Львів</a>
+  <a href="#why" onclick="closeMenu()" class="ru">Почему Львов</a>
+  <a href="#process" onclick="closeMenu()" class="en">How It Works</a>
+  <a href="#process" onclick="closeMenu()" class="ua">Як це працює</a>
+  <a href="#process" onclick="closeMenu()" class="ru">Как это работает</a>
+  <a href="#faq" onclick="closeMenu()" class="en">FAQ</a>
+  <a href="#faq" onclick="closeMenu()" class="ua">Питання</a>
+  <a href="#faq" onclick="closeMenu()" class="ru">Вопросы</a>
+  <div style="display:flex;gap:8px;margin-top:8px;">
+    <button onclick="setLang('ua');closeMenu();" style="flex:1;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:10px;font-weight:700;color:var(--navy);cursor:pointer;">UA</button>
+    <button onclick="setLang('ru');closeMenu();" style="flex:1;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:10px;font-weight:700;color:var(--navy);cursor:pointer;">RU</button>
+    <button onclick="setLang('en');closeMenu();" style="flex:1;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:10px;font-weight:700;color:var(--navy);cursor:pointer;">EN</button>
+  </div>
+  <a href="https://t.me/REPLACE_TELEGRAM" class="btn-primary" onclick="closeMenu()">
+    <span class="en">Message on Telegram</span>
+    <span class="ua">Написати в Telegram</span>
+    <span class="ru">Написать в Telegram</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge"><span></span> <span class="en">Lviv — 70 km from the Polish border</span><span class="ua">Львів — 70 км від польського кордону</span><span class="ru">Львов — 70 км от польской границы</span></div>
+        <h1 class="en">Dental care in <em>Lviv</em> — close, clear, fairly priced</h1>
+        <h1 class="ua">Стоматологія у <em>Львові</em> — близько, зрозуміло, за адекватною ціною</h1>
+        <h1 class="ru">Стоматология во <em>Львове</em> — близко, понятно, по адекватной цене</h1>
+        <p class="en">ONNO works with a dental clinic in Lviv for patients currently living abroad. Clear communication in Ukrainian, Russian or English, and a transfer + accommodation option if you need it.</p>
+        <p class="ua">ONNO працює зі стоматологічною клінікою у Львові для пацієнтів, які зараз живуть за кордоном. Зрозуміле спілкування українською, російською або англійською, за потреби — трансфер і проживання.</p>
+        <p class="ru">ONNO работает со стоматологической клиникой во Львове для пациентов, которые сейчас живут за границей. Понятное общение на украинском, русском или английском, при необходимости — трансфер и проживание.</p>
+        <div class="hero-actions">
+          <a href="https://t.me/REPLACE_TELEGRAM" class="btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.5L2.75 11.9c-1.27.5-1.27 1.2-.23 1.53l4.8 1.5 1.86 5.66c.22.6.37.85.76.85.32 0 .46-.15.64-.32l2.8-2.7 4.9 3.6c.9.5 1.55.24 1.78-.83l3.22-15.2c.34-1.32-.5-1.9-1.73-1.5z"/></svg>
+            <span class="en">Message on Telegram</span>
+            <span class="ua">Написати в Telegram</span>
+            <span class="ru">Написать в Telegram</span>
+          </a>
+          <a href="#services" class="btn-secondary">
+            <span class="en">See services</span>
+            <span class="ua">Переглянути послуги</span>
+            <span class="ru">Посмотреть услуги</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num">70<span>km</span></div><div class="stat-label en">From the Polish border</div><div class="stat-label ua">До кордону з Польщею</div><div class="stat-label ru">До границы с Польшей</div></div>
+          <div class="stat"><div class="stat-num">3</div><div class="stat-label en">Languages: UA / RU / EN</div><div class="stat-label ua">Мови: UA / RU / EN</div><div class="stat-label ru">Языки: UA / RU / EN</div></div>
+          <div class="stat"><div class="stat-num" data-placeholder="years">[YEARS]<span>+</span></div><div class="stat-label en">Years in practice</div><div class="stat-label ua">Років роботи клініки</div><div class="stat-label ru">Лет работы клиники</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="hero-card-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(46,170,110,0.9)" stroke-width="1.8"><path d="M12 2C7 2 3 6 3 11c0 3 1.5 5.5 3.5 7H12h5.5C19.5 16.5 21 14 21 11c0-5-4-9-9-9z"/><path d="M8 14c0 0 1 3 4 3s4-3 4-3"/></svg>
+            </div>
+            <div>
+              <h3><span class="en">Dental treatment</span><span class="ua">Стоматологічне лікування</span><span class="ru">Стоматологическое лечение</span></h3>
+              <p><span class="en">Implants, veneers, crowns, whitening</span><span class="ua">Імплантація, вініри, коронки, відбілювання</span><span class="ru">Имплантация, виниры, коронки, отбеливание</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="hero-card-icon navy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h3><span class="en">Transfer &amp; accommodation</span><span class="ua">Трансфер і проживання</span><span class="ru">Трансфер и проживание</span></h3>
+              <p><span class="en">Optional add-on, arranged with your coordinator</span><span class="ua">Опційно, узгоджується з координатором</span><span class="ru">Опционально, согласовывается с координатором</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon t">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="en">Licensed dental clinic</span><span class="ua">Ліцензована стоматологічна клініка</span><span class="ru">Лицензированная стоматологическая клиника</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon g">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <span class="en">Remote follow-up after your visit</span><span class="ua">Дистанційний супровід після лікування</span><span class="ru">Дистанционное сопровождение после лечения</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon t">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <span class="en">Instant assistant, human coordinator follows up</span><span class="ua">Миттєвий асистент, далі — особистий координатор</span><span class="ru">Мгновенный ассистент, далее — личный координатор</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon n">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <span class="en">Coordinators speak Ukrainian, Russian, English</span><span class="ua">Координатори говорять українською, російською, англійською</span><span class="ru">Координаторы говорят на украинском, русском, английском</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon g">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span class="en">Transfer option from the border</span><span class="ua">Опція трансферу від кордону</span><span class="ru">Опция трансфера от границы</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-label en">Services</div>
+    <div class="section-label ua">Послуги</div>
+    <div class="section-label ru">Услуги</div>
+    <h2 class="section-title en">Dental treatment, clearly explained</h2>
+    <h2 class="section-title ua">Стоматологічне лікування — зрозуміло і без сюрпризів</h2>
+    <h2 class="section-title ru">Стоматологическое лечение — понятно и без сюрпризов</h2>
+    <p class="section-sub en">Message the assistant with your situation and photos — you'll get a clear explanation of options and next steps, no fixed price posted here since every case differs.</p>
+    <p class="section-sub ua">Напишіть асистенту про свою ситуацію, додайте фото — отримаєте зрозуміле пояснення варіантів і наступних кроків. Точну вартість тут не публікуємо, бо кожен випадок різний.</p>
+    <p class="section-sub ru">Напишите ассистенту о своей ситуации, добавьте фото — получите понятное объяснение вариантов и следующих шагов. Точную стоимость здесь не публикуем, каждый случай отличается.</p>
+
+    <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <!-- DENTAL -->
+      <div class="service-card">
+        <div class="service-thumb g">
+          <div class="service-thumb-icon">
+            <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 20 C18 20 14 24 14 30 C14 38 18 52 22 56 C24 59 26 58 28 55 C30 52 32 52 36 52 C40 52 42 52 44 55 C46 58 48 59 50 56 C54 52 58 38 58 30 C58 24 54 20 50 20 C46 20 44 22 36 22 C28 22 26 20 22 20 Z" stroke="rgba(46,170,110,0.8)" stroke-width="2.5" fill="rgba(46,170,110,0.1)"/>
+              <path d="M36 22 L36 52" stroke="rgba(46,170,110,0.4)" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <circle cx="28" cy="34" r="4" fill="rgba(46,170,110,0.3)"/>
+              <circle cx="44" cy="34" r="4" fill="rgba(46,170,110,0.3)"/>
+            </svg>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3 class="en">Dental treatment</h3>
+          <h3 class="ua">Стоматологічне лікування</h3>
+          <h3 class="ru">Стоматологическое лечение</h3>
+          <p class="en">Implants, veneers, crowns and whitening, with an AI pre-assessment (Umi) so you know roughly what to expect before you travel.</p>
+          <p class="ua">Імплантація, вініри, коронки та відбілювання. Попередня AI-оцінка (Umi) допоможе зрозуміти, чого очікувати, ще до поїздки.</p>
+          <p class="ru">Имплантация, виниры, коронки и отбеливание. Предварительная AI-оценка (Umi) поможет понять, чего ожидать, ещё до поездки.</p>
+          <ul class="service-features">
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Dental implants</span><span class="ua">Імплантація зубів</span><span class="ru">Имплантация зубов</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Veneers &amp; crowns</span><span class="ua">Вініри та коронки</span><span class="ru">Виниры и коронки</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">AI pre-assessment (Umi)</span><span class="ua">AI-попередня оцінка (Umi)</span><span class="ru">AI-предварительная оценка (Umi)</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Digital X-ray diagnostics</span><span class="ua">Цифрова рентген-діагностика</span><span class="ru">Цифровая рентген-диагностика</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Remote follow-up after treatment</span><span class="ua">Дистанційний супровід після лікування</span><span class="ru">Дистанционное сопровождение после лечения</span></li>
+          </ul>
+          <div class="service-cta">
+            <div class="service-cta-price">
+              <span class="from en">Cost depends on your case</span>
+              <span class="from ua">Вартість залежить від випадку</span>
+              <span class="from ru">Стоимость зависит от случая</span>
+            </div>
+            <a href="https://t.me/REPLACE_TELEGRAM" class="service-cta-link en">Ask the assistant</a>
+            <a href="https://t.me/REPLACE_TELEGRAM" class="service-cta-link ua">Запитати асистента</a>
+            <a href="https://t.me/REPLACE_TELEGRAM" class="service-cta-link ru">Спросить ассистента</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANSFER + ACCOMMODATION -->
+      <div class="service-card">
+        <div class="service-thumb n">
+          <div class="service-thumb-icon">
+            <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M36 8C24 8 16 18 16 28c0 14 20 32 20 32s20-18 20-32c0-10-8-20-20-20z" stroke="rgba(255,255,255,0.75)" stroke-width="2.5"/>
+              <circle cx="36" cy="28" r="7" stroke="rgba(255,255,255,0.75)" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+        <div class="service-body">
+          <h3 class="en">Transfer &amp; accommodation</h3>
+          <h3 class="ua">Трансфер і проживання</h3>
+          <h3 class="ru">Трансфер и проживание</h3>
+          <p class="en">If you need help getting to Lviv and a place to stay during treatment, we can arrange it as part of your plan. Details are worked out with your coordinator, not on this page.</p>
+          <p class="ua">Якщо потрібна допомога з дорогою до Львова та проживанням на час лікування, ми це організуємо. Деталі узгоджуються з координатором, а не публікуються тут.</p>
+          <p class="ru">Если нужна помощь с дорогой до Львова и проживанием на время лечения, мы это организуем. Детали согласовываются с координатором, а не публикуются здесь.</p>
+          <ul class="service-features">
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Arranged around your treatment dates</span><span class="ua">Узгоджується з датами лікування</span><span class="ru">Согласуется с датами лечения</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Simple, safe accommodation near the clinic</span><span class="ua">Просте, безпечне житло поруч із клінікою</span><span class="ru">Простое, безопасное жильё рядом с клиникой</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Optional — add it only if you need it</span><span class="ua">Опційно — додається лише за потреби</span><span class="ru">Опционально — добавляется только при необходимости</span></li>
+          </ul>
+          <div class="service-cta">
+            <div class="service-cta-price">
+              <span class="from en">Ask for details</span>
+              <span class="from ua">Уточніть деталі</span>
+              <span class="from ru">Уточните детали</span>
+            </div>
+            <a href="https://t.me/REPLACE_TELEGRAM" class="service-cta-link en">Ask the assistant</a>
+            <a href="https://t.me/REPLACE_TELEGRAM" class="service-cta-link ua">Запитати асистента</a>
+            <a href="https://t.me/REPLACE_TELEGRAM" class="service-cta-link ru">Спросить ассистента</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY LVIV -->
+<section id="why">
+  <div class="container">
+    <div class="why-inner">
+      <div>
+        <div class="section-label en">Why Lviv</div>
+        <div class="section-label ua">Чому Львів</div>
+        <div class="section-label ru">Почему Львов</div>
+        <h2 class="section-title en">Your own clinic, not a foreign one</h2>
+        <h2 class="section-title ua">Своя клініка, а не чужа</h2>
+        <h2 class="section-title ru">Своя клиника, а не чужая</h2>
+        <p class="en">For many patients now living abroad, Lviv is simply close and familiar — 70km from the Polish border, with care in a language you don't have to translate in your head.</p>
+        <p class="ua">Для багатьох пацієнтів, які зараз живуть за кордоном, Львів — це просто близько і знайомо: 70 км від польського кордону, лікування мовою, яку не потрібно перекладати подумки.</p>
+        <p class="ru">Для многих пациентов, живущих сейчас за границей, Львов — это просто близко и знакомо: 70 км от польской границы, лечение на языке, который не нужно переводить в голове.</p>
+        <ul class="why-points">
+          <li>
+            <div class="wp-icon t"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="wp-text">
+              <strong class="en">Licensed clinic, verifiable credentials</strong>
+              <strong class="ua">Ліцензована клініка, перевірювані документи</strong>
+              <strong class="ru">Лицензированная клиника, проверяемые документы</strong>
+              <span class="en">Ask your coordinator for licensing and credential details</span>
+              <span class="ua">Запитайте координатора про ліцензію та документи лікарів</span>
+              <span class="ru">Спросите координатора о лицензии и документах врачей</span>
+            </div>
+          </li>
+          <li>
+            <div class="wp-icon g"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="wp-text">
+              <strong class="en">AI pre-assessment before you travel</strong>
+              <strong class="ua">AI-оцінка ще до поїздки</strong>
+              <strong class="ru">AI-оценка ещё до поездки</strong>
+              <span class="en">Share photos with the assistant and get a realistic picture first</span>
+              <span class="ua">Надішліть фото асистенту й отримайте реалістичну картину заздалегідь</span>
+              <span class="ru">Отправьте фото ассистенту и получите реалистичную картину заранее</span>
+            </div>
+          </li>
+          <li>
+            <div class="wp-icon n"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+            <div class="wp-text">
+              <strong class="en">No language barrier</strong>
+              <strong class="ua">Без мовного бар'єру</strong>
+              <strong class="ru">Без языкового барьера</strong>
+              <span class="en">Ukrainian, Russian and English — pick what's comfortable</span>
+              <span class="ua">Українська, російська, англійська — оберіть зручну</span>
+              <span class="ru">Украинский, русский, английский — выберите удобный</span>
+            </div>
+          </li>
+          <li>
+            <div class="wp-icon t"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <div class="wp-text">
+              <strong class="en">Nothing hidden</strong>
+              <strong class="ua">Без прихованих умов</strong>
+              <strong class="ru">Без скрытых условий</strong>
+              <span class="en">Cost, scope and timeline confirmed before you commit to anything</span>
+              <span class="ua">Вартість, обсяг і терміни підтверджуються до будь-яких зобов'язань</span>
+              <span class="ru">Стоимость, объём и сроки подтверждаются до любых обязательств</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="why-visual">
+        <div class="why-stat-card">
+          <div class="wnum">70km</div>
+          <div class="wlabel en">From the Polish border to Lviv</div>
+          <div class="wlabel ua">Від польського кордону до Львова</div>
+          <div class="wlabel ru">От польской границы до Львова</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum" style="color:var(--teal)">3</div>
+          <div class="wlabel en">Languages spoken by coordinators</div>
+          <div class="wlabel ua">Мови координаторів</div>
+          <div class="wlabel ru">Языки координаторов</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum" style="color:var(--green)" data-placeholder="patients">[PATIENTS]</div>
+          <div class="wlabel en">Patients treated (placeholder — insert real figure)</div>
+          <div class="wlabel ua">Проліковано пацієнтів (вставити реальну цифру)</div>
+          <div class="wlabel ru">Пролечено пациентов (вставить реальную цифру)</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum" style="color:var(--navy)" data-placeholder="years">[YEARS]</div>
+          <div class="wlabel en">Years in practice (placeholder)</div>
+          <div class="wlabel ua">Років практики (вставити цифру)</div>
+          <div class="wlabel ru">Лет практики (вставить цифру)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process">
+  <div class="container">
+    <div class="section-label en">How It Works</div>
+    <div class="section-label ua">Як це працює</div>
+    <div class="section-label ru">Как это работает</div>
+    <h2 class="section-title en">From first message to follow-up</h2>
+    <h2 class="section-title ua">Від першого повідомлення до супроводу після лікування</h2>
+    <h2 class="section-title ru">От первого сообщения до сопровождения после лечения</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3 class="en">Message the assistant</h3>
+        <h3 class="ua">Напишіть асистенту</h3>
+        <h3 class="ru">Напишите ассистенту</h3>
+        <p class="en">Describe your situation, send photos if relevant. Get an initial picture and next steps.</p>
+        <p class="ua">Опишіть ситуацію, за потреби надішліть фото. Отримаєте перше уявлення та наступні кроки.</p>
+        <p class="ru">Опишите ситуацию, при необходимости отправьте фото. Получите первое представление и следующие шаги.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3 class="en">Plan the trip</h3>
+        <h3 class="ua">Плануємо поїздку</h3>
+        <h3 class="ru">Планируем поездку</h3>
+        <p class="en">Your coordinator confirms dates and, if needed, arranges transfer and accommodation.</p>
+        <p class="ua">Координатор узгоджує дати та, за потреби, організовує трансфер і проживання.</p>
+        <p class="ru">Координатор согласовывает даты и, при необходимости, организует трансфер и проживание.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3 class="en">Arrive &amp; get treated</h3>
+        <h3 class="ua">Приїзд і лікування</h3>
+        <h3 class="ru">Приезд и лечение</h3>
+        <p class="en">In-person consultation confirms the plan, then treatment begins.</p>
+        <p class="ua">Особиста консультація підтверджує план, після чого починається лікування.</p>
+        <p class="ru">Личная консультация подтверждает план, после чего начинается лечение.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3 class="en">Recover</h3>
+        <h3 class="ua">Відновлення</h3>
+        <h3 class="ru">Восстановление</h3>
+        <p class="en">Rest at your accommodation, with a check-up before you head back.</p>
+        <p class="ua">Відпочинок у місці проживання, контрольний огляд перед від'їздом.</p>
+        <p class="ru">Отдых по месту проживания, контрольный осмотр перед отъездом.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h3 class="en">Follow-up</h3>
+        <h3 class="ua">Супровід після повернення</h3>
+        <h3 class="ru">Сопровождение после возвращения</h3>
+        <p class="en">Your coordinator stays reachable remotely if questions come up.</p>
+        <p class="ua">Координатор залишається на зв'язку дистанційно, якщо виникнуть питання.</p>
+        <p class="ru">Координатор остаётся на связи дистанционно, если возникнут вопросы.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO CAN TRAVEL -->
+<section id="eligibility" style="background:var(--off);">
+  <div class="container" style="max-width:820px;">
+    <div class="section-label en">Before You Plan Your Trip</div>
+    <div class="section-label ua">Перед плануванням поїздки</div>
+    <div class="section-label ru">Перед планированием поездки</div>
+    <h2 class="section-title en">Who can travel</h2>
+    <h2 class="section-title ua">Хто може приїхати</h2>
+    <h2 class="section-title ru">Кто может приехать</h2>
+    <p class="en">Lviv is a border-region city, 70km from Poland, and is generally considered a safer area within Ukraine. Women, children, and men with a legal right to cross the border can use this service without restriction. Men of conscription age should check current exit rules before planning travel — our coordinator can help you confirm the details relevant to your situation.</p>
+    <p class="ua">Львів — прикордонне місто, за 70 км від Польщі, і зазвичай вважається відносно безпечним регіоном в межах України. Жінки, діти та чоловіки, які мають законне право перетину кордону, можуть скористатися послугою без обмежень. Чоловікам призовного віку варто заздалегідь перевірити актуальні правила виїзду — координатор допоможе уточнити деталі саме для вашої ситуації.</p>
+    <p class="ru">Львов — приграничный город, в 70 км от Польши, и обычно считается относительно безопасным регионом в пределах Украины. Женщины, дети и мужчины, имеющие законное право пересечения границы, могут воспользоваться услугой без ограничений. Мужчинам призывного возраста стоит заранее проверить актуальные правила выезда — координатор поможет уточнить детали именно для вашей ситуации.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <div class="section-label en">Patient Reviews</div>
+    <div class="section-label ua">Відгуки пацієнтів</div>
+    <div class="section-label ru">Отзывы пациентов</div>
+    <h2 class="section-title en">What patients say</h2>
+    <h2 class="section-title ua">Що кажуть пацієнти</h2>
+    <h2 class="section-title ru">Что говорят пациенты</h2>
+    <p class="section-sub en">Placeholder reviews below — replace with real patient feedback before launch.</p>
+    <p class="section-sub ua">Нижче — заготовки. Замініть на реальні відгуки пацієнтів перед публікацією сайту.</p>
+    <p class="section-sub ru">Ниже — заготовки. Замените на реальные отзывы пациентов перед публикацией сайта.</p>
+    <div class="testimonials-grid">
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <blockquote class="en">"[Placeholder] Everything was explained clearly before I traveled, so there were no surprises when I arrived."</blockquote>
+        <blockquote class="ua">"[Заготовка] Мені все чітко пояснили ще до поїздки, тож жодних сюрпризів після приїзду не було."</blockquote>
+        <blockquote class="ru">"[Заготовка] Мне всё чётко объяснили ещё до поездки, поэтому никаких сюрпризов по приезду не было."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar t">O</div>
+          <div>
+            <div class="tcard-name">Оксана, [місто]</div>
+            <div class="tcard-service en">Dental treatment</div>
+            <div class="tcard-service ua">Стоматологічне лікування</div>
+            <div class="tcard-service ru">Стоматологическое лечение</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <blockquote class="en">"[Placeholder] The transfer made the whole trip much easier — I didn't have to figure out logistics myself."</blockquote>
+        <blockquote class="ua">"[Заготовка] Трансфер дуже спростив поїздку — не довелося самостійно розбиратися з логістикою."</blockquote>
+        <blockquote class="ru">"[Заготовка] Трансфер сильно упростил поездку — не пришлось самостоятельно разбираться с логистикой."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar g">M</div>
+          <div>
+            <div class="tcard-name">Марія, [місто]</div>
+            <div class="tcard-service en">Transfer &amp; accommodation</div>
+            <div class="tcard-service ua">Трансфер і проживання</div>
+            <div class="tcard-service ru">Трансфер и проживание</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <blockquote class="en">"[Placeholder] It was good to speak with someone in my own language about my treatment plan."</blockquote>
+        <blockquote class="ua">"[Заготовка] Було приємно обговорити план лікування рідною мовою."</blockquote>
+        <blockquote class="ru">"[Заготовка] Было приятно обсудить план лечения на родном языке."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar n">I</div>
+          <div>
+            <div class="tcard-name">Ігор, [місто]</div>
+            <div class="tcard-service en">Dental treatment</div>
+            <div class="tcard-service ua">Стоматологічне лікування</div>
+            <div class="tcard-service ru">Стоматологическое лечение</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px;">
+      <div class="section-label en">FAQ</div>
+      <div class="section-label ua">Питання</div>
+      <div class="section-label ru">Вопросы</div>
+      <h2 class="section-title en">Everything you need to know</h2>
+      <h2 class="section-title ua">Все, що потрібно знати</h2>
+      <h2 class="section-title ru">Всё, что нужно знать</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">Is it safe to travel to Lviv?</span>
+          <span class="ua">Чи безпечно їхати до Львова?</span>
+          <span class="ru">Безопасно ли ехать во Львов?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">Lviv is a border-region city and generally considered a relatively safe area within Ukraine. See the "Who can travel" section above for details relevant to your specific situation, and speak with your coordinator if you have concerns.</div>
+          <div class="faq-a-inner ua">Львів — прикордонне місто, яке зазвичай вважається відносно безпечним регіоном в межах України. Деталі саме для вашої ситуації — у розділі "Хто може приїхати" вище, а також можна обговорити з координатором.</div>
+          <div class="faq-a-inner ru">Львов — приграничный город, который обычно считается относительно безопасным регионом в пределах Украины. Детали именно для вашей ситуации — в разделе "Кто может приехать" выше, а также можно обсудить с координатором.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">What's included if I book transfer and accommodation?</span>
+          <span class="ua">Що входить у трансфер і проживання?</span>
+          <span class="ru">Что входит в трансфер и проживание?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">Exact scope depends on your treatment dates and needs — your coordinator confirms everything in writing before you commit to anything.</div>
+          <div class="faq-a-inner ua">Точний обсяг залежить від дат лікування та ваших потреб — координатор письмово підтверджує все до будь-яких зобов'язань.</div>
+          <div class="faq-a-inner ru">Точный объём зависит от дат лечения и ваших потребностей — координатор письменно подтверждает всё до любых обязательств.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">How do I get a personal consultation?</span>
+          <span class="ua">Як отримати особисту консультацію?</span>
+          <span class="ru">Как получить личную консультацию?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">Message the assistant here on the site or on Telegram. Share a few photos and describe your situation — a coordinator follows up with specifics.</div>
+          <div class="faq-a-inner ua">Напишіть асистенту на сайті або в Telegram. Додайте кілька фото та опишіть ситуацію — координатор зв'яжеться з деталями.</div>
+          <div class="faq-a-inner ru">Напишите ассистенту на сайте или в Telegram. Добавьте несколько фото и опишите ситуацию — координатор свяжется с деталями.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">How long does dental treatment usually take?</span>
+          <span class="ua">Скільки зазвичай триває лікування?</span>
+          <span class="ru">Сколько обычно занимает лечение?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">It depends heavily on the treatment — a consultation and simple procedure can be a single visit, while implants or multi-step work usually need more than one appointment. Your coordinator gives you a realistic timeline for your case.</div>
+          <div class="faq-a-inner ua">Дуже залежить від лікування — консультація та проста процедура можуть зайняти один візит, тоді як імплантація чи багатоетапне лікування зазвичай потребують кількох прийомів. Координатор дасть реалістичний графік для вашого випадку.</div>
+          <div class="faq-a-inner ru">Сильно зависит от лечения — консультация и простая процедура могут занять один визит, тогда как имплантация или многоэтапное лечение обычно требуют нескольких приёмов. Координатор даст реалистичный график для вашего случая.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">What if I have questions after I'm back?</span>
+          <span class="ua">Що робити, якщо виникнуть питання після повернення?</span>
+          <span class="ru">Что делать, если возникнут вопросы после возвращения?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">Your coordinator stays reachable remotely. Message on Telegram with any concerns after treatment.</div>
+          <div class="faq-a-inner ua">Координатор залишається на зв'язку дистанційно. Пишіть у Telegram з будь-якими питаннями після лікування.</div>
+          <div class="faq-a-inner ru">Координатор остаётся на связи дистанционно. Пишите в Telegram с любыми вопросами после лечения.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">Do I need to speak Ukrainian?</span>
+          <span class="ua">Чи потрібно знати українську?</span>
+          <span class="ru">Нужно ли знать украинский?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">No. Your coordinator communicates in Ukrainian, Russian or English — whichever is comfortable for you.</div>
+          <div class="faq-a-inner ua">Ні. Координатор спілкується українською, російською або англійською — оберіть зручну для вас.</div>
+          <div class="faq-a-inner ru">Нет. Координатор общается на украинском, русском или английском — выберите удобный для вас.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="en">Have questions about your treatment?</h2>
+    <h2 class="ua">Є питання щодо вашого лікування?</h2>
+    <h2 class="ru">Есть вопросы о лечении?</h2>
+    <p class="en">Message the assistant — it's the fastest way to get a clear answer.</p>
+    <p class="ua">Напишіть асистенту — це найшвидший спосіб отримати зрозумілу відповідь.</p>
+    <p class="ru">Напишите ассистенту — это самый быстрый способ получить понятный ответ.</p>
+    <div class="cta-actions">
+      <a href="https://t.me/REPLACE_TELEGRAM" class="btn-white">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.5L2.75 11.9c-1.27.5-1.27 1.2-.23 1.53l4.8 1.5 1.86 5.66c.22.6.37.85.76.85.32 0 .46-.15.64-.32l2.8-2.7 4.9 3.6c.9.5 1.55.24 1.78-.83l3.22-15.2c.34-1.32-.5-1.9-1.73-1.5z"/></svg>
+        <span class="en">Message on Telegram</span>
+        <span class="ua">Написати в Telegram</span>
+        <span class="ru">Написать в Telegram</span>
+      </a>
+      <a href="mailto:REPLACE@getonno.com" class="btn-outline-white">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span class="en">Email us</span>
+        <span class="ua">Написати на пошту</span>
+        <span class="ru">Написать на почту</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon" style="width:34px;height:34px;border-radius:8px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.5C7.3 3.5 3.5 7.3 3.5 12S7.3 20.5 12 20.5 20.5 16.7 20.5 12 16.7 3.5 12 3.5z" fill="white"/></svg>
+          </div>
+          <span>ONNO</span>
+        </div>
+        <p class="en">Dental treatment in Lviv for patients living abroad. Clear communication, transfer and accommodation if you need it.</p>
+        <p class="ua">Стоматологічне лікування у Львові для пацієнтів, які живуть за кордоном. Зрозуміла комунікація, трансфер і проживання за потреби.</p>
+        <p class="ru">Стоматологическое лечение во Львове для пациентов, живущих за границей. Понятная коммуникация, трансфер и проживание при необходимости.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="en">Services</h4>
+        <h4 class="ua">Послуги</h4>
+        <h4 class="ru">Услуги</h4>
+        <ul>
+          <li><a href="#services"><span class="en">Dental treatment</span><span class="ua">Стоматологічне лікування</span><span class="ru">Стоматологическое лечение</span></a></li>
+          <li><a href="#services"><span class="en">Transfer &amp; accommodation</span><span class="ua">Трансфер і проживання</span><span class="ru">Трансфер и проживание</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="en">Company</h4>
+        <h4 class="ua">Компанія</h4>
+        <h4 class="ru">Компания</h4>
+        <ul>
+          <li><a href="#why"><span class="en">Why Lviv</span><span class="ua">Чому Львів</span><span class="ru">Почему Львов</span></a></li>
+          <li><a href="#process"><span class="en">How It Works</span><span class="ua">Як це працює</span><span class="ru">Как это работает</span></a></li>
+          <li><a href="#testimonials"><span class="en">Reviews</span><span class="ua">Відгуки</span><span class="ru">Отзывы</span></a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="en">Contact</h4>
+        <h4 class="ua">Контакти</h4>
+        <h4 class="ru">Контакты</h4>
+        <ul>
+          <li><a href="https://t.me/REPLACE_TELEGRAM">Telegram</a></li>
+          <li><a href="mailto:REPLACE@getonno.com">REPLACE@getonno.com</a></li>
+          <li><a href="#"><span class="en">Lviv, Ukraine</span><span class="ua">Львів, Україна</span><span class="ru">Львов, Украина</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="en">© 2026 ONNO. All rights reserved.</p>
+      <p class="ua">© 2026 ONNO. Всі права захищено.</p>
+      <p class="ru">© 2026 ONNO. Все права защищены.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://t.me/REPLACE_TELEGRAM" class="footer-social" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"><path d="M21.5 4.5L2.75 11.9c-1.27.5-1.27 1.2-.23 1.53l4.8 1.5 1.86 5.66c.22.6.37.85.76.85.32 0 .46-.15.64-.32l2.8-2.7 4.9 3.6c.9.5 1.55.24 1.78-.83l3.22-15.2c.34-1.32-.5-1.9-1.73-1.5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- AI CHAT WIDGET -->
+<div class="chat-widget" id="chat-widget">
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+        </div>
+        <div>
+          <h4>ONNO Асистент</h4>
+          <div class="chat-status en">Replies quickly</div>
+          <div class="chat-status ua">Відповідає швидко</div>
+          <div class="chat-status ru">Отвечает быстро</div>
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">
+        <div class="chat-bubble en">👋 Hi! I'm ONNO's assistant. Ask me about dental treatment, transfer and accommodation, or how to book a consultation.</div>
+        <div class="chat-bubble ua">👋 Привіт! Я асистент ONNO. Запитайте про стоматологічне лікування, трансфер і проживання, або як записатися на консультацію.</div>
+        <div class="chat-bubble ru">👋 Привет! Я ассистент ONNO. Спросите о стоматологическом лечении, трансфере и проживании, или как записаться на консультацию.</div>
+        <div class="chat-time">—</div>
+      </div>
+    </div>
+    <div class="chat-quick-actions" id="chat-quick">
+      <div class="chat-quick-label en">Quick questions</div>
+      <div class="chat-quick-label ua">Швидкі питання</div>
+      <div class="chat-quick-label ru">Быстрые вопросы</div>
+      <button class="chat-quick-btn" onclick="chatQuick(this, 'dental_price')">
+        <svg viewBox="0 0 24 24"><path d="M12 3C8 3 5 6 5 9c0 4 2 9 3.5 12 .5 1 1.5 1 2 0L12 18l1.5 3c.5 1 1.5 1 2 0C17 18 19 13 19 9c0-3-3-6-7-6z"/></svg>
+        <span class="en">How much does treatment cost?</span>
+        <span class="ua">Скільки коштує лікування?</span>
+        <span class="ru">Сколько стоит лечение?</span>
+      </button>
+      <button class="chat-quick-btn" onclick="chatQuick(this, 'transfer')">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="en">How does transfer &amp; accommodation work?</span>
+        <span class="ua">Як працює трансфер і проживання?</span>
+        <span class="ru">Как работает трансфер и проживание?</span>
+      </button>
+      <button class="chat-quick-btn" onclick="chatQuick(this, 'eligibility')">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span class="en">Can I travel to Lviv?</span>
+        <span class="ua">Чи можу я приїхати до Львова?</span>
+        <span class="ru">Могу ли я приехать во Львов?</span>
+      </button>
+      <button class="chat-quick-btn" onclick="chatQuick(this, 'book')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="en">Book a consultation</span>
+        <span class="ua">Записатися на консультацію</span>
+        <span class="ru">Записаться на консультацию</span>
+      </button>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chat-input" type="text" placeholder="..." onkeydown="if(event.key==='Enter')chatSend()">
+      <button class="chat-send" onclick="chatSend()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+    <div class="chat-disclaimer en">* This is a scaffold — connect to the real n8n assistant before launch.</div>
+    <div class="chat-disclaimer ua">* Це заготовка — до запуску підключити до реального n8n-асистента.</div>
+    <div class="chat-disclaimer ru">* Это заготовка — до запуска подключить к реальному n8n-ассистенту.</div>
+  </div>
+  <div class="chat-fab" onclick="toggleChat()">
+    <div class="chat-badge">1</div>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </div>
+</div>
+
+<!-- TELEGRAM FAB -->
+<a href="https://t.me/REPLACE_TELEGRAM" class="wa-fab" aria-label="Telegram" style="background:#229ED9;box-shadow:0 4px 24px rgba(34,158,217,0.5);">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M21.5 4.5L2.75 11.9c-1.27.5-1.27 1.2-.23 1.53l4.8 1.5 1.86 5.66c.22.6.37.85.76.85.32 0 .46-.15.64-.32l2.8-2.7 4.9 3.6c.9.5 1.55.24 1.78-.83l3.22-15.2c.34-1.32-.5-1.9-1.73-1.5z"/></svg>
+</a>
+
+<script>
+  // ── CHAT WIDGET ──
+  var chatOpen = false;
+  function toggleChat(){
+    chatOpen = !chatOpen;
+    document.getElementById('chat-panel').classList.toggle('open', chatOpen);
+    document.querySelector('.chat-badge').style.display = chatOpen ? 'none' : 'flex';
+  }
+  var chatReplies = {
+    dental_price: {
+      ua: "Вартість залежить від типу лікування (імплант, вінір, коронка тощо) і кількості зубів. Надішліть фото та опишіть ситуацію — координатор дасть точну вартість без зобов'язань. 🦷",
+      ru: "Стоимость зависит от типа лечения (имплант, винир, коронка и т.д.) и количества зубов. Отправьте фото и опишите ситуацию — координатор даст точную стоимость без обязательств. 🦷",
+      en: "Cost depends on the type of treatment (implant, veneer, crown, etc.) and how many teeth are involved. Send photos and describe your situation — your coordinator will give you an exact, no-obligation quote. 🦷"
+    },
+    transfer: {
+      ua: "Трансфер і проживання — опційна послуга, яку узгоджуємо під ваші дати лікування. Координатор запропонує варіанти після того, як буде відомий план лікування. 🚐",
+      ru: "Трансфер и проживание — опциональная услуга, которую согласовываем под ваши даты лечения. Координатор предложит варианты после того, как будет известен план лечения. 🚐",
+      en: "Transfer and accommodation are optional, arranged around your treatment dates. Your coordinator will suggest options once your treatment plan is confirmed. 🚐"
+    },
+    eligibility: {
+      ua: "Львів за 70 км від польського кордону і вважається відносно безпечним регіоном. Жінки, діти й чоловіки з правом перетину кордону можуть приїхати без обмежень. Чоловікам призовного віку варто заздалегідь перевірити актуальні правила виїзду — можу з'єднати вас із координатором для уточнення деталей. ℹ️",
+      ru: "Львов в 70 км от польской границы и считается относительно безопасным регионом. Женщины, дети и мужчины с правом пересечения границы могут приехать без ограничений. Мужчинам призывного возраста стоит заранее проверить актуальные правила выезда — могу связать вас с координатором для уточнения деталей. ℹ️",
+      en: "Lviv is 70km from the Polish border and considered a relatively safe region. Women, children and men with a legal right to cross the border can travel without restriction. Men of conscription age should check current exit rules first — I can connect you with a coordinator to confirm the details. ℹ️"
+    },
+    book: {
+      ua: "Чудово — напишіть мені кілька слів про ситуацію, і я передам координатору. Або одразу перейдіть у Telegram для швидшої відповіді. 📅",
+      ru: "Отлично — напишите мне пару слов о ситуации, и я передам координатору. Или сразу перейдите в Telegram для более быстрого ответа. 📅",
+      en: "Great — tell me a bit about your situation and I'll pass it to a coordinator. Or message us directly on Telegram for a faster response. 📅"
+    }
+  };
+  function chatQuick(btn, key){
+    btn.style.display = 'none';
+    var lang = document.body.classList.contains('ua') ? 'ua' : document.body.classList.contains('ru') ? 'ru' : 'en';
+    var label = btn.querySelector('.' + lang).textContent.trim();
+    appendChatMsg('user', label);
+    setTimeout(function(){
+      var reply = chatReplies[key];
+      appendChatMsg('bot', reply[lang] || reply.en);
+      if(key==='book'){ setTimeout(function(){ window.open('https://t.me/REPLACE_TELEGRAM','_blank'); }, 1200); }
+    }, 700);
+  }
+  function chatSend(){
+    var inp = document.getElementById('chat-input');
+    var msg = inp.value.trim();
+    if(!msg) return;
+    appendChatMsg('user', msg);
+    inp.value = '';
+    var lang = document.body.classList.contains('ua') ? 'ua' : document.body.classList.contains('ru') ? 'ru' : 'en';
+    setTimeout(function(){
+      var r = lang === 'ua'
+        ? 'Дякую за повідомлення! Координатор зв\'яжеться з вами найближчим часом. 💬'
+        : lang === 'ru'
+        ? 'Спасибо за сообщение! Координатор свяжется с вами в ближайшее время. 💬'
+        : 'Thanks for your message! A coordinator will get back to you shortly. 💬';
+      appendChatMsg('bot', r);
+    }, 800);
+  }
+  function appendChatMsg(type, html){
+    var msgs = document.getElementById('chat-messages');
+    var now  = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    var div  = document.createElement('div');
+    div.className = 'chat-msg ' + type;
+    div.innerHTML = '<div class="chat-bubble">'+html+'</div><div class="chat-time">'+now+'</div>';
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  // ── LANGUAGE ──
+  function setLang(lang) {
+    document.body.classList.remove('en', 'ua', 'ru');
+    document.body.classList.add(lang);
+    document.documentElement.setAttribute('lang', lang === 'ua' ? 'uk' : lang);
+    localStorage.setItem('onno-lang', lang);
+    ['lb-en','lb-ua','lb-ru'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.classList.remove('active');
+    });
+    var active = document.getElementById('lb-' + lang);
+    if(active) active.classList.add('active');
+  }
+  (function() {
+    var saved = localStorage.getItem('onno-lang') || 'ua';
+    setLang(saved);
+  })();
+
+  // Nav scroll shadow
+  window.addEventListener('scroll', function() {
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll-reveal with stagger
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      var siblings = Array.from(e.target.parentNode.children).filter(function(c) {
+        return c.classList.contains(e.target.classList[0]);
+      });
+      var idx = siblings.indexOf(e.target);
+      var delay = Math.min(idx * 0.08, 0.32);
+      e.target.style.transitionDelay = delay + 's';
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      revealObserver.unobserve(e.target);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.service-card, .tcard, .why-stat-card, .step, .faq-item').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    revealObserver.observe(el);
+  });
+
+  // Section header reveal
+  var headerObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      headerObserver.unobserve(e.target);
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.section-title, .section-label').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    headerObserver.observe(el);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONNO — getonno.com</title>
+<meta name="description" content="ONNO — sağlık turizmi ve dijital altyapı hizmetleri. Tek marka, çok bacak.">
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --teal: #11DDDD; --teal-d: #0BADAD; --gray: #6D6D6D;
+    --navy: #1E1E1E; --off: #F5F7F7; --border: #E2E7E7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #1E1E1E 0%, #2a2a2a 60%, #0F4A4A 100%);
+    color: #fff; min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 40px 24px; line-height: 1.6;
+  }
+  .logo { width: min(320px, 70vw); margin-bottom: 28px; }
+  .logo img { width: 100%; height: auto; display: block; }
+  .tagline { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 8px; text-align: center; }
+  .note { color: rgba(255,255,255,0.4); font-size: 0.82rem; margin-bottom: 44px; text-align: center; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; width: 100%; max-width: 720px; }
+  .card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 28px; text-decoration: none; color: #fff;
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--teal); background: rgba(17,221,221,0.08); }
+  .card h2 { font-size: 1.2rem; margin-bottom: 8px; color: #fff; }
+  .card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 14px; }
+  .card .go { color: var(--teal); font-weight: 600; font-size: 0.9rem; }
+  .card.soon { opacity: 0.5; pointer-events: none; }
+  .card.soon .go { color: var(--gray); }
+  footer { margin-top: 48px; color: rgba(255,255,255,0.3); font-size: 0.78rem; }
+</style>
+</head>
+<body>
+  <div class="logo"><img src="assets/onno-logo.svg" alt="ONNO"></div>
+  <p class="tagline">Sağlık turizmi + dijital altyapı — tek marka, çok bacak.</p>
+  <p class="note">Geçici yönlendirme sayfası — ana sayfa yapım aşamasında.</p>
+
+  <div class="cards">
+    <a class="card" href="health-tourism/index.html">
+      <h2>Sağlık Turizmi</h2>
+      <p>Türkiye — saç ekimi, diş ve göz tedavisi. EN / TR / PL.</p>
+      <span class="go">Siteye git →</span>
+    </a>
+    <a class="card" href="lviv/index.html">
+      <h2>Lviv — Diş Tedavisi 🇺🇦</h2>
+      <p>Yurt dışındaki Ukraynalılar için Lviv'de diş tedavisi. UA / RU / EN.</p>
+      <span class="go">Siteye git →</span>
+    </a>
+    <span class="card soon">
+      <h2>Teknik Destek</h2>
+      <p>Klinikler için dijital altyapı ve outreach.</p>
+      <span class="go">Yakında</span>
+    </span>
+  </div>
+
+  <footer>© 2026 ONNO · getonno.com</footer>
+</body>
+</html>

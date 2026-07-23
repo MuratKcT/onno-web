@@ -1,0 +1,2333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinic Support — Premium Health Tourism in Turkey</title>
+<meta name="description" content="World-class hair transplant, dental treatment and eye surgery in Turkey. All-inclusive packages with VIP transfers, hotel and aftercare.">
+<meta property="og:title" content="Clinic Support — Premium Health Tourism Turkey">
+<meta property="og:description" content="Hair transplant, dental & eye surgery. Save up to 70% vs UK/EU prices.">
+<meta property="og:type" content="website">
+
+<style>
+  :root {
+    --teal:    #00B4B4;
+    --teal-d:  #007F8A;
+    --navy:    #0D2B45;
+    --navy-m:  #163D5E;
+    --green:   #2EAA6E;
+    --green-d: #1E7A4E;
+    --white:   #FFFFFF;
+    --off:     #F4FBFB;
+    --gray:    #6B7A8B;
+    --border:  #D6EFF0;
+    --text:    #1A2E3B;
+    --radius:  14px;
+    --shadow:  0 4px 32px rgba(13,43,69,0.10);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── TYPOGRAPHY ── */
+  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.15; }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; line-height: 1.2; }
+  h3 { font-size: 1.15rem; font-weight: 600; }
+  p  { font-size: 1rem; color: var(--gray); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 90px 0; }
+
+  /* ── LANGUAGE TOGGLE ── */
+  body.en .tr, body.en .pl { display: none !important; }
+  body.tr .en, body.tr .pl { display: none !important; }
+  body.pl .en, body.pl .tr { display: none !important; }
+  .lang-switcher { display: flex; gap: 4px; }
+  .lang-btn { background: var(--off); border: 1px solid var(--border); border-radius: 6px; padding: 4px 9px; font-size: 0.78rem; font-weight: 700; color: var(--navy); cursor: pointer; transition: all 0.2s; }
+  .lang-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .lang-btn.active { background: var(--teal); border-color: var(--teal); color: white; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 20px rgba(13,43,69,0.12); }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 1.25rem; font-weight: 700; color: var(--navy);
+  }
+  .logo-icon {
+    width: 38px; height: 38px; background: var(--teal);
+    border-radius: 10px; display: grid; place-items: center;
+  }
+  .logo-icon svg { width: 22px; height: 22px; fill: white; }
+  .logo-img { height: 34px; width: auto; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--navy-m); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal); color: white; padding: 9px 22px;
+    border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--teal-d); transform: translateY(-1px); }
+  .lang-btn {
+    background: var(--off); border: 1px solid var(--border);
+    border-radius: 7px; padding: 5px 11px; font-size: 0.82rem;
+    font-weight: 600; color: var(--navy); cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .lang-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    padding-top: 130px; padding-bottom: 80px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-m) 60%, #0F4A6E 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 80% 50%, rgba(0,180,180,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(46,170,110,0.12) 0%, transparent 70%);
+  }
+  .hero-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center; position: relative;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,180,180,0.18); border: 1px solid rgba(0,180,180,0.4);
+    border-radius: 50px; padding: 6px 16px; margin-bottom: 22px;
+    font-size: 0.82rem; font-weight: 600; color: #7EE8E8; letter-spacing: 0.04em;
+  }
+  .hero-badge span:first-child { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; flex-shrink: 0; display: inline-block; }
+  .hero h1 { color: white; margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: var(--teal); }
+  .hero > .container > .hero-inner > .hero-text > p {
+    color: rgba(255,255,255,0.72); font-size: 1.08rem; margin-bottom: 36px;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal); color: white;
+    padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(0,180,180,0.4);
+  }
+  .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,180,180,0.45); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+    color: white; padding: 14px 28px; border-radius: 10px;
+    font-size: 1rem; font-weight: 600; transition: background 0.2s;
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.18); }
+  .hero-stats {
+    display: flex; gap: 28px; margin-top: 44px; padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat { }
+  .stat-num { font-size: 1.9rem; font-weight: 700; color: white; line-height: 1; }
+  .stat-num span { color: var(--teal); }
+  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 22px 26px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s;
+  }
+  .hero-card:hover { transform: translateY(-3px); }
+  .hero-card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .hero-card-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .hero-card-icon svg { width: 24px; height: 24px; }
+  .hero-card-icon.teal  { background: rgba(0,180,180,0.25); }
+  .hero-card-icon.green { background: rgba(46,170,110,0.25); }
+  .hero-card-icon.navy  { background: rgba(255,255,255,0.15); }
+  .hero-card h3 { color: white; font-size: 1rem; }
+  .hero-card p { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 2px; }
+  .hero-card-save {
+    display: inline-block; background: rgba(46,170,110,0.25);
+    border: 1px solid rgba(46,170,110,0.4); border-radius: 6px;
+    padding: 3px 10px; font-size: 0.78rem; font-weight: 600; color: #72E0A8; margin-top: 8px;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar { padding: 32px 0; border-bottom: 1px solid var(--border); }
+  .trust-inner {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 36px;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem; font-weight: 600; color: var(--navy);
+  }
+  .trust-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    display: grid; place-items: center;
+  }
+  .trust-icon svg { width: 18px; height: 18px; }
+  .trust-icon.t { background: #E0F8F8; }
+  .trust-icon.t svg { stroke: var(--teal); fill: none; stroke-width: 2; }
+  .trust-icon.g { background: #E0F5EC; }
+  .trust-icon.g svg { stroke: var(--green); fill: none; stroke-width: 2; }
+  .trust-icon.n { background: #E8EEF4; }
+  .trust-icon.n svg { stroke: var(--navy); fill: none; stroke-width: 2; }
+
+  /* ── SERVICES ── */
+  .services { background: var(--off); }
+  .section-label {
+    display: inline-block; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 12px;
+  }
+  .section-title { color: var(--navy); margin-bottom: 14px; }
+  .section-sub { max-width: 540px; margin-bottom: 56px; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .service-card {
+    background: white; border-radius: 20px; overflow: hidden;
+    box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 48px rgba(13,43,69,0.14); }
+  .service-thumb {
+    height: 200px; display: grid; place-items: center; position: relative; overflow: hidden;
+  }
+  .service-thumb.t { background: linear-gradient(135deg, #003D4F 0%, #006B7A 100%); }
+  .service-thumb.g { background: linear-gradient(135deg, #0A2E1A 0%, #1E6B40 100%); }
+  .service-thumb.n { background: linear-gradient(135deg, #0D2B45 0%, #163D5E 100%); }
+  .service-thumb-icon { width: 72px; height: 72px; }
+  .service-thumb-icon svg { width: 72px; height: 72px; }
+  .service-save-badge {
+    position: absolute; top: 14px; right: 14px;
+    background: var(--green); color: white;
+    border-radius: 8px; padding: 4px 12px;
+    font-size: 0.78rem; font-weight: 700;
+  }
+  .service-body { padding: 26px; }
+  .service-body h3 { color: var(--navy); margin-bottom: 10px; font-size: 1.2rem; }
+  .service-body p { font-size: 0.9rem; margin-bottom: 18px; }
+  .service-features { list-style: none; margin-bottom: 22px; }
+  .service-features li {
+    display: flex; align-items: flex-start; gap: 9px;
+    font-size: 0.87rem; color: var(--text); padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .service-features li:last-child { border-bottom: none; }
+  .check {
+    width: 18px; height: 18px; border-radius: 5px;
+    background: #E0F5EC; display: grid; place-items: center; flex-shrink: 0; margin-top: 1px;
+  }
+  .check svg { width: 11px; height: 11px; stroke: var(--green); fill: none; stroke-width: 2.5; }
+  .service-cta {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--off); border-radius: 10px; padding: 12px 16px;
+  }
+  .service-cta-price { }
+  .service-cta-price .from { font-size: 0.75rem; color: var(--gray); display: block; }
+  .service-cta-price .amount { font-size: 1.2rem; font-weight: 700; color: var(--navy); }
+  .service-cta-link {
+    background: var(--teal); color: white; border: none; border-radius: 8px;
+    padding: 9px 18px; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .service-cta-link:hover { background: var(--teal-d); }
+
+  /* ── WHY TURKEY ── */
+  .why { }
+  .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .why-visual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .why-stat-card {
+    background: white; border: 1px solid var(--border); border-radius: 16px;
+    padding: 24px; text-align: center;
+    box-shadow: 0 2px 16px rgba(13,43,69,0.07);
+    transition: transform 0.3s;
+  }
+  .why-stat-card:hover { transform: translateY(-4px); }
+  .why-stat-card:first-child { grid-column: 1 / -1; background: var(--navy); border-color: var(--navy); }
+  .why-stat-card:first-child .wnum { color: var(--teal); }
+  .why-stat-card:first-child .wlabel { color: rgba(255,255,255,0.65); }
+  .wnum { font-size: 2.2rem; font-weight: 700; color: var(--teal); line-height: 1; }
+  .wlabel { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
+  .why-points { list-style: none; margin-top: 30px; }
+  .why-points li {
+    display: flex; gap: 14px; padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .why-points li:last-child { border-bottom: none; }
+  .wp-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .wp-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .wp-icon.t { background: #E0F8F8; color: var(--teal); }
+  .wp-icon.g { background: #E0F5EC; color: var(--green); }
+  .wp-icon.n { background: #E8EEF4; color: var(--navy); }
+  .wp-text strong { font-size: 0.95rem; color: var(--navy); display: block; margin-bottom: 2px; }
+  .wp-text span { font-size: 0.85rem; color: var(--gray); }
+
+  /* ── PROCESS ── */
+  .process { background: var(--navy); }
+  .process .section-label { color: var(--teal); }
+  .process .section-title { color: white; }
+  .process .section-sub { color: rgba(255,255,255,0.6); }
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; margin-top: 56px; }
+  .steps::before {
+    content: '';
+    position: absolute; top: 28px; left: 10%; right: 10%;
+    height: 2px; background: linear-gradient(90deg, var(--teal), var(--green));
+    z-index: 0;
+  }
+  .step { text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--navy); border: 2px solid var(--teal);
+    color: var(--teal); font-size: 1.1rem; font-weight: 700;
+    display: grid; place-items: center; margin: 0 auto 16px;
+  }
+  .step:nth-child(3) .step-num { background: var(--teal); color: white; border-color: var(--teal); }
+  .step h3 { color: white; font-size: 0.92rem; margin-bottom: 8px; }
+  .step p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--off); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .tcard {
+    background: white; border-radius: 18px; padding: 28px;
+    box-shadow: var(--shadow); transition: transform 0.3s;
+  }
+  .tcard:hover { transform: translateY(-4px); }
+  .tcard-stars { color: #F59E0B; font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
+  .tcard blockquote { font-size: 0.92rem; color: var(--text); line-height: 1.65; font-style: italic; margin-bottom: 20px; }
+  .tcard-author { display: flex; align-items: center; gap: 12px; }
+  .tcard-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 1.1rem; font-weight: 700;
+    color: white; flex-shrink: 0;
+  }
+  .tcard-avatar.t { background: linear-gradient(135deg, var(--teal), var(--teal-d)); }
+  .tcard-avatar.g { background: linear-gradient(135deg, var(--green), var(--green-d)); }
+  .tcard-avatar.n { background: linear-gradient(135deg, var(--navy), var(--navy-m)); }
+  .tcard-name { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
+  .tcard-loc { font-size: 0.78rem; color: var(--gray); margin-top: 1px; }
+  .tcard-service {
+    display: inline-block; margin-top: 6px;
+    font-size: 0.72rem; font-weight: 600; color: var(--teal);
+    background: #E0F8F8; border-radius: 5px; padding: 2px 8px;
+  }
+
+  /* ── FAQ ── */
+  .faq-grid { max-width: 780px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid var(--border); overflow: hidden;
+  }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0; cursor: pointer; gap: 16px;
+    font-size: 0.97rem; font-weight: 600; color: var(--navy);
+    background: none; border: none; width: 100%; text-align: left;
+  }
+  .faq-q:hover { color: var(--teal); }
+  .faq-chevron {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: var(--off); border: 1px solid var(--border);
+    display: grid; place-items: center; flex-shrink: 0;
+    transition: background 0.2s, transform 0.3s;
+  }
+  .faq-chevron svg { width: 14px; height: 14px; stroke: var(--navy); fill: none; stroke-width: 2; transition: transform 0.3s; }
+  .faq-item.open .faq-chevron { background: var(--teal); border-color: var(--teal); }
+  .faq-item.open .faq-chevron svg { stroke: white; transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+  }
+  .faq-a-inner { padding-bottom: 18px; font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+  .faq-item.open .faq-a { max-height: 300px; }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--teal-d) 0%, var(--teal) 60%, #00D4B4 100%);
+    padding: 72px 0; text-align: center;
+  }
+  .cta-banner h2 { color: white; margin-bottom: 14px; }
+  .cta-banner p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 36px; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white; color: var(--teal-d);
+    padding: 15px 32px; border-radius: 10px; font-size: 1rem; font-weight: 700;
+    transition: transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+  .btn-outline-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.5);
+    color: white; padding: 15px 32px; border-radius: 10px;
+    font-size: 1rem; font-weight: 600; transition: background 0.2s;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); padding: 56px 0 28px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.88rem; margin-top: 14px; max-width: 280px; }
+  .footer-col h4 { color: white; font-size: 0.9rem; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.5); font-size: 0.85rem; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--teal); }
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 24px; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+  .footer-socials { display: flex; gap: 12px; }
+  .footer-social {
+    width: 34px; height: 34px; border-radius: 8px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    display: grid; place-items: center; transition: background 0.2s;
+  }
+  .footer-social:hover { background: var(--teal); border-color: var(--teal); }
+  .footer-social svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.6); fill: none; stroke-width: 2; }
+  .footer-social:hover svg { stroke: white; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
+  .footer-logo span { font-size: 1.1rem; font-weight: 700; color: white; }
+
+  /* ── CALCULATOR ── */
+  .calc-section { background: var(--navy); }
+  .calc-section .section-label { color: var(--teal); }
+  .calc-section .section-title { color: white; }
+  .calc-section .section-sub { color: rgba(255,255,255,0.6); }
+  .calc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .calc-services { display: flex; flex-direction: column; gap: 12px; }
+  .calc-service-btn {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; padding: 16px 20px; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s; text-align: left;
+  }
+  .calc-service-btn:hover { background: rgba(0,180,180,0.1); border-color: rgba(0,180,180,0.3); }
+  .calc-service-btn.active { background: rgba(0,180,180,0.15); border-color: var(--teal); }
+  .calc-service-btn .csb-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: grid; place-items: center; flex-shrink: 0;
+  }
+  .calc-service-btn .csb-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+  .calc-service-btn.active .csb-icon { background: rgba(0,180,180,0.25); color: var(--teal); }
+  .calc-service-btn:not(.active) .csb-icon { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); }
+  .calc-service-btn h4 { font-size: 0.97rem; font-weight: 600; color: white; }
+  .calc-service-btn p { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .calc-service-btn.active h4 { color: #7EE8E8; }
+  .calc-controls { margin-top: 20px; }
+  .calc-control-group { margin-bottom: 20px; }
+  .calc-control-group label { display: flex; justify-content: space-between; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+  .calc-control-group label span { color: var(--teal); font-weight: 600; }
+  input[type=range].calc-slider {
+    width: 100%; -webkit-appearance: none; appearance: none;
+    height: 4px; border-radius: 4px; background: rgba(255,255,255,0.15); outline: none;
+  }
+  input[type=range].calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+    background: var(--teal); cursor: pointer; box-shadow: 0 0 0 4px rgba(0,180,180,0.2);
+  }
+  .calc-toggle-row { display: flex; gap: 10px; }
+  .calc-toggle-btn {
+    flex: 1; padding: 10px; border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05); border-radius: 10px;
+    color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .calc-toggle-btn.active { background: rgba(0,180,180,0.2); border-color: var(--teal); color: var(--teal); }
+  .calc-result {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 32px; position: sticky; top: 88px;
+  }
+  .calc-result-title { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
+  .calc-price-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .calc-price-row:last-of-type { border-bottom: none; }
+  .calc-price-row .label { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+  .calc-price-row .val { font-size: 1.05rem; font-weight: 600; }
+  .calc-price-row .val.our { color: var(--teal); font-size: 1.4rem; }
+  .calc-price-row .val.uk { color: rgba(255,255,255,0.35); text-decoration: line-through; font-size: 0.95rem; }
+  .calc-price-row .val.save { color: var(--green); font-weight: 700; }
+  .calc-savings-bar { margin: 20px 0; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+  .calc-savings-bar-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--green)); border-radius: 4px; transition: width 0.5s ease; }
+  .calc-savings-label { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 6px; }
+  .calc-cta-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; margin-top: 24px; background: var(--teal); color: white;
+    border: none; border-radius: 10px; padding: 14px; font-size: 0.95rem;
+    font-weight: 600; cursor: pointer; transition: background 0.2s;
+    text-decoration: none;
+  }
+  .calc-cta-btn:hover { background: var(--teal-d); }
+  .calc-disclaimer { font-size: 0.72rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 10px; line-height: 1.5; }
+  @media (max-width: 768px) {
+    .calc-inner { grid-template-columns: 1fr; }
+    .calc-result { position: static; }
+  }
+
+  /* ── BOOKING FORM ── */
+  .booking-section { background: var(--off); }
+  .booking-section .section-title { color: var(--navy); }
+  .booking-wrap { max-width: 760px; margin: 0 auto; }
+  .booking-steps { display: flex; gap: 0; margin-bottom: 40px; position: relative; }
+  .booking-steps::before {
+    content: ''; position: absolute; top: 20px; left: 0; right: 0;
+    height: 2px; background: var(--border); z-index: 0;
+  }
+  .bstep {
+    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    position: relative; z-index: 1;
+  }
+  .bstep-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: white; border: 2px solid var(--border);
+    display: grid; place-items: center; font-size: 0.88rem; font-weight: 700;
+    color: var(--gray); transition: all 0.3s;
+  }
+  .bstep.active .bstep-num { background: var(--teal); border-color: var(--teal); color: white; }
+  .bstep.done .bstep-num { background: var(--green); border-color: var(--green); color: white; }
+  .bstep-label { font-size: 0.72rem; font-weight: 600; color: var(--gray); text-align: center; }
+  .bstep.active .bstep-label { color: var(--teal); }
+  .bstep.done .bstep-label { color: var(--green); }
+  .booking-card {
+    background: white; border-radius: 20px; padding: 36px;
+    box-shadow: 0 4px 32px rgba(13,43,69,0.08);
+  }
+  .booking-panel { display: none; }
+  .booking-panel.active { display: block; }
+  .booking-panel h3 { color: var(--navy); margin-bottom: 6px; font-size: 1.15rem; }
+  .booking-panel > p { color: var(--gray); font-size: 0.88rem; margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-row.full { grid-template-columns: 1fr; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px;
+    font-size: 0.92rem; color: var(--text); background: white;
+    transition: border-color 0.2s; outline: none; font-family: inherit;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7A8B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
+  .service-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .service-pick-btn {
+    border: 1.5px solid var(--border); border-radius: 12px; padding: 14px 12px;
+    background: white; cursor: pointer; text-align: center; transition: all 0.2s;
+  }
+  .service-pick-btn:hover { border-color: var(--teal); }
+  .service-pick-btn.selected { border-color: var(--teal); background: #E0F8F8; }
+  .service-pick-btn .spb-icon { font-size: 1.5rem; margin-bottom: 6px; }
+  .service-pick-btn h4 { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
+  .service-pick-btn.selected h4 { color: var(--teal-d); }
+  .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .timeslots { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .timeslot {
+    padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+    font-size: 0.82rem; font-weight: 600; color: var(--gray); cursor: pointer;
+    background: white; transition: all 0.2s;
+  }
+  .timeslot:hover { border-color: var(--teal); color: var(--teal); }
+  .timeslot.selected { background: var(--teal); border-color: var(--teal); color: white; }
+  .privacy-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 8px; }
+  .privacy-row input[type=checkbox] { margin-top: 3px; accent-color: var(--teal); flex-shrink: 0; width: 16px; height: 16px; }
+  .privacy-row span { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+  .privacy-row a { color: var(--teal); }
+  .booking-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; gap: 12px; }
+  .btn-back {
+    background: var(--off); border: 1.5px solid var(--border); color: var(--navy);
+    padding: 12px 24px; border-radius: 10px; font-size: 0.92rem; font-weight: 600;
+    cursor: pointer; transition: border-color 0.2s;
+  }
+  .btn-back:hover { border-color: var(--teal); color: var(--teal); }
+  .btn-next {
+    flex: 1; background: var(--teal); color: white; border: none;
+    padding: 13px 28px; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-next:hover { background: var(--teal-d); }
+  .booking-success {
+    text-align: center; padding: 20px 0;
+  }
+  .booking-success .success-icon {
+    width: 72px; height: 72px; background: #E0F5EC; border-radius: 50%;
+    display: grid; place-items: center; margin: 0 auto 20px;
+  }
+  .booking-success .success-icon svg { width: 36px; height: 36px; stroke: var(--green); fill: none; stroke-width: 2; }
+  .booking-success h3 { color: var(--navy); margin-bottom: 10px; }
+  .booking-success p { max-width: 400px; margin: 0 auto 24px; }
+  @media (max-width: 640px) {
+    .form-row { grid-template-columns: 1fr; }
+    .service-picker { grid-template-columns: 1fr 1fr; }
+    .booking-card { padding: 24px 20px; }
+    .date-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── AI CHAT WIDGET ── */
+  .chat-widget {
+    position: fixed; bottom: 28px; left: 28px; z-index: 200;
+  }
+  .chat-fab {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--navy); border: 2px solid var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(13,43,69,0.4);
+  }
+  .chat-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(13,43,69,0.5); }
+  .chat-fab svg { width: 26px; height: 26px; stroke: var(--teal); fill: none; stroke-width: 2; }
+  .chat-badge {
+    position: absolute; top: -4px; right: -4px; width: 18px; height: 18px;
+    background: var(--green); border-radius: 50%; border: 2px solid white;
+    font-size: 0.62rem; font-weight: 700; color: white;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .chat-panel {
+    position: absolute; bottom: 70px; left: 0;
+    width: 320px; background: white; border-radius: 18px;
+    box-shadow: 0 8px 48px rgba(13,43,69,0.2); overflow: hidden;
+    display: none; flex-direction: column;
+    border: 1px solid var(--border);
+  }
+  .chat-panel.open { display: flex; }
+  .chat-header {
+    background: var(--navy); padding: 16px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .chat-header-left { display: flex; align-items: center; gap: 10px; }
+  .chat-avatar {
+    width: 36px; height: 36px; background: var(--teal); border-radius: 50%;
+    display: grid; place-items: center;
+  }
+  .chat-avatar svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 2; }
+  .chat-header h4 { color: white; font-size: 0.9rem; margin-bottom: 2px; }
+  .chat-status { font-size: 0.72rem; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 5px; }
+  .chat-status::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; display: inline-block; }
+  .chat-close { background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer; padding: 4px; font-size: 1.2rem; line-height: 1; }
+  .chat-close:hover { color: white; }
+  .chat-beta { background: rgba(0,180,180,0.15); border-bottom: 1px solid var(--border); padding: 7px 18px; font-size: 0.7rem; color: var(--teal); font-weight: 600; text-align: center; }
+  .chat-messages { padding: 16px; display: flex; flex-direction: column; gap: 12px; max-height: 240px; overflow-y: auto; }
+  .chat-msg { max-width: 85%; }
+  .chat-msg.bot .chat-bubble {
+    background: var(--off); border: 1px solid var(--border);
+    border-radius: 0 12px 12px 12px; padding: 10px 14px;
+    font-size: 0.85rem; color: var(--text); line-height: 1.5;
+  }
+  .chat-msg.user { align-self: flex-end; }
+  .chat-msg.user .chat-bubble {
+    background: var(--teal); color: white;
+    border-radius: 12px 12px 0 12px; padding: 10px 14px;
+    font-size: 0.85rem; line-height: 1.5;
+  }
+  .chat-msg .chat-time { font-size: 0.68rem; color: var(--gray); margin-top: 4px; }
+  .chat-msg.user .chat-time { text-align: right; }
+  .chat-quick-actions { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 7px; }
+  .chat-quick-label { font-size: 0.7rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+  .chat-quick-btn {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--off); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 12px; font-size: 0.82rem; color: var(--navy); font-weight: 500;
+    cursor: pointer; transition: all 0.2s; text-align: left;
+  }
+  .chat-quick-btn:hover { border-color: var(--teal); color: var(--teal); background: #E0F8F8; }
+  .chat-quick-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+  .chat-input-row { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+  .chat-input {
+    flex: 1; border: 1.5px solid var(--border); border-radius: 8px;
+    padding: 8px 12px; font-size: 0.85rem; outline: none; font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .chat-input:focus { border-color: var(--teal); }
+  .chat-send {
+    width: 36px; height: 36px; background: var(--teal); border: none;
+    border-radius: 8px; cursor: pointer; display: grid; place-items: center;
+    flex-shrink: 0; transition: background 0.2s;
+  }
+  .chat-send:hover { background: var(--teal-d); }
+  .chat-send svg { width: 16px; height: 16px; stroke: white; fill: none; stroke-width: 2; }
+  .chat-disclaimer { padding: 8px 16px; font-size: 0.65rem; color: var(--gray); text-align: center; border-top: 1px solid var(--border); line-height: 1.4; }
+
+  /* ── WHATSAPP FAB ── */
+  .wa-fab {
+    position: fixed; bottom: 28px; right: 28px; z-index: 200;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: #25D366; box-shadow: 0 4px 24px rgba(37,211,102,0.5);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-fab:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.6); }
+  .wa-fab svg { width: 32px; height: 32px; fill: white; }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; z-index: 99;
+    background: white; padding: 28px 24px; flex-direction: column; gap: 8px;
+    overflow-y: auto;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    padding: 14px 0; font-size: 1.05rem; font-weight: 500;
+    color: var(--navy); border-bottom: 1px solid var(--border);
+  }
+  .mobile-menu a:hover { color: var(--teal); }
+  .mobile-menu .btn-primary { margin-top: 12px; justify-content: center; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-9px); }
+  }
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%       { transform: scale(1.6); opacity: 0.5; }
+  }
+
+  /* Hero entrance chain */
+  .hero-badge  { animation: fadeUp 0.55s ease both; animation-delay: 0.05s; }
+  .hero-text h1 { animation: fadeUp 0.6s ease both; animation-delay: 0.2s; }
+  .hero-text > p { animation: fadeUp 0.6s ease both; animation-delay: 0.35s; }
+  .hero-actions { animation: fadeUp 0.6s ease both; animation-delay: 0.5s; }
+  .hero-stats  { animation: fadeUp 0.6s ease both; animation-delay: 0.65s; }
+
+  /* Hero cards floating — staggered */
+  .hero-card:nth-child(1) { animation: floatY 4.2s ease-in-out infinite; }
+  .hero-card:nth-child(2) { animation: floatY 4.2s ease-in-out infinite; animation-delay: 0.9s; }
+  .hero-card:nth-child(3) { animation: floatY 4.2s ease-in-out infinite; animation-delay: 1.8s; }
+
+  /* Badge dot pulse */
+  .hero-badge span:first-child { animation: dotPulse 2s ease-in-out infinite; }
+
+  /* Respect reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .why-inner { grid-template-columns: 1fr; }
+    .why-visual { display: none; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .steps::before { display: none; }
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 60px 0; }
+    .services-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .hero-stats { flex-wrap: wrap; gap: 20px; }
+  }
+</style>
+</head>
+<body class="en">
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo" aria-label="ONNO">
+      <img src="../assets/onno-logo.svg" alt="ONNO" class="logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="#services" class="en">Services</a>
+      <a href="#services" class="pl">Usługi</a>
+      <a href="#services" class="tr">Hizmetler</a>
+      <a href="#why" class="en">Why Turkey</a>
+      <a href="#why" class="pl">Dlaczego Turcja</a>
+      <a href="#why" class="tr">Neden Türkiye</a>
+      <a href="#process" class="en">How It Works</a>
+      <a href="#process" class="pl">Jak to działa</a>
+      <a href="#process" class="tr">Nasıl Çalışır</a>
+      <a href="#testimonials" class="en">Reviews</a>
+      <a href="#testimonials" class="pl">Opinie</a>
+      <a href="#testimonials" class="tr">Yorumlar</a>
+      <a href="#faq" class="en">FAQ</a>
+      <a href="#faq" class="pl">FAQ</a>
+      <a href="#faq" class="tr">SSS</a>
+      <div class="lang-switcher">
+        <button class="lang-btn" id="lb-en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="lb-pl" onclick="setLang('pl')">PL</button>
+        <button class="lang-btn" id="lb-tr" onclick="setLang('tr')">TR</button>
+      </div>
+      <a href="https://wa.me/48555555555" class="nav-cta en">Free Consultation</a>
+      <a href="https://wa.me/48555555555" class="nav-cta pl">Bezpłatna konsultacja</a>
+      <a href="https://wa.me/48555555555" class="nav-cta tr">Ücretsiz Danışma</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" onclick="closeMenu()" class="en">Services</a>
+  <a href="#services" onclick="closeMenu()" class="pl">Usługi</a>
+  <a href="#services" onclick="closeMenu()" class="tr">Hizmetler</a>
+  <a href="#why" onclick="closeMenu()" class="en">Why Turkey</a>
+  <a href="#why" onclick="closeMenu()" class="pl">Dlaczego Turcja</a>
+  <a href="#why" onclick="closeMenu()" class="tr">Neden Türkiye</a>
+  <a href="#process" onclick="closeMenu()" class="en">How It Works</a>
+  <a href="#process" onclick="closeMenu()" class="pl">Jak to działa</a>
+  <a href="#process" onclick="closeMenu()" class="tr">Nasıl Çalışır</a>
+  <a href="#testimonials" onclick="closeMenu()" class="en">Reviews</a>
+  <a href="#testimonials" onclick="closeMenu()" class="pl">Opinie</a>
+  <a href="#testimonials" onclick="closeMenu()" class="tr">Yorumlar</a>
+  <a href="#faq" onclick="closeMenu()" class="en">FAQ</a>
+  <a href="#faq" onclick="closeMenu()" class="pl">FAQ</a>
+  <a href="#faq" onclick="closeMenu()" class="tr">SSS</a>
+  <div style="display:flex;gap:8px;margin-top:8px;">
+    <button onclick="setLang('en');closeMenu();" style="flex:1;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:10px;font-weight:700;color:var(--navy);cursor:pointer;">EN</button>
+    <button onclick="setLang('pl');closeMenu();" style="flex:1;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:10px;font-weight:700;color:var(--navy);cursor:pointer;">PL</button>
+    <button onclick="setLang('tr');closeMenu();" style="flex:1;background:var(--off);border:1px solid var(--border);border-radius:8px;padding:10px;font-weight:700;color:var(--navy);cursor:pointer;">TR</button>
+  </div>
+  <a href="https://wa.me/48555555555" class="btn-primary" onclick="closeMenu()">
+    <span class="en">Free Consultation</span>
+    <span class="pl">Bezpłatna konsultacja</span>
+    <span class="tr">Ücretsiz Danışma</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge"><span></span> <span class="en">Trusted by 5,000+ patients from Europe</span><span class="pl">Zaufało nam 5 000+ pacjentów z Europy</span><span class="tr">Avrupa'dan 5.000+ hasta güveniyor</span></div>
+        <h1 class="en">Premium Healthcare in <em>Turkey</em>, Starting from £399</h1>
+        <h1 class="pl">Leczenie premium w <em>Turcji</em> — nawet 70% taniej niż w Polsce</h1>
+        <h1 class="tr">Türkiye'de <em>Premium</em> Sağlık Hizmetleri, 15.999 ₺'den Başlayan Fiyatlarla</h1>
+        <p class="en">World-class hair transplant, dental treatment and eye surgery — with VIP hotel, transfers and full aftercare included. Save up to 70% vs UK & EU prices.</p>
+        <p class="pl">Przeszczep włosów, leczenie stomatologiczne i operacja oczu najwyższej klasy — hotel VIP, transfery i pełna opieka w cenie. Oszczędź do 70% w porównaniu z polskimi cenami.</p>
+        <p class="tr">Dünya standartlarında saç ekimi, diş tedavisi ve göz ameliyatı — VIP otel, transfer ve tam bakım dahil. İngiltere ve AB fiyatlarına kıyasla %70'e varan tasarruf.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/555555555" class="btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span class="en">WhatsApp — Free Consult</span>
+            <span class="pl">WhatsApp — Bezpłatna konsultacja</span>
+            <span class="tr">WhatsApp — Ücretsiz Danışma</span>
+          </a>
+          <a href="#services" class="btn-secondary">
+            <span class="en">View Services</span>
+            <span class="pl">Zobacz usługi</span>
+            <span class="tr">Hizmetleri Gör</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="stat-num">5<span>k+</span></div><div class="stat-label en">Happy Patients</div><div class="stat-label pl">Zadowolonych pacjentów</div><div class="stat-label tr">Mutlu Hasta</div></div>
+          <div class="stat"><div class="stat-num">70<span>%</span></div><div class="stat-label en">Average Savings</div><div class="stat-label pl">Średnia oszczędność</div><div class="stat-label tr">Ortalama Tasarruf</div></div>
+          <div class="stat"><div class="stat-num">12<span>+</span></div><div class="stat-label en">Years Experience</div><div class="stat-label pl">Lat doświadczenia</div><div class="stat-label tr">Yıllık Deneyim</div></div>
+          <div class="stat"><div class="stat-num">4.9<span>★</span></div><div class="stat-label en">Average Rating</div><div class="stat-label pl">Średnia ocena</div><div class="stat-label tr">Ortalama Puan</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="hero-card-icon teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(0,180,180,0.9)" stroke-width="1.8"><path d="M12 2C8 2 5 5 5 8c0 5.25 7 13 7 13s7-7.75 7-13c0-3-3-6-7-6z"/><circle cx="12" cy="8" r="2.5"/></svg>
+            </div>
+            <div>
+              <h3><span class="en">Hair Transplant</span><span class="pl">Przeszczep włosów</span><span class="tr">Saç Ekimi</span></h3>
+              <p><span class="en">FUE / DHI — from £499</span><span class="pl">FUE / DHI — od 2 499 zł</span><span class="tr">FUE / DHI — 19.999 ₺'den</span></p>
+            </div>
+          </div>
+          <div class="hero-card-save en">Save vs UK: up to £8,000</div>
+          <div class="hero-card-save pl">Oszczędź vs Polska: do 15 000 zł</div>
+          <div class="hero-card-save tr">İngiltere'ye kıyasla 320.000 ₺ tasarruf</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="hero-card-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(46,170,110,0.9)" stroke-width="1.8"><path d="M12 2C7 2 3 6 3 11c0 3 1.5 5.5 3.5 7H12h5.5C19.5 16.5 21 14 21 11c0-5-4-9-9-9z"/><path d="M8 14c0 0 1 3 4 3s4-3 4-3"/></svg>
+            </div>
+            <div>
+              <h3><span class="en">Dental Treatment</span><span class="pl">Leczenie stomatologiczne</span><span class="tr">Diş Tedavisi</span></h3>
+              <p><span class="en">Implants, Veneers — from £399</span><span class="pl">Implanty, Licówki — od 1 999 zł</span><span class="tr">İmplant, Veneer — 15.999 ₺'den</span></p>
+            </div>
+          </div>
+          <div class="hero-card-save en">Save vs UK: up to £5,000</div>
+          <div class="hero-card-save pl">Oszczędź vs Polska: do 10 000 zł</div>
+          <div class="hero-card-save tr">İngiltere'ye kıyasla 200.000 ₺ tasarruf</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="hero-card-icon navy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(200,220,240,0.9)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M20.188 10.934c.388.472.612 1.044.612 1.566 0 .522-.224 1.094-.612 1.566C18.768 16.104 15.636 18 12 18c-3.636 0-6.768-1.896-8.188-3.934A2.927 2.927 0 013.2 12.5c0-.522.224-1.094.612-1.566C5.232 8.896 8.364 7 12 7c3.636 0 6.768 1.896 8.188 2.934z"/></svg>
+            </div>
+            <div>
+              <h3><span class="en">Eye Surgery</span><span class="pl">Operacja oczu</span><span class="tr">Göz Ameliyatı</span></h3>
+              <p><span class="en">LASIK / PRK — from £699</span><span class="pl">LASIK / PRK — od 3 499 zł</span><span class="tr">LASIK / PRK — 27.999 ₺'den</span></p>
+            </div>
+          </div>
+          <div class="hero-card-save en">Save vs UK: up to £2,500</div>
+          <div class="hero-card-save pl">Oszczędź vs Polska: do 3 000 zł</div>
+          <div class="hero-card-save tr">İngiltere'ye kıyasla 100.000 ₺ tasarruf</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <div class="trust-icon t">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <span class="en">JCI Accredited Clinics</span><span class="pl">Kliniki z akredytacją JCI</span><span class="tr">JCI Akredite Klinikler</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon g">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <span class="en">Free aftercare for 12 months</span><span class="pl">Bezpłatna opieka przez 12 miesięcy</span><span class="tr">12 ay ücretsiz bakım</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon t">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <span class="en">24/7 patient support</span><span class="pl">Wsparcie pacjentów 24/7</span><span class="tr">7/24 hasta desteği</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon n">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <span class="en">English-speaking coordinators</span><span class="pl">Polskojęzyczni koordynatorzy</span><span class="tr">İngilizce konuşan koordinatörler</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon g">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <span class="en">VIP airport transfers included</span><span class="pl">Transfer VIP z lotniska w cenie</span><span class="tr">VIP havalimanı transferi dahil</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="container">
+    <div class="section-label en">Our Services</div>
+    <div class="section-label pl">Nasze usługi</div>
+    <div class="section-label tr">Hizmetlerimiz</div>
+    <h2 class="section-title en">World-class treatments, transparent pricing</h2>
+    <h2 class="section-title pl">Zabiegi światowej klasy, przejrzyste ceny</h2>
+    <h2 class="section-title tr">Dünya standartlarında tedaviler, şeffaf fiyatlar</h2>
+    <p class="section-sub en">All packages include VIP hotel accommodation, private airport transfers, personal patient coordinator and 12-month aftercare support.</p>
+    <p class="section-sub pl">Każdy pakiet obejmuje hotel VIP, prywatny transfer z lotniska, osobistego koordynatora i 12 miesięcy opieki poszpitalnej.</p>
+    <p class="section-sub tr">Tüm paketlerde VIP otel konaklaması, özel havalimanı transferi, kişisel hasta koordinatörü ve 12 aylık bakım desteği dahildir.</p>
+
+    <div class="services-grid">
+      <!-- HAIR -->
+      <div class="service-card">
+        <div class="service-thumb t">
+          <div class="service-thumb-icon">
+            <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="36" cy="28" r="14" stroke="rgba(0,180,180,0.8)" stroke-width="2.5"/>
+              <path d="M36 14 C36 14 28 22 28 30 C28 38 36 44 36 44" stroke="rgba(0,180,180,0.6)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M36 14 C36 14 44 22 44 30 C44 38 36 44 36 44" stroke="rgba(0,180,180,0.6)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="24" y1="54" x2="48" y2="54" stroke="rgba(0,180,180,0.5)" stroke-width="2" stroke-linecap="round"/>
+              <line x1="28" y1="60" x2="44" y2="60" stroke="rgba(0,180,180,0.4)" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="36" cy="28" r="4" fill="rgba(0,180,180,0.5)"/>
+            </svg>
+          </div>
+          <div class="service-save-badge en">Save up to £8k</div>
+          <div class="service-save-badge pl">Oszczędź do 40 000 zł</div>
+          <div class="service-save-badge tr">320.000 ₺'ye kadar tasarruf</div>
+        </div>
+        <div class="service-body">
+          <h3 class="en">Hair Transplant</h3>
+          <h3 class="pl">Przeszczep włosów</h3>
+          <h3 class="tr">Saç Ekimi</h3>
+          <p class="en">FUE and DHI techniques performed by specialist surgeons with 10+ years experience in an internationally accredited clinic.</p>
+          <p class="pl">Techniki FUE i DHI wykonywane przez specjalistów z ponad 10-letnim doświadczeniem w klinice z akredytacją JCI.</p>
+          <p class="tr">10+ yıl deneyimli uzman cerrahlar tarafından uluslararası akredite klinikte FUE ve DHI teknikleri.</p>
+          <ul class="service-features">
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">FUE / DHI / Sapphire techniques</span><span class="pl">Techniki FUE / DHI / Szafirowe</span><span class="tr">FUE / DHI / Safir teknikleri</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Up to 5,000 graft in one session</span><span class="pl">Do 5 000 przeszczepów w jednej sesji</span><span class="tr">Tek seansta 5.000 grefte kadar</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">4-night VIP hotel included</span><span class="pl">4 noce w hotelu VIP w cenie</span><span class="tr">4 gecelik VIP otel dahil</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">PRP therapy included</span><span class="pl">Terapia PRP w cenie</span><span class="tr">PRP tedavisi dahil</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">12-month growth guarantee</span><span class="pl">12-miesięczna gwarancja wzrostu</span><span class="tr">12 ay büyüme garantisi</span></li>
+          </ul>
+          <div class="service-cta">
+            <div class="service-cta-price">
+              <span class="from en">All-inclusive from</span>
+              <span class="from pl">Wszystko w cenie od</span>
+              <span class="from tr">Dahil fiyatla</span>
+              <span class="amount en">£499</span>
+              <span class="amount pl">2 499 zł</span>
+              <span class="amount tr">19.999 ₺</span>
+            </div>
+            <a href="https://wa.me/48555555555" class="service-cta-link en">Get Quote</a>
+            <a href="https://wa.me/48555555555" class="service-cta-link pl">Zapytaj o cenę</a>
+            <a href="https://wa.me/48555555555" class="service-cta-link tr">Fiyat Al</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DENTAL -->
+      <div class="service-card">
+        <div class="service-thumb g">
+          <div class="service-thumb-icon">
+            <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 20 C18 20 14 24 14 30 C14 38 18 52 22 56 C24 59 26 58 28 55 C30 52 32 52 36 52 C40 52 42 52 44 55 C46 58 48 59 50 56 C54 52 58 38 58 30 C58 24 54 20 50 20 C46 20 44 22 36 22 C28 22 26 20 22 20 Z" stroke="rgba(46,170,110,0.8)" stroke-width="2.5" fill="rgba(46,170,110,0.1)"/>
+              <path d="M36 22 L36 52" stroke="rgba(46,170,110,0.4)" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <circle cx="28" cy="34" r="4" fill="rgba(46,170,110,0.3)"/>
+              <circle cx="44" cy="34" r="4" fill="rgba(46,170,110,0.3)"/>
+            </svg>
+          </div>
+          <div class="service-save-badge en">Save up to £5k</div>
+          <div class="service-save-badge pl">Oszczędź do 25 000 zł</div>
+          <div class="service-save-badge tr">200.000 ₺'ye kadar tasarruf</div>
+        </div>
+        <div class="service-body">
+          <h3 class="en">Dental Treatment</h3>
+          <h3 class="pl">Leczenie stomatologiczne</h3>
+          <h3 class="tr">Diş Tedavisi</h3>
+          <p class="en">Complete smile makeovers — implants, veneers, crowns and whitening using premium materials at a fraction of UK cost.</p>
+          <p class="pl">Kompletna metamorfoza uśmiechu — implanty, licówki, korony z materiałów premium za ułamek polskich cen.</p>
+          <p class="tr">Komple gülüş tasarımı — implant, veneer, kron ve beyazlatma. Premium malzemeler, İngiltere fiyatının çok altında.</p>
+          <ul class="service-features">
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Dental implants (titanium)</span><span class="pl">Implanty dentystyczne (tytan)</span><span class="tr">Titanyum diş implantları</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Porcelain veneers & crowns</span><span class="pl">Licówki i korony porcelanowe</span><span class="tr">Porselen veneer ve kronlar</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Smile design consultation</span><span class="pl">Konsultacja projektowania uśmiechu</span><span class="tr">Gülüş tasarımı danışmanlığı</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">3D digital X-ray scans</span><span class="pl">Skanowanie RTG 3D</span><span class="tr">3D dijital X-ray tarama</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">5-year treatment warranty</span><span class="pl">5 lat gwarancji na leczenie</span><span class="tr">5 yıl tedavi garantisi</span></li>
+          </ul>
+          <div class="service-cta">
+            <div class="service-cta-price">
+              <span class="from en">All-inclusive from</span>
+              <span class="from pl">Wszystko w cenie od</span>
+              <span class="from tr">Dahil fiyatla</span>
+              <span class="amount en">£399</span>
+              <span class="amount pl">1 999 zł</span>
+              <span class="amount tr">15.999 ₺</span>
+            </div>
+            <a href="https://wa.me/48555555555" class="service-cta-link en">Get Quote</a>
+            <a href="https://wa.me/48555555555" class="service-cta-link pl">Zapytaj o cenę</a>
+            <a href="https://wa.me/48555555555" class="service-cta-link tr">Fiyat Al</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- EYE -->
+      <div class="service-card">
+        <div class="service-thumb n">
+          <div class="service-thumb-icon">
+            <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="36" cy="36" rx="26" ry="16" stroke="rgba(100,160,220,0.8)" stroke-width="2.5"/>
+              <circle cx="36" cy="36" r="10" stroke="rgba(100,160,220,0.7)" stroke-width="2"/>
+              <circle cx="36" cy="36" r="5" fill="rgba(100,160,220,0.3)" stroke="rgba(100,160,220,0.8)" stroke-width="1.5"/>
+              <circle cx="39" cy="33" r="2" fill="rgba(255,255,255,0.5)"/>
+              <path d="M10 36 C10 36 8 30 8 36 C8 42 10 36 10 36" stroke="rgba(100,160,220,0.4)" stroke-width="2"/>
+              <path d="M62 36 C62 36 64 30 64 36 C64 42 62 36 62 36" stroke="rgba(100,160,220,0.4)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="service-save-badge en">Save up to £2.5k</div>
+          <div class="service-save-badge pl">Oszczędź do 12 000 zł</div>
+          <div class="service-save-badge tr">100.000 ₺'ye kadar tasarruf</div>
+        </div>
+        <div class="service-body">
+          <h3 class="en">Eye Surgery</h3>
+          <h3 class="pl">Operacja oczu</h3>
+          <h3 class="tr">Göz Ameliyatı</h3>
+          <p class="en">LASIK, LASEK, PRK and cataract surgery with the latest femtosecond laser technology. Wake up with perfect vision.</p>
+          <p class="pl">LASIK, LASEK, PRK i operacja zaćmy z użyciem najnowocześniejszego lasera femtosekundowego. Obudź się z doskonałym wzrokiem.</p>
+          <p class="tr">En son femtosaniye lazer teknolojisi ile LASIK, LASEK, PRK ve katarakt ameliyatı. Mükemmel görüşle uyanın.</p>
+          <ul class="service-features">
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">LASIK / LASEK / PRK / SMILE</span><span class="pl">LASIK / LASEK / PRK / SMILE</span><span class="tr">LASIK / LASEK / PRK / SMILE</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Cataract & lens replacement</span><span class="pl">Zaćma i wymiana soczewki</span><span class="tr">Katarakt ve lens değişimi</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Wavefront-guided technology</span><span class="pl">Technologia wavefront</span><span class="tr">Dalga cepheli teknoloji</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Both eyes treated same day</span><span class="pl">Oba oczy leczone tego samego dnia</span><span class="tr">Aynı gün her iki göz</span></li>
+            <li><div class="check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div><span class="en">Lifetime enhancement policy</span><span class="pl">Dożywotnia polityka korekt</span><span class="tr">Ömür boyu iyileştirme politikası</span></li>
+          </ul>
+          <div class="service-cta">
+            <div class="service-cta-price">
+              <span class="from en">All-inclusive from</span>
+              <span class="from pl">Wszystko w cenie od</span>
+              <span class="from tr">Dahil fiyatla</span>
+              <span class="amount en">£699</span>
+              <span class="amount pl">3 499 zł</span>
+              <span class="amount tr">27.999 ₺</span>
+            </div>
+            <a href="https://wa.me/48555555555" class="service-cta-link en">Get Quote</a>
+            <a href="https://wa.me/48555555555" class="service-cta-link pl">Zapytaj o cenę</a>
+            <a href="https://wa.me/48555555555" class="service-cta-link tr">Fiyat Al</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator" class="calc-section">
+  <div class="container">
+    <div class="section-label en">Price Calculator</div>
+    <div class="section-label pl">Kalkulator oszczędności</div>
+    <div class="section-label tr">Fiyat Hesaplayıcı</div>
+    <h2 class="section-title en">How much will you save?</h2>
+    <h2 class="section-title pl">Ile zaoszczędzisz?</h2>
+    <h2 class="section-title tr">Ne kadar tasarruf edersiniz?</h2>
+    <p class="section-sub en">Select your treatment and see an instant estimate — and how it compares to UK, German or Polish prices.</p>
+    <p class="section-sub pl">Wybierz zabieg i sprawdź szacunek — oraz porównaj z cenami w Polsce i Wielkiej Brytanii.</p>
+    <p class="section-sub tr">Tedavinizi seçin ve anlık tahmin alın — İngiltere, Almanya veya Polonya fiyatlarıyla karşılaştırın.</p>
+
+    <div class="calc-inner">
+      <!-- LEFT: Selectors -->
+      <div>
+        <div class="calc-services">
+          <button class="calc-service-btn active" data-service="hair" onclick="calcSelect(this,'hair')">
+            <div class="csb-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8 8 C8 8 7 14 12 16 C17 14 16 8 16 8"/><line x1="12" y1="16" x2="12" y2="21"/></svg>
+            </div>
+            <div>
+              <h4 class="en">Hair Transplant</h4>
+              <h4 class="pl">Przeszczep włosów</h4>
+              <h4 class="tr">Saç Ekimi</h4>
+              <p class="en">FUE / DHI technique</p>
+              <p class="pl">Technika FUE / DHI</p>
+              <p class="tr">FUE / DHI tekniği</p>
+            </div>
+          </button>
+          <button class="calc-service-btn" data-service="dental" onclick="calcSelect(this,'dental')">
+            <div class="csb-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3C8 3 5 6 5 9c0 4 2 9 3.5 12 .5 1 1.5 1 2 0L12 18l1.5 3c.5 1 1.5 1 2 0C17 18 19 13 19 9c0-3-3-6-7-6z"/></svg>
+            </div>
+            <div>
+              <h4 class="en">Dental Treatment</h4>
+              <h4 class="pl">Leczenie stomatologiczne</h4>
+              <h4 class="tr">Diş Tedavisi</h4>
+              <p class="en">Implants, veneers, crowns</p>
+              <p class="pl">Implanty, licówki, korony</p>
+              <p class="tr">İmplant, veneer, kron</p>
+            </div>
+          </button>
+          <button class="calc-service-btn" data-service="eye" onclick="calcSelect(this,'eye')">
+            <div class="csb-icon">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div>
+              <h4 class="en">Eye Surgery</h4>
+              <h4 class="pl">Operacja oczu</h4>
+              <h4 class="tr">Göz Ameliyatı</h4>
+              <p class="en">LASIK / PRK / SMILE</p>
+              <p class="pl">LASIK / PRK / SMILE</p>
+              <p class="tr">LASIK / PRK / SMILE</p>
+            </div>
+          </button>
+        </div>
+
+        <!-- Hair controls -->
+        <div class="calc-controls" id="ctrl-hair">
+          <div class="calc-control-group">
+            <label class="en">Number of grafts: <span id="graft-val">2500</span></label>
+            <label class="pl">Liczba przeszczepów: <span id="graft-val-pl">2500</span></label>
+            <label class="tr">Gref sayısı: <span id="graft-val-tr">2500</span></label>
+            <input type="range" class="calc-slider" min="1000" max="5000" step="500" value="2500" oninput="updateCalc()">
+          </div>
+          <div class="calc-control-group">
+            <label class="en">Technique:</label>
+            <label class="pl">Technika:</label>
+            <label class="tr">Teknik:</label>
+            <div class="calc-toggle-row">
+              <button class="calc-toggle-btn active" data-tech="FUE" onclick="selectTech(this)">FUE</button>
+              <button class="calc-toggle-btn" data-tech="DHI" onclick="selectTech(this)">DHI</button>
+              <button class="calc-toggle-btn" data-tech="Sapphire" onclick="selectTech(this)">Sapphire FUE</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dental controls -->
+        <div class="calc-controls" id="ctrl-dental" style="display:none">
+          <div class="calc-control-group">
+            <label class="en">Treatment type:</label>
+            <label class="pl">Rodzaj zabiegu:</label>
+            <label class="tr">Tedavi türü:</label>
+            <div class="calc-toggle-row" style="flex-wrap:wrap;">
+              <button class="calc-toggle-btn active" data-dent="implant" onclick="selectDent(this)"><span class="en">Implant</span><span class="pl">Implant</span><span class="tr">İmplant</span></button>
+              <button class="calc-toggle-btn" data-dent="veneer" onclick="selectDent(this)"><span class="en">Veneer</span><span class="pl">Licówka</span><span class="tr">Veneer</span></button>
+              <button class="calc-toggle-btn" data-dent="crown" onclick="selectDent(this)"><span class="en">Crown</span><span class="pl">Korona</span><span class="tr">Kron</span></button>
+            </div>
+          </div>
+          <div class="calc-control-group">
+            <label class="en">Number of teeth: <span id="teeth-val">4</span></label>
+            <label class="pl">Liczba zębów: <span id="teeth-val-pl">4</span></label>
+            <label class="tr">Diş sayısı: <span id="teeth-val-tr">4</span></label>
+            <input type="range" class="calc-slider" id="teeth-slider" min="1" max="20" step="1" value="4" oninput="updateCalc()">
+          </div>
+        </div>
+
+        <!-- Eye controls -->
+        <div class="calc-controls" id="ctrl-eye" style="display:none">
+          <div class="calc-control-group">
+            <label class="en">Eyes to treat:</label>
+            <label class="pl">Które oczy:</label>
+            <label class="tr">Tedavi edilecek göz:</label>
+            <div class="calc-toggle-row">
+              <button class="calc-toggle-btn active" data-eyes="both" onclick="selectEyes(this)"><span class="en">Both eyes</span><span class="pl">Oboje oczu</span><span class="tr">Her iki göz</span></button>
+              <button class="calc-toggle-btn" data-eyes="one" onclick="selectEyes(this)"><span class="en">One eye</span><span class="pl">Jedno oko</span><span class="tr">Tek göz</span></button>
+            </div>
+          </div>
+          <div class="calc-control-group">
+            <label class="en">Technique:</label>
+            <label class="pl">Technika:</label>
+            <label class="tr">Teknik:</label>
+            <div class="calc-toggle-row">
+              <button class="calc-toggle-btn active" data-eyetech="LASIK" onclick="selectEyeTech(this)">LASIK</button>
+              <button class="calc-toggle-btn" data-eyetech="SMILE" onclick="selectEyeTech(this)">SMILE</button>
+              <button class="calc-toggle-btn" data-eyetech="PRK" onclick="selectEyeTech(this)">PRK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Results -->
+      <div class="calc-result">
+        <div class="calc-result-title en">Your estimated savings</div>
+        <div class="calc-result-title pl">Twoje szacowane oszczędności</div>
+        <div class="calc-result-title tr">Tahmini tasarrufunuz</div>
+        <div class="calc-price-row">
+          <span class="label en">Clinic Support price</span>
+          <span class="label pl">Cena Clinic Support</span>
+          <span class="label tr">Clinic Support fiyatı</span>
+          <span class="val our" id="calc-our">£799</span>
+        </div>
+        <div class="calc-price-row">
+          <span class="label en">Average Poland price</span>
+          <span class="label pl">Średnia cena w Polsce</span>
+          <span class="label tr">Polonya ortalama fiyatı</span>
+          <span class="val" style="color:rgba(255,255,255,0.35);text-decoration:line-through;font-size:0.95rem" id="calc-pl">£1,800</span>
+        </div>
+        <div class="calc-price-row">
+          <span class="label en">Average UK price</span>
+          <span class="label pl">Średnia cena w Wielkiej Brytanii</span>
+          <span class="label tr">Ortalama İngiltere fiyatı</span>
+          <span class="val uk" id="calc-uk">£3,500</span>
+        </div>
+        <div class="calc-price-row">
+          <span class="label en" style="font-weight:600;color:rgba(255,255,255,0.8)">You save (vs Poland)</span>
+          <span class="label pl" style="font-weight:600;color:rgba(255,255,255,0.8)">Oszczędzasz (vs Polska)</span>
+          <span class="label tr" style="font-weight:600;color:rgba(255,255,255,0.8)">Tasarruf (Polonya'ya kıyasla)</span>
+          <span class="val save" id="calc-save">£1,001</span>
+        </div>
+        <div class="calc-savings-bar">
+          <div class="calc-savings-bar-fill" id="calc-bar" style="width:56%"></div>
+        </div>
+        <div class="calc-savings-label en" id="calc-pct-label">You save 56% vs the Polish average</div>
+        <div class="calc-savings-label pl" id="calc-pct-label-pl">Oszczędzasz 56% w porównaniu ze średnią polską</div>
+        <div class="calc-savings-label tr" id="calc-pct-label-tr">Polonya ortalamasına göre %56 tasarruf</div>
+        <div style="margin-top:20px;padding:14px;background:rgba(46,170,110,0.1);border:1px solid rgba(46,170,110,0.25);border-radius:10px;text-align:center;">
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:4px;" class="en">Includes hotel, transfers & aftercare</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:4px;" class="pl">Hotel, transfery i opieka poszpitalna w cenie</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-bottom:4px;" class="tr">Otel, transfer ve bakım dahil</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--green);" class="en">All-inclusive package</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--green);" class="pl">Pakiet all-inclusive</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--green);" class="tr">Hepsi dahil paket</div>
+        </div>
+        <a href="https://wa.me/48555555555" class="calc-cta-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span class="en">Get exact quote on WhatsApp</span>
+          <span class="pl">Zapytaj o dokładną cenę na WhatsApp</span>
+          <span class="tr">WhatsApp'tan kesin teklif alın</span>
+        </a>
+        <p class="calc-disclaimer en">* Preliminary estimate only. Final price confirmed after free consultation. No hidden fees.</p>
+        <p class="calc-disclaimer pl">* Wstępny szacunek. Ostateczna cena po bezpłatnej konsultacji. Bez ukrytych opłat.</p>
+        <p class="calc-disclaimer tr">* Sadece ön tahmin. Kesin fiyat ücretsiz danışmadan sonra belirlenir. Gizli ücret yok.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY TURKEY -->
+<section id="why">
+  <div class="container">
+    <div class="why-inner">
+      <div>
+        <div class="section-label en">Why Turkey</div>
+        <div class="section-label pl">Dlaczego Turcja</div>
+        <div class="section-label tr">Neden Türkiye</div>
+        <h2 class="section-title en">The #1 destination for health tourism in Europe</h2>
+        <h2 class="section-title pl">Najpopularniejszy kierunek turystyki medycznej w Europie</h2>
+        <h2 class="section-title tr">Avrupa'nın 1 numaralı sağlık turizmi destinasyonu</h2>
+        <p class="en">Turkey performs over 750,000 medical procedures on international patients per year — more than any other European country. World-class doctors, cutting-edge technology, and costs that are 50–70% lower than the UK, Germany and Poland.</p>
+        <p class="pl">Turcja przyjmuje ponad 750 000 zagranicznych pacjentów rocznie — więcej niż jakikolwiek inny kraj europejski. Lekarze światowej klasy, zaawansowane technologie i koszty niższe o 50–70% w porównaniu z Polską i Wielką Brytanią.</p>
+        <p class="tr">Türkiye yılda 750.000'den fazla uluslararası hastaya tıbbi işlem uygulamaktadır — Avrupa'daki başka herhangi bir ülkeden fazla. Dünya standartlarında doktorlar, son teknoloji ve İngiltere, Almanya ve Polonya'ya kıyasla %50-70 daha düşük maliyetler.</p>
+        <ul class="why-points">
+          <li>
+            <div class="wp-icon t"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="wp-text">
+              <strong class="en">JCI-accredited hospitals</strong>
+              <strong class="pl">Szpitale z akredytacją JCI</strong>
+              <strong class="tr">JCI akredite hastaneler</strong>
+              <span class="en">Same international standards as the UK's NHS and US hospitals</span>
+              <span class="pl">Ten sam międzynarodowy standard co najlepsze szpitale w Europie</span>
+              <span class="tr">İngiltere NHS ve ABD hastaneleriyle aynı uluslararası standartlar</span>
+            </div>
+          </li>
+          <li>
+            <div class="wp-icon g"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="wp-text">
+              <strong class="en">Cutting-edge technology</strong>
+              <strong class="pl">Najnowocześniejsze technologie</strong>
+              <strong class="tr">Son teknoloji ekipman</strong>
+              <span class="en">Femtosecond lasers, robotic surgery, 3D imaging — all standard</span>
+              <span class="pl">Lasery femtosekundowe, chirurgia robotyczna, obrazowanie 3D — standard</span>
+              <span class="tr">Femtosaniye lazerler, robotik cerrahi, 3D görüntüleme — hepsi standart</span>
+            </div>
+          </li>
+          <li>
+            <div class="wp-icon n"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+            <div class="wp-text">
+              <strong class="en">English spoken everywhere</strong>
+              <strong class="pl">Polskojęzyczni koordynatorzy</strong>
+              <strong class="tr">Her yerde İngilizce konuşuluyor</strong>
+              <span class="en">Our coordinators and medical staff are fully fluent</span>
+              <span class="pl">Nasi koordynatorzy i personel medyczny mówią po polsku</span>
+              <span class="tr">Koordinatörlerimiz ve tıbbi personelimiz tamamen akıcı İngilizce konuşuyor</span>
+            </div>
+          </li>
+          <li>
+            <div class="wp-icon t"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+            <div class="wp-text">
+              <strong class="en">All-inclusive packages</strong>
+              <strong class="pl">Pakiety all-inclusive</strong>
+              <strong class="tr">Hepsi dahil paketler</strong>
+              <span class="en">No hidden costs — hotel, transfers, meals, medications all included</span>
+              <span class="pl">Bez ukrytych kosztów — hotel, transfery, posiłki, leki w cenie</span>
+              <span class="tr">Gizli maliyet yok — otel, transfer, yemek, ilaçlar dahil</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="why-visual">
+        <div class="why-stat-card">
+          <div class="wnum">750k+</div>
+          <div class="wlabel en">International patients treated annually in Turkey</div>
+          <div class="wlabel pl">Zagranicznych pacjentów rocznie w Turcji</div>
+          <div class="wlabel tr">Yılda Türkiye'de tedavi edilen uluslararası hasta</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum" style="color:var(--teal)">70%</div>
+          <div class="wlabel en">Lower costs vs UK</div>
+          <div class="wlabel pl">Niższe koszty vs Polska</div>
+          <div class="wlabel tr">İngiltere'ye göre daha düşük maliyet</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum" style="color:var(--green)">98%</div>
+          <div class="wlabel en">Patient satisfaction rate</div>
+          <div class="wlabel pl">Wskaźnik satysfakcji pacjentów</div>
+          <div class="wlabel tr">Hasta memnuniyet oranı</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum" style="color:var(--navy)">3h</div>
+          <div class="wlabel en">Direct flight from UK/Germany</div>
+          <div class="wlabel pl">Bezpośredni lot z Polski</div>
+          <div class="wlabel tr">İngiltere/Almanya'dan direkt uçuş</div>
+        </div>
+        <div class="why-stat-card">
+          <div class="wnum" style="color:var(--teal)">12mo</div>
+          <div class="wlabel en">Full aftercare guarantee</div>
+          <div class="wlabel pl">Gwarancja pełnej opieki</div>
+          <div class="wlabel tr">Tam bakım garantisi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process">
+  <div class="container">
+    <div class="section-label en">How It Works</div>
+    <div class="section-label pl">Jak to działa</div>
+    <div class="section-label tr">Nasıl Çalışır</div>
+    <h2 class="section-title en">Your journey, step by step</h2>
+    <h2 class="section-title pl">Twoja podróż krok po kroku</h2>
+    <h2 class="section-title tr">Yolculuğunuz, adım adım</h2>
+    <p class="section-sub en">From your first message to walking out with a smile — we handle everything. You just show up.</p>
+    <p class="section-sub pl">Od pierwszej wiadomości do wyjścia z uśmiechem — my zajmujemy się wszystkim. Ty po prostu przyjeżdżasz.</p>
+    <p class="section-sub tr">İlk mesajınızdan gülümseyerek çıkışınıza kadar — her şeyi biz hallederiz. Siz sadece gelin.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3 class="en">Free Consultation</h3>
+        <h3 class="pl">Bezpłatna konsultacja</h3>
+        <h3 class="tr">Ücretsiz Danışma</h3>
+        <p class="en">WhatsApp chat or video call. Share photos, get a personalised plan & quote.</p>
+        <p class="pl">Czat WhatsApp lub rozmowa wideo. Wyślij zdjęcia, otrzymaj plan i wycenę.</p>
+        <p class="tr">WhatsApp veya video görüşmesi. Fotoğraf gönderin, kişisel plan alın.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3 class="en">Book Your Trip</h3>
+        <h3 class="pl">Zarezerwuj wyjazd</h3>
+        <h3 class="tr">Seyahatinizi Rezerve Edin</h3>
+        <p class="en">We arrange your hotel and transfer. You book a flight to Istanbul.</p>
+        <p class="pl">My organizujemy hotel i transfer. Ty kupujesz bilet do Stambułu.</p>
+        <p class="tr">Otel ve transferinizi biz ayarlarız. Siz sadece İstanbul uçuşu alın.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3 class="en">Arrive & Be Treated</h3>
+        <h3 class="pl">Przylot i leczenie</h3>
+        <h3 class="tr">Gelin & Tedavi Olun</h3>
+        <p class="en">VIP pickup from airport. Clinic consultation. Your procedure begins.</p>
+        <p class="pl">Odbiór VIP z lotniska. Konsultacja w klinice. Zabieg się rozpoczyna.</p>
+        <p class="tr">Havalimanından VIP karşılama. Klinik değerlendirme. Tedaviniz başlıyor.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3 class="en">Recover in Style</h3>
+        <h3 class="pl">Rekonwalescencja w stylu</h3>
+        <h3 class="tr">Konforlu İyileşme</h3>
+        <p class="en">Rest in your luxury hotel. Follow-up clinic check the next day.</p>
+        <p class="pl">Odpoczynek w luksusowym hotelu. Wizyta kontrolna następnego dnia.</p>
+        <p class="tr">Lüks otelinizde dinlenin. Ertesi gün kontrol randevusu.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h3 class="en">Fly Home & Follow Up</h3>
+        <h3 class="pl">Powrót i opieka zdalna</h3>
+        <h3 class="tr">Dönün & Takip Edin</h3>
+        <p class="en">Return home with results. 12-month remote aftercare support from our team.</p>
+        <p class="pl">Wróć do domu z efektami. 12-miesięczna zdalna opieka naszego zespołu.</p>
+        <p class="tr">Sonuçlarla dönün. 12 ay uzaktan bakım desteği.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <div class="section-label en">Patient Reviews</div>
+    <div class="section-label pl">Opinie pacjentów</div>
+    <div class="section-label tr">Hasta Yorumları</div>
+    <h2 class="section-title en">Real stories, real results</h2>
+    <h2 class="section-title pl">Prawdziwe historie, prawdziwe efekty</h2>
+    <h2 class="section-title tr">Gerçek hikayeler, gerçek sonuçlar</h2>
+    <p class="section-sub en">Don't just take our word for it — here's what our patients from the UK, Germany and Poland say.</p>
+    <p class="section-sub pl">Przekonaj się sam — oto co mówią nasi pacjenci z Wielkiej Brytanii, Niemiec i Polski.</p>
+    <p class="section-sub tr">Sadece bizim sözümüze güvenmeyin — İngiltere, Almanya ve Polonya'dan hastalarımız ne diyor.</p>
+    <div class="testimonials-grid">
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <blockquote class="en">"I paid £499 all-inclusive for a hair transplant that would have cost me over £6,000 in London. The clinic was incredible — better than any private hospital I've visited in the UK. I'm already recommending Clinic Support to everyone I know."</blockquote>
+        <blockquote class="pl">"Zapłaciłem 2 499 zł za wszystko w cenie za przeszczep włosów, który w Londynie kosztowałby ponad 30 000 zł. Klinika była niesamowita — lepsza niż jakikolwiek prywatny szpital, w którym byłem. Polecam Clinic Support wszystkim znajomym."</blockquote>
+        <blockquote class="tr">"Londra'da 240.000 ₺'ye mal olacak saç ekimi için burada 19.999 ₺ ödedim. Klinik inanılmazdı — İngiltere'de ziyaret ettiğim herhangi bir özel hastaneden daha iyiydi."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar t">J</div>
+          <div>
+            <div class="tcard-name">James T.</div>
+            <div class="tcard-loc">Manchester, UK</div>
+            <div class="tcard-service en">Hair Transplant</div>
+            <div class="tcard-service pl">Przeszczep włosów</div>
+            <div class="tcard-service tr">Saç Ekimi</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <blockquote class="en">"10 veneers in 3 days. The smile I always wanted. I was nervous at first but the coordinator was with me every step — from the airport to the aftercare. Absolute 5-star experience from start to finish."</blockquote>
+        <blockquote class="pl">"10 licówek w 3 dni. Uśmiech, o jakim zawsze marzyłam. Polskojęzyczna koordynatorka była ze mną na każdym kroku — od lotniska po opiekę poszpitalną. Absolutna 5-gwiazdkowa obsługa od początku do końca."</blockquote>
+        <blockquote class="tr">"3 günde 10 veneer. Hep istediğim gülüşe kavuştum. Başta gerginydim ama koordinatör havalimanından bakıma kadar her adımda yanımdaydı."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar g">M</div>
+          <div>
+            <div class="tcard-name en">Sophie M.</div>
+            <div class="tcard-name pl">Magda W.</div>
+            <div class="tcard-name tr">Sophie M.</div>
+            <div class="tcard-loc en">Berlin, Germany</div>
+            <div class="tcard-loc pl">Kraków, Polska</div>
+            <div class="tcard-loc tr">Berlin, Germany</div>
+            <div class="tcard-service en">Dental Veneers</div>
+            <div class="tcard-service pl">Licówki dentystyczne</div>
+            <div class="tcard-service tr">Diş Veneerleri</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <blockquote class="en">"Had LASIK on both eyes. Woke up the next morning and could read across the room without glasses for the first time in 20 years. The whole trip — flights, hotel, surgery — cost less than just the eye surgery in Warsaw."</blockquote>
+        <blockquote class="pl">"Miałam LASIK na obu oczach. Następnego ranka obudziłam się i po raz pierwszy od 20 lat przeczytałam napis z drugiego końca pokoju bez okularów. Cały wyjazd — loty, hotel, operacja — kosztował mniej niż sama operacja oczu w Warszawie."</blockquote>
+        <blockquote class="tr">"Her iki gözüme LASIK oldum. Ertesi sabah uyandım ve 20 yılın ardından ilk kez gözlüksüz okudum. Tüm gezi Varşova'daki sadece göz ameliyatından daha ucuza geldi."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar n">A</div>
+          <div>
+            <div class="tcard-name">Ania K.</div>
+            <div class="tcard-loc en">Warsaw, Poland</div>
+            <div class="tcard-loc pl">Warszawa, Polska</div>
+            <div class="tcard-loc tr">Varşova, Polonya</div>
+            <div class="tcard-service en">LASIK Eye Surgery</div>
+            <div class="tcard-service pl">Operacja oczu LASIK</div>
+            <div class="tcard-service tr">LASIK Göz Ameliyatı</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px;">
+      <div class="section-label en">FAQ</div>
+      <div class="section-label pl">Najczęstsze pytania</div>
+      <div class="section-label tr">Sık Sorulan Sorular</div>
+      <h2 class="section-title en">Everything you need to know</h2>
+      <h2 class="section-title pl">Wszystko, co musisz wiedzieć</h2>
+      <h2 class="section-title tr">Bilmeniz gereken her şey</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">Is it safe to have surgery in Turkey?</span>
+          <span class="pl">Czy operacja w Turcji jest bezpieczna?</span>
+          <span class="tr">Türkiye'de ameliyat olmak güvenli mi?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">Absolutely. Turkey is ranked in the top 5 globally for medical tourism safety. Our partner clinics are JCI-accredited — the same gold-standard accreditation used by the world's top hospitals. All surgeons are board-certified with international training.</div>
+          <div class="faq-a-inner pl">Absolutnie. Turcja jest w top 5 na świecie pod względem bezpieczeństwa turystyki medycznej. Nasze kliniki partnerskie mają akredytację JCI — ten sam złoty standard co najlepsze szpitale na świecie. Wszyscy chirurdzy są certyfikowani i mają międzynarodowe przeszkolenie.</div>
+          <div class="faq-a-inner tr">Kesinlikle. Türkiye, tıp turizmi güvenliği açısından küresel olarak ilk 5'te yer almaktadır. Partner kliniklerimiz JCI akredite. Tüm cerrahlar board sertifikalı ve uluslararası eğitim almış.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">What's included in the price?</span>
+          <span class="pl">Co jest wliczone w cenę?</span>
+          <span class="tr">Fiyata ne dahil?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">Everything except your flight. Hotel accommodation, VIP transfers between airport/hotel/clinic, all medications, post-op care kit, personal coordinator 24/7, and 12-month remote aftercare follow-up. No surprise bills.</div>
+          <div class="faq-a-inner pl">Wszystko oprócz lotu. Zakwaterowanie w hotelu, transfery VIP lotnisko/hotel/klinika, wszystkie leki, zestaw do opieki po zabiegu, koordynator 24/7 i 12-miesięczna opieka zdalna. Bez niespodziewanych rachunków.</div>
+          <div class="faq-a-inner tr">Uçağınız dışında her şey. Otel konaklaması, havalimanı/otel/klinik arası VIP transferler, tüm ilaçlar, ameliyat sonrası bakım seti, 7/24 kişisel koordinatör ve 12 aylık uzaktan bakım takibi. Sürpriz fatura yok.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">How do I get a personalised quote?</span>
+          <span class="pl">Jak uzyskać spersonalizowaną wycenę?</span>
+          <span class="tr">Kişisel fiyat teklifi nasıl alırım?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">Just message us on WhatsApp. Share a few photos and your medical history (if relevant), and one of our specialist coordinators will send you a detailed, no-obligation quote within a few hours.</div>
+          <div class="faq-a-inner pl">Wyślij nam wiadomość na WhatsApp. Podziel się kilkoma zdjęciami i historią medyczną, a nasz polskojęzyczny koordynator wyśle Ci szczegółową wycenę w ciągu kilku godzin.</div>
+          <div class="faq-a-inner tr">WhatsApp'tan mesaj gönderin. Birkaç fotoğraf ve tıbbi geçmişinizi paylaşın; uzman koordinatörlerimizden biri birkaç saat içinde detaylı teklif gönderecektir.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">How long do I need to stay in Turkey?</span>
+          <span class="pl">Jak długo muszę zostać w Turcji?</span>
+          <span class="tr">Türkiye'de ne kadar kalmam gerekiyor?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">It depends on the treatment: Hair transplant — 3 to 5 days. Dental (veneers/implants) — 5 to 7 days. Eye surgery (LASIK) — 2 to 3 days.</div>
+          <div class="faq-a-inner pl">Zależy od zabiegu: Przeszczep włosów — 3 do 5 dni. Stomatologia — 5 do 7 dni. Operacja oczu (LASIK) — 2 do 3 dni.</div>
+          <div class="faq-a-inner tr">Saç ekimi — 3-5 gün. Diş — 5-7 gün. Göz ameliyatı — 2-3 gün.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">What happens if something goes wrong after I'm back home?</span>
+          <span class="pl">Co się dzieje, jeśli coś pójdzie nie tak po powrocie?</span>
+          <span class="tr">Eve döndükten sonra bir sorun çıkarsa ne olur?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">Your coordinator stays with you via WhatsApp for 12 months. All our procedures come with written guarantees. In the very rare event of a complication, we arrange a free revision treatment.</div>
+          <div class="faq-a-inner pl">Twój koordynator pozostaje z Tobą przez WhatsApp przez 12 miesięcy. Wszystkie zabiegi mają pisemne gwarancje. W bardzo rzadkim przypadku powikłań organizujemy bezpłatne leczenie korygujące.</div>
+          <div class="faq-a-inner tr">Koordinatörünüz 12 ay boyunca WhatsApp üzerinden yanınızda kalır. Tüm işlemlerimiz yazılı garantiyle gelir. Nadir komplikasyonlarda ücretsiz revizyon ayarlarız.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="en">Do I need to speak Turkish?</span>
+          <span class="pl">Czy muszę mówić po turecku?</span>
+          <span class="tr">Türkçe konuşmam gerekiyor mu?</span>
+          <div class="faq-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner en">Not at all. Your dedicated English-speaking coordinator handles all communication — from the airport to the operating room to the hotel.</div>
+          <div class="faq-a-inner pl">Absolutnie nie. Nasz dedykowany polskojęzyczny koordynator obsługuje całą komunikację — od lotniska przez salę operacyjną po hotel.</div>
+          <div class="faq-a-inner tr">Hiç gerek yok. Kişisel koordinatörünüz tüm iletişimi yönetir — havalimanından ameliyathaneye kadar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="booking" class="booking-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-label en">Online Booking</div>
+      <div class="section-label pl">Rezerwacja online</div>
+      <div class="section-label tr">Online Rezervasyon</div>
+      <h2 class="section-title en">Book your free consultation</h2>
+      <h2 class="section-title pl">Zarezerwuj bezpłatną konsultację</h2>
+      <h2 class="section-title tr">Ücretsiz danışmanızı rezerve edin</h2>
+      <p style="max-width:480px;margin:0 auto;" class="en">Takes 30 seconds. No payment required. A coordinator will contact you within 2 hours.</p>
+      <p style="max-width:480px;margin:0 auto;" class="pl">Zajmuje 30 sekund. Bez płatności. Koordynator skontaktuje się z Tobą w ciągu 2 godzin.</p>
+      <p style="max-width:480px;margin:0 auto;" class="tr">30 saniye sürer. Ödeme gerekmez. Koordinatörünüz 2 saat içinde sizi arayacaktır.</p>
+    </div>
+    <div class="booking-wrap">
+      <!-- Step indicators -->
+      <div class="booking-steps">
+        <div class="bstep active" id="bstep-1">
+          <div class="bstep-num">1</div>
+          <div class="bstep-label en">Contact</div>
+          <div class="bstep-label pl">Kontakt</div>
+          <div class="bstep-label tr">İletişim</div>
+        </div>
+        <div class="bstep" id="bstep-2">
+          <div class="bstep-num">2</div>
+          <div class="bstep-label en">Service</div>
+          <div class="bstep-label pl">Usługa</div>
+          <div class="bstep-label tr">Hizmet</div>
+        </div>
+        <div class="bstep" id="bstep-3">
+          <div class="bstep-num">3</div>
+          <div class="bstep-label en">Date & Time</div>
+          <div class="bstep-label pl">Data i czas</div>
+          <div class="bstep-label tr">Tarih & Saat</div>
+        </div>
+        <div class="bstep" id="bstep-4">
+          <div class="bstep-num">4</div>
+          <div class="bstep-label en">Confirm</div>
+          <div class="bstep-label pl">Potwierdź</div>
+          <div class="bstep-label tr">Onayla</div>
+        </div>
+      </div>
+
+      <div class="booking-card">
+        <!-- PANEL 1: Contact -->
+        <div class="booking-panel active" id="bpanel-1">
+          <h3 class="en">Your contact details</h3>
+          <h3 class="pl">Twoje dane kontaktowe</h3>
+          <h3 class="tr">İletişim bilgileriniz</h3>
+          <p class="en">We'll use these to send your consultation summary.</p>
+          <p class="pl">Użyjemy ich do wysłania podsumowania konsultacji.</p>
+          <p class="tr">Danışma özetinizi göndermek için bunları kullanacağız.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="en">Full name *</label>
+              <label class="pl">Imię i nazwisko *</label>
+              <label class="tr">Ad soyad *</label>
+              <input type="text" id="f-name" placeholder="Jan Kowalski">
+            </div>
+            <div class="form-group">
+              <label class="en">Country *</label>
+              <label class="pl">Kraj *</label>
+              <label class="tr">Ülke *</label>
+              <select id="f-country">
+                <option value="" class="en">Select country</option>
+                <option value="" class="pl">Wybierz kraj</option>
+                <option value="" class="tr">Ülke seçin</option>
+                <option value="uk">United Kingdom</option>
+                <option value="de">Germany / Niemcy</option>
+                <option value="pl">Poland / Polska</option>
+                <option value="nl">Netherlands</option>
+                <option value="other">Other / Inne</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="en">Phone / WhatsApp *</label>
+              <label class="pl">Telefon / WhatsApp *</label>
+              <label class="tr">Telefon / WhatsApp *</label>
+              <input type="tel" id="f-phone" placeholder="+48 555 555 555">
+            </div>
+            <div class="form-group">
+              <label class="en">Email address</label>
+              <label class="pl">Adres e-mail</label>
+              <label class="tr">E-posta adresi</label>
+              <input type="email" id="f-email" placeholder="jan@email.com">
+            </div>
+          </div>
+          <div class="booking-nav">
+            <button class="btn-next" onclick="bookingNext(1)">
+              <span class="en">Next — Choose service</span>
+              <span class="pl">Dalej — Wybierz usługę</span>
+              <span class="tr">İleri — Hizmet seç</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- PANEL 2: Service -->
+        <div class="booking-panel" id="bpanel-2">
+          <h3 class="en">What treatment are you interested in?</h3>
+          <h3 class="pl">Jakim zabiegiem jesteś zainteresowany/a?</h3>
+          <h3 class="tr">Hangi tedaviyle ilgileniyorsunuz?</h3>
+          <p class="en">Select all that apply — you can discuss multiple options with your coordinator.</p>
+          <p class="pl">Zaznacz wszystkie pasujące — możesz omówić wiele opcji z koordynatorem.</p>
+          <p class="tr">Uygun olanları seçin — birden fazla seçeneği koordinatörünüzle görüşebilirsiniz.</p>
+          <div class="service-picker">
+            <button class="service-pick-btn" onclick="toggleService(this)">
+              <div class="spb-icon">💆</div>
+              <h4 class="en">Hair Transplant</h4>
+              <h4 class="pl">Przeszczep włosów</h4>
+              <h4 class="tr">Saç Ekimi</h4>
+            </button>
+            <button class="service-pick-btn" onclick="toggleService(this)">
+              <div class="spb-icon">🦷</div>
+              <h4 class="en">Dental</h4>
+              <h4 class="pl">Stomatologia</h4>
+              <h4 class="tr">Diş</h4>
+            </button>
+            <button class="service-pick-btn" onclick="toggleService(this)">
+              <div class="spb-icon">👁</div>
+              <h4 class="en">Eye Surgery</h4>
+              <h4 class="pl">Operacja oczu</h4>
+              <h4 class="tr">Göz Ameliyatı</h4>
+            </button>
+          </div>
+          <div class="form-row full">
+            <div class="form-group">
+              <label class="en">Additional notes (optional)</label>
+              <label class="pl">Dodatkowe uwagi (opcjonalnie)</label>
+              <label class="tr">Ek notlar (isteğe bağlı)</label>
+              <textarea id="f-notes" placeholder="np. Byłem/am na konsultacji gdzie indziej, mam zdjęcia do pokazania..."></textarea>
+            </div>
+          </div>
+          <div class="booking-nav">
+            <button class="btn-back" onclick="bookingBack(2)">
+              <span class="en">← Back</span><span class="pl">← Wstecz</span><span class="tr">← Geri</span>
+            </button>
+            <button class="btn-next" onclick="bookingNext(2)">
+              <span class="en">Next — Pick a date</span>
+              <span class="pl">Dalej — Wybierz datę</span>
+              <span class="tr">İleri — Tarih seç</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- PANEL 3: Date & Time -->
+        <div class="booking-panel" id="bpanel-3">
+          <h3 class="en">Preferred date & time</h3>
+          <h3 class="pl">Preferowana data i godzina</h3>
+          <h3 class="tr">Tercih ettiğiniz tarih ve saat</h3>
+          <p class="en">For your free online consultation call. All times are in UTC+3 (Istanbul).</p>
+          <p class="pl">Na bezpłatną konsultację online. Wszystkie godziny w UTC+3 (Stambuł).</p>
+          <p class="tr">Ücretsiz online danışma görüşmeniz için. Tüm saatler UTC+3 (İstanbul) cinsinden.</p>
+          <div class="date-grid">
+            <div class="form-group">
+              <label class="en">Preferred date *</label>
+              <label class="pl">Preferowana data *</label>
+              <label class="tr">Tercih edilen tarih *</label>
+              <input type="date" id="f-date" min="">
+            </div>
+            <div class="form-group">
+              <label class="en">How to contact you?</label>
+              <label class="pl">Jak się z Tobą skontaktować?</label>
+              <label class="tr">Nasıl ulaşılsın?</label>
+              <select id="f-contact-method">
+                <option value="whatsapp">WhatsApp</option>
+                <option value="call">Phone call / Telefon</option>
+                <option value="video">Video call (Zoom)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top:16px;">
+            <label class="en">Preferred time slot</label>
+            <label class="pl">Preferowana godzina</label>
+            <label class="tr">Tercih edilen saat dilimi</label>
+            <div class="timeslots">
+              <button class="timeslot" onclick="selectTime(this)">09:00</button>
+              <button class="timeslot" onclick="selectTime(this)">10:00</button>
+              <button class="timeslot" onclick="selectTime(this)">11:00</button>
+              <button class="timeslot" onclick="selectTime(this)">12:00</button>
+              <button class="timeslot" onclick="selectTime(this)">13:00</button>
+              <button class="timeslot" onclick="selectTime(this)">14:00</button>
+              <button class="timeslot" onclick="selectTime(this)">15:00</button>
+              <button class="timeslot" onclick="selectTime(this)">16:00</button>
+              <button class="timeslot" onclick="selectTime(this)">17:00</button>
+              <button class="timeslot" onclick="selectTime(this)">18:00</button>
+              <button class="timeslot" onclick="selectTime(this)">19:00</button>
+              <button class="timeslot" onclick="selectTime(this)">20:00</button>
+            </div>
+          </div>
+          <div class="booking-nav" style="margin-top:20px;">
+            <button class="btn-back" onclick="bookingBack(3)">
+              <span class="en">← Back</span><span class="pl">← Wstecz</span><span class="tr">← Geri</span>
+            </button>
+            <button class="btn-next" onclick="bookingNext(3)">
+              <span class="en">Review & Confirm</span>
+              <span class="pl">Sprawdź i potwierdź</span>
+              <span class="tr">İncele ve Onayla</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- PANEL 4: Confirm -->
+        <div class="booking-panel" id="bpanel-4">
+          <h3 class="en">Almost done — confirm your booking</h3>
+          <h3 class="pl">Prawie gotowe — potwierdź rezerwację</h3>
+          <h3 class="tr">Neredeyse bitti — rezervasyonunuzu onaylayın</h3>
+          <p class="en">Please review your details and accept our privacy policy.</p>
+          <p class="pl">Sprawdź swoje dane i zaakceptuj politykę prywatności.</p>
+          <p class="tr">Bilgilerinizi inceleyin ve gizlilik politikamızı kabul edin.</p>
+          <div id="booking-summary" style="background:var(--off);border-radius:12px;padding:18px;margin-bottom:20px;font-size:0.88rem;color:var(--text);line-height:2;"></div>
+          <div class="privacy-row">
+            <input type="checkbox" id="f-privacy">
+            <span class="en">I accept the <a href="#">Privacy Policy</a> and agree to be contacted by Clinic Support regarding my enquiry.</span>
+            <span class="pl">Akceptuję <a href="#">Politykę prywatności</a> i wyrażam zgodę na kontakt ze strony Clinic Support w sprawie mojego zapytania.</span>
+            <span class="tr"><a href="#">Gizlilik Politikası</a>'nı kabul ediyorum ve Clinic Support'un sorgumla ilgili benimle iletişime geçmesine onay veriyorum.</span>
+          </div>
+          <div class="booking-nav" style="margin-top:20px;">
+            <button class="btn-back" onclick="bookingBack(4)">
+              <span class="en">← Back</span><span class="pl">← Wstecz</span><span class="tr">← Geri</span>
+            </button>
+            <button class="btn-next" onclick="bookingSubmit()" style="background:var(--green);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="en">Confirm Booking</span>
+              <span class="pl">Potwierdź rezerwację</span>
+              <span class="tr">Rezervasyonu Onayla</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- PANEL 5: Success -->
+        <div class="booking-panel" id="bpanel-5">
+          <div class="booking-success">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="en">Booking confirmed!</h3>
+            <h3 class="pl">Rezerwacja potwierdzona!</h3>
+            <h3 class="tr">Rezervasyon onaylandı!</h3>
+            <p class="en">Thank you! A specialist coordinator will contact you within 2 hours via your preferred method. Check your WhatsApp or email for a confirmation message.</p>
+            <p class="pl">Dziękujemy! Nasz polskojęzyczny koordynator skontaktuje się z Tobą w ciągu 2 godzin. Sprawdź WhatsApp lub e-mail w poszukiwaniu potwierdzenia.</p>
+            <p class="tr">Teşekkürler! Uzman koordinatörünüz 2 saat içinde tercih ettiğiniz yöntemle sizinle iletişime geçecektir.</p>
+            <a href="https://wa.me/48555555555" class="btn-primary" style="display:inline-flex;margin-top:8px;">
+              <span class="en">Message us on WhatsApp now</span>
+              <span class="pl">Napisz do nas teraz na WhatsApp</span>
+              <span class="tr">Şimdi WhatsApp'tan mesaj gönderin</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="en">Ready to transform your life?</h2>
+    <h2 class="pl">Gotowy na zmianę życia?</h2>
+    <h2 class="tr">Hayatınızı dönüştürmeye hazır mısınız?</h2>
+    <p class="en">Get your free, no-obligation quote today. One WhatsApp message is all it takes.</p>
+    <p class="pl">Uzyskaj bezpłatną wycenę już dziś. Wystarczy jedna wiadomość na WhatsApp.</p>
+    <p class="tr">Bugün ücretsiz ve yükümlülük gerektirmeyen teklifinizi alın. Tek bir WhatsApp mesajı yeterli.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/48555555555" class="btn-white">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span class="en">WhatsApp — Free Consult</span>
+        <span class="pl">WhatsApp — Bezpłatna konsultacja</span>
+        <span class="tr">WhatsApp — Ücretsiz Danışma</span>
+      </a>
+      <a href="mailto:info@clinicsupport.com" class="btn-outline-white">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span class="en">Email Us</span>
+        <span class="pl">Napisz e-mail</span>
+        <span class="tr">E-posta Gönder</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon" style="width:34px;height:34px;border-radius:8px;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 3.5C7.3 3.5 3.5 7.3 3.5 12S7.3 20.5 12 20.5 20.5 16.7 20.5 12 16.7 3.5 12 3.5zM8 9.5h2V16H8V9.5zM11 7.5h2v2h-2v-2zm0 3.5h2V16h-2v-5zM14 9.5h2V16h-2V9.5z" fill="white"/></svg>
+          </div>
+          <span>Clinic Support</span>
+        </div>
+        <p class="en">Premium health tourism from Turkey. Trusted by 5,000+ patients from the UK, Germany, and Poland.</p>
+        <p class="pl">Turystyka medyczna premium z Turcji. Zaufało nam ponad 5 000 pacjentów z Wielkiej Brytanii, Niemiec i Polski.</p>
+        <p class="tr">Türkiye'den premium sağlık turizmi. İngiltere, Almanya ve Polonya'dan 5.000'den fazla hastanın güveni.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="en">Services</h4>
+        <h4 class="pl">Usługi</h4>
+        <h4 class="tr">Hizmetler</h4>
+        <ul>
+          <li><a href="#services"><span class="en">Hair Transplant</span><span class="pl">Przeszczep włosów</span><span class="tr">Saç Ekimi</span></a></li>
+          <li><a href="#services"><span class="en">Dental Treatment</span><span class="pl">Leczenie stomatologiczne</span><span class="tr">Diş Tedavisi</span></a></li>
+          <li><a href="#services"><span class="en">Eye Surgery</span><span class="pl">Operacja oczu</span><span class="tr">Göz Ameliyatı</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="en">Company</h4>
+        <h4 class="pl">Firma</h4>
+        <h4 class="tr">Şirket</h4>
+        <ul>
+          <li><a href="#why"><span class="en">Why Turkey</span><span class="pl">Dlaczego Turcja</span><span class="tr">Neden Türkiye</span></a></li>
+          <li><a href="#process"><span class="en">How It Works</span><span class="pl">Jak to działa</span><span class="tr">Nasıl Çalışır</span></a></li>
+          <li><a href="#testimonials"><span class="en">Reviews</span><span class="pl">Opinie</span><span class="tr">Yorumlar</span></a></li>
+          <li><a href="#faq">FAQ / <span class="pl">FAQ</span><span class="tr">SSS</span></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="en">Contact</h4>
+        <h4 class="pl">Kontakt</h4>
+        <h4 class="tr">İletişim</h4>
+        <ul>
+          <li><a href="https://wa.me/48555555555">WhatsApp</a></li>
+          <li><a href="mailto:info@clinicsupport.com">info@clinicsupport.com</a></li>
+          <li><a href="#"><span class="en">Istanbul, Turkey</span><span class="pl">Stambuł, Turcja</span><span class="tr">İstanbul, Türkiye</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="en">© 2025 Clinic Support. All rights reserved.</p>
+      <p class="pl">© 2025 Clinic Support. Wszelkie prawa zastrzeżone.</p>
+      <p class="tr">© 2025 Clinic Support. Tüm hakları saklıdır.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="footer-social" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://wa.me/555555555" class="footer-social" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- AI CHAT WIDGET -->
+<div class="chat-widget" id="chat-widget">
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+        </div>
+        <div>
+          <h4 class="en">Clinic Support AI</h4>
+          <h4 class="pl">Clinic Support AI</h4>
+          <h4 class="tr">Clinic Support AI</h4>
+          <div class="chat-status en">Online — replies instantly</div>
+          <div class="chat-status pl">Online — odpowiada natychmiast</div>
+          <div class="chat-status tr">Çevrimiçi — anında yanıt</div>
+        </div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-beta">Beta 2.0 — AI Assistant / Yapay Zeka Asistanı</div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">
+        <div class="chat-bubble en">👋 Welcome! I'm your virtual health tourism assistant. I can give you instant price estimates, tell you what's included in our packages, and help you book a free consultation. How can I help?</div>
+        <div class="chat-bubble pl">👋 Witaj! Jestem Twoim wirtualnym asystentem turystyki medycznej. Mogę podać szacunkowe ceny, powiedzieć co wchodzi w skład pakietów i pomóc zarezerwować bezpłatną konsultację. Jak mogę pomóc?</div>
+        <div class="chat-bubble tr">👋 Hoş geldiniz! Ben sanal sağlık turizmi asistanınızım. Anlık fiyat tahmini verebilir, paketlerimizde nelerin dahil olduğunu söyleyebilir ve ücretsiz danışma rezervasyonu yapmanıza yardımcı olabilirim. Nasıl yardımcı olabilirim?</div>
+        <div class="chat-time">Just now</div>
+      </div>
+    </div>
+    <div class="chat-quick-actions" id="chat-quick">
+      <div class="chat-quick-label en">Quick questions</div>
+      <div class="chat-quick-label pl">Szybkie pytania</div>
+      <div class="chat-quick-label tr">Hızlı sorular</div>
+      <button class="chat-quick-btn" onclick="chatQuick(this, 'hair_price')">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M12 14v7"/></svg>
+        <span class="en">How much is a hair transplant?</span>
+        <span class="pl">Ile kosztuje przeszczep włosów?</span>
+        <span class="tr">Saç ekimi ne kadar?</span>
+      </button>
+      <button class="chat-quick-btn" onclick="chatQuick(this, 'dental_price')">
+        <svg viewBox="0 0 24 24"><path d="M12 3C8 3 5 6 5 9c0 4 2 9 3.5 12 .5 1 1.5 1 2 0L12 18l1.5 3c.5 1 1.5 1 2 0C17 18 19 13 19 9c0-3-3-6-7-6z"/></svg>
+        <span class="en">Dental veneers cost?</span>
+        <span class="pl">Koszt licówek dentystycznych?</span>
+        <span class="tr">Diş veneeri fiyatı?</span>
+      </button>
+      <button class="chat-quick-btn" onclick="chatQuick(this, 'included')">
+        <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <span class="en">What's included in the package?</span>
+        <span class="pl">Co wchodzi w skład pakietu?</span>
+        <span class="tr">Pakete ne dahil?</span>
+      </button>
+      <button class="chat-quick-btn" onclick="chatQuick(this, 'book')">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="en">Book a free consultation</span>
+        <span class="pl">Zarezerwuj bezpłatną konsultację</span>
+        <span class="tr">Ücretsiz danışma rezervasyonu</span>
+      </button>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chat-input" type="text" placeholder="Type a message..." onkeydown="if(event.key==='Enter')chatSend()">
+      <button class="chat-send" onclick="chatSend()">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+    <div class="chat-disclaimer en">* AI provides preliminary estimates. Final pricing confirmed by your coordinator.</div>
+    <div class="chat-disclaimer pl">* AI podaje wstępne szacunki. Ostateczna cena potwierdzana przez koordynatora.</div>
+    <div class="chat-disclaimer tr">* AI ön tahmin sağlar. Kesin fiyat koordinatörünüz tarafından onaylanır.</div>
+  </div>
+  <div class="chat-fab" onclick="toggleChat()">
+    <div class="chat-badge">1</div>
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  </div>
+</div>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/555555555" class="wa-fab" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // ── CALCULATOR ──
+  var calcState = { service:'hair', grafts:2500, tech:'FUE', teeth:4, dent:'implant', eyes:'both', eyetech:'LASIK' };
+  var calcData = {
+    hair: {
+      FUE:      { our:799,  uk:4200, pl:1800 },
+      DHI:      { our:999,  uk:5000, pl:2400 },
+      Sapphire: { our:899,  uk:4800, pl:2100 }
+    },
+    dental: {
+      implant: { unit:{ our:490, uk:2800, pl:950  } },
+      veneer:  { unit:{ our:180, uk:900,  pl:380  } },
+      crown:   { unit:{ our:150, uk:700,  pl:300  } }
+    },
+    eye: {
+      LASIK: { both:{ our:999,  uk:3200, pl:1300 }, one:{ our:599, uk:1700, pl:750  } },
+      SMILE: { both:{ our:1299, uk:4000, pl:1700 }, one:{ our:749, uk:2200, pl:950  } },
+      PRK:   { both:{ our:899,  uk:2800, pl:1150 }, one:{ our:549, uk:1500, pl:680  } }
+    }
+  };
+  function fmt(n){ return '£' + n.toLocaleString(); }
+  function fmtPL(n){ return n.toLocaleString('pl-PL') + ' zł'; }
+  function fmtTR(n){ return n.toLocaleString('tr-TR') + ' ₺'; }
+  function updateCalc(){
+    var graftSlider = document.querySelector('#ctrl-hair input[type=range]');
+    if(graftSlider){ calcState.grafts = parseInt(graftSlider.value); ['graft-val','graft-val-pl','graft-val-tr'].forEach(function(id){ var el=document.getElementById(id); if(el) el.textContent=calcState.grafts; }); }
+    var teethSlider = document.getElementById('teeth-slider');
+    if(teethSlider){ calcState.teeth = parseInt(teethSlider.value); ['teeth-val','teeth-val-pl','teeth-val-tr'].forEach(function(id){ var el=document.getElementById(id); if(el) el.textContent=calcState.teeth; }); }
+    var our, uk, pl;
+    if(calcState.service === 'hair'){
+      var d = calcData.hair[calcState.tech];
+      var mult = calcState.grafts / 2000;
+      our = Math.round(d.our * mult / 50) * 50;
+      uk  = Math.round(d.uk  * mult / 50) * 50;
+      pl  = Math.round(d.pl  * mult / 50) * 50;
+    } else if(calcState.service === 'dental'){
+      var u = calcData.dental[calcState.dent].unit;
+      our = u.our * calcState.teeth;
+      uk  = u.uk  * calcState.teeth;
+      pl  = u.pl  * calcState.teeth;
+    } else {
+      var ey = calcData.eye[calcState.eyetech][calcState.eyes];
+      our = ey.our; uk = ey.uk; pl = ey.pl;
+    }
+    var save = pl - our;
+    var pct  = Math.round(save / pl * 100);
+    var isPL = document.body.classList.contains('pl');
+    var isTR = document.body.classList.contains('tr');
+    var f = isPL ? fmtPL : isTR ? fmtTR : fmt;
+    var mult = isPL ? 5 : isTR ? 40 : 1;
+    document.getElementById('calc-our').textContent  = f(our  * mult);
+    document.getElementById('calc-uk').textContent   = f(uk   * mult);
+    document.getElementById('calc-pl').textContent   = f(pl   * mult);
+    document.getElementById('calc-save').textContent = f(save * mult);
+    document.getElementById('calc-bar').style.width  = pct + '%';
+    document.getElementById('calc-pct-label').textContent    = 'You save ' + pct + '% vs the Polish average';
+    document.getElementById('calc-pct-label-pl').textContent = 'Oszczędzasz ' + pct + '% w porównaniu ze średnią polską';
+    document.getElementById('calc-pct-label-tr').textContent = 'İngiltere ortalamasına göre %' + pct + ' tasarruf';
+  }
+  function calcSelect(btn, svc){
+    document.querySelectorAll('.calc-service-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    calcState.service = svc;
+    ['hair','dental','eye'].forEach(function(s){ document.getElementById('ctrl-'+s).style.display = s===svc?'block':'none'; });
+    updateCalc();
+  }
+  function selectTech(btn){ document.querySelectorAll('[data-tech]').forEach(function(b){ b.classList.remove('active'); }); btn.classList.add('active'); calcState.tech = btn.dataset.tech; updateCalc(); }
+  function selectDent(btn){ document.querySelectorAll('[data-dent]').forEach(function(b){ b.classList.remove('active'); }); btn.classList.add('active'); calcState.dent = btn.dataset.dent; updateCalc(); }
+  function selectEyes(btn){ document.querySelectorAll('[data-eyes]').forEach(function(b){ b.classList.remove('active'); }); btn.classList.add('active'); calcState.eyes = btn.dataset.eyes; updateCalc(); }
+  function selectEyeTech(btn){ document.querySelectorAll('[data-eyetech]').forEach(function(b){ b.classList.remove('active'); }); btn.classList.add('active'); calcState.eyetech = btn.dataset.eyetech; updateCalc(); }
+  updateCalc();
+
+  // Set min date for booking form
+  document.getElementById('f-date').min = new Date().toISOString().split('T')[0];
+
+  // ── BOOKING FORM ──
+  var bookingStep = 1;
+  function bookingNext(step){
+    if(step===1){ var n=document.getElementById('f-name').value.trim(),p=document.getElementById('f-phone').value.trim(); if(!n||!p){ alert('Please fill in your name and phone number.'); return; } }
+    if(step===4){ if(!document.getElementById('f-privacy').checked){ alert('Please accept the privacy policy.'); return; } }
+    setBookingStep(step+1);
+    if(step===3){ buildSummary(); }
+  }
+  function bookingBack(step){ setBookingStep(step-1); }
+  function setBookingStep(s){
+    bookingStep = s;
+    for(var i=1;i<=5;i++){ document.getElementById('bpanel-'+i).classList.toggle('active', i===s); }
+    for(var i=1;i<=4;i++){
+      var el = document.getElementById('bstep-'+i);
+      el.classList.toggle('active', i===s);
+      el.classList.toggle('done', i<s);
+    }
+    document.querySelector('.booking-wrap').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  function toggleService(btn){ btn.classList.toggle('selected'); }
+  function selectTime(btn){ document.querySelectorAll('.timeslot').forEach(function(b){ b.classList.remove('selected'); }); btn.classList.add('selected'); }
+  function buildSummary(){
+    var isTR = document.body.classList.contains('tr');
+    var name    = document.getElementById('f-name').value || '—';
+    var phone   = document.getElementById('f-phone').value || '—';
+    var email   = document.getElementById('f-email').value || '—';
+    var date    = document.getElementById('f-date').value || '—';
+    var method  = document.getElementById('f-contact-method').value || '—';
+    var timeEl  = document.querySelector('.timeslot.selected');
+    var time    = timeEl ? timeEl.textContent : '—';
+    var services = [];
+    document.querySelectorAll('.service-pick-btn.selected h4').forEach(function(h){ services.push(h.textContent.trim()); });
+    var svc = services.length ? services.join(', ') : '—';
+    document.getElementById('booking-summary').innerHTML = isTR
+      ? '<b>Ad:</b> '+name+'<br><b>Telefon:</b> '+phone+'<br><b>E-posta:</b> '+email+'<br><b>Hizmet:</b> '+svc+'<br><b>Tarih:</b> '+date+' — '+time+'<br><b>İletişim yöntemi:</b> '+method
+      : '<b>Name:</b> '+name+'<br><b>Phone:</b> '+phone+'<br><b>Email:</b> '+email+'<br><b>Service:</b> '+svc+'<br><b>Date:</b> '+date+' — '+time+'<br><b>Contact via:</b> '+method;
+  }
+  function bookingSubmit(){ setBookingStep(5); }
+
+  // ── AI CHAT WIDGET ──
+  var chatOpen = false;
+  function toggleChat(){
+    chatOpen = !chatOpen;
+    document.getElementById('chat-panel').classList.toggle('open', chatOpen);
+    document.querySelector('.chat-badge').style.display = chatOpen ? 'none' : 'flex';
+  }
+  var chatReplies = {
+    hair_price: {
+      en: "A hair transplant with Clinic Support starts from just <b>£499 all-inclusive</b> — that includes your hotel, airport transfers, medications and 12-month aftercare. UK clinics typically charge £4,000–£8,000 for the same procedure. 💇",
+      pl: "Przeszczep włosów w Clinic Support już od <b>2 499 zł (all-inclusive)</b> — hotel, transfery, leki i 12-miesięczna opieka w cenie. Polskie kliniki pobierają za to samo 9 000 zł+. 💇",
+      tr: "Clinic Support ile saç ekimi <b>19.999 ₺'den başlıyor (hepsi dahil)</b> — otel, havalimanı transferleri, ilaçlar ve 12 aylık bakım dahil. İngiltere klinikleri aynı işlem için genellikle 160.000–320.000 ₺ talep eder. 💇"
+    },
+    dental_price: {
+      en: "Dental veneers start from <b>£180 per tooth</b>, implants from <b>£490 each</b>. A full smile makeover (10 veneers) costs around <b>£1,800</b> — compared to £9,000+ in the UK. 🦷",
+      pl: "Licówki od <b>900 zł za ząb</b>, implanty od <b>2 450 zł</b>. Pełna metamorfoza uśmiechu (10 licówek) ~<b>9 000 zł</b> — vs. 19 000 zł+ w Polsce. 🦷",
+      tr: "Diş veneerleri diş başına <b>7.200 ₺'den</b>, implantlar <b>19.600 ₺'den</b> başlıyor. Tam gülüş tasarımı (10 veneer) yaklaşık <b>72.000 ₺</b> — İngiltere'deki 360.000 ₺'nin çok altında. 🦷"
+    },
+    included: {
+      en: "Every package includes: ✅ VIP hotel (4★+) · ✅ Airport transfers · ✅ All medications · ✅ Personal coordinator · ✅ 12-month aftercare · ✅ Written guarantee. The only extra is your flight! ✈️",
+      pl: "Każdy pakiet zawiera: ✅ Hotel VIP (4★+) · ✅ Transfery lotniskowe · ✅ Wszystkie leki · ✅ Koordynator 24/7 · ✅ 12-miesięczna opieka · ✅ Pisemna gwarancja. Jedyny dodatkowy koszt to Twój lot! ✈️",
+      tr: "Her pakette şunlar dahil: ✅ VIP otel (4★+) · ✅ Havalimanı transferleri · ✅ Tüm ilaçlar · ✅ Kişisel koordinatör · ✅ 12 aylık bakım · ✅ Yazılı garanti. Tek ekstra uçuşunuz! ✈️"
+    },
+    book: {
+      en: "I'll take you to our booking form — it only takes 30 seconds! Or you can message us directly on WhatsApp for an instant response. 📅",
+      pl: "Kieruję Cię do formularza rezerwacji — zajmuje tylko 30 sekund! Możesz też napisać bezpośrednio na WhatsApp, aby uzyskać natychmiastową odpowiedź. 📅",
+      tr: "Sizi rezervasyon formuna yönlendiriyorum — yalnızca 30 saniye sürer! Ya da anlık yanıt için WhatsApp'tan doğrudan bize mesaj atabilirsiniz. 📅"
+    }
+  };
+  function chatQuick(btn, key){
+    btn.style.display = 'none';
+    var lang = document.body.classList.contains('tr') ? 'tr' : document.body.classList.contains('pl') ? 'pl' : 'en';
+    var label = btn.querySelector('.' + lang).textContent.trim();
+    appendChatMsg('user', label);
+    setTimeout(function(){
+      var reply = chatReplies[key];
+      appendChatMsg('bot', reply[lang] || reply.en);
+      if(key==='book'){ setTimeout(function(){ document.getElementById('booking').scrollIntoView({behavior:'smooth'}); }, 1200); }
+    }, 800);
+  }
+  function chatSend(){
+    var inp = document.getElementById('chat-input');
+    var msg = inp.value.trim();
+    if(!msg) return;
+    appendChatMsg('user', msg);
+    inp.value = '';
+    var lang = document.body.classList.contains('tr') ? 'tr' : document.body.classList.contains('pl') ? 'pl' : 'en';
+    setTimeout(function(){
+      var r = lang === 'tr'
+        ? 'Mesajınız için teşekkürler! Koordinatörlerimizden biri kısa süre içinde size WhatsApp üzerinden ulaşacaktır. 💬'
+        : lang === 'pl'
+        ? 'Dziękujemy za wiadomość! Nasz polskojęzyczny koordynator skontaktuje się z Tobą przez WhatsApp. 💬'
+        : 'Thanks for your message! One of our coordinators will reach out to you via WhatsApp shortly. 💬';
+      appendChatMsg('bot', r);
+    }, 900);
+  }
+  function appendChatMsg(type, html){
+    var msgs = document.getElementById('chat-messages');
+    var now  = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    var div  = document.createElement('div');
+    div.className = 'chat-msg ' + type;
+    div.innerHTML = '<div class="chat-bubble">'+html+'</div><div class="chat-time">'+now+'</div>';
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  // ── LANGUAGE ──
+  function setLang(lang) {
+    document.body.classList.remove('en', 'pl', 'tr');
+    document.body.classList.add(lang);
+    document.documentElement.setAttribute('lang', lang);
+    localStorage.setItem('cs-lang', lang);
+    ['lb-en','lb-pl','lb-tr'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.classList.remove('active');
+    });
+    var active = document.getElementById('lb-' + lang);
+    if(active) active.classList.add('active');
+    if(typeof updateCalc === 'function') updateCalc();
+  }
+  (function() {
+    var saved = localStorage.getItem('cs-lang') || 'pl';
+    setLang(saved);
+  })();
+
+  // Nav scroll shadow
+  window.addEventListener('scroll', function() {
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobile-menu').classList.remove('open');
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el) {
+      el.classList.remove('open');
+    });
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll-reveal with stagger
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      var siblings = Array.from(e.target.parentNode.children).filter(function(c) {
+        return c.classList.contains(e.target.classList[0]);
+      });
+      var idx = siblings.indexOf(e.target);
+      var delay = Math.min(idx * 0.08, 0.32);
+      e.target.style.transitionDelay = delay + 's';
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      revealObserver.unobserve(e.target);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.service-card, .tcard, .why-stat-card, .step, .faq-item').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    revealObserver.observe(el);
+  });
+
+  // Section header reveal
+  var headerObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      headerObserver.unobserve(e.target);
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.section-title, .section-label').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    headerObserver.observe(el);
+  });
+
+  // Stat counter animation
+  var statObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      statObserver.unobserve(e.target);
+      var el = e.target;
+      var text = el.textContent;
+      var num = parseFloat(text);
+      if (isNaN(num)) return;
+      var suffix = text.replace(String(num), '');
+      var isDecimal = text.indexOf('.') !== -1;
+      var duration = 1200;
+      var start = performance.now();
+      requestAnimationFrame(function tick(now) {
+        var pct = Math.min((now - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - pct, 3);
+        var val = num * ease;
+        el.textContent = (isDecimal ? val.toFixed(1) : Math.round(val)) + suffix;
+        if (pct < 1) requestAnimationFrame(tick);
+      });
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-num').forEach(function(el) {
+    statObserver.observe(el);
+  });
+</script>
+</body>
+</html>
