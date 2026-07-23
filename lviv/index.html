@@ -167,11 +167,6 @@
   .hero-card-icon.navy  { background: rgba(255,255,255,0.15); }
   .hero-card h3 { color: white; font-size: 1rem; }
   .hero-card p { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 2px; }
-  .hero-card-save {
-    display: inline-block; background: rgba(46,170,110,0.25);
-    border: 1px solid rgba(46,170,110,0.4); border-radius: 6px;
-    padding: 3px 10px; font-size: 0.78rem; font-weight: 600; color: #72E0A8; margin-top: 8px;
-  }
 
   /* ── TRUST BAR ── */
   .trust-bar { padding: 32px 0; border-bottom: 1px solid var(--border); }
@@ -218,12 +213,6 @@
   .service-thumb.n { background: linear-gradient(135deg, #0D2B45 0%, #163D5E 100%); }
   .service-thumb-icon { width: 72px; height: 72px; }
   .service-thumb-icon svg { width: 72px; height: 72px; }
-  .service-save-badge {
-    position: absolute; top: 14px; right: 14px;
-    background: var(--green); color: white;
-    border-radius: 8px; padding: 4px 12px;
-    font-size: 0.78rem; font-weight: 700;
-  }
   .service-body { padding: 26px; }
   .service-body h3 { color: var(--navy); margin-bottom: 10px; font-size: 1.2rem; }
   .service-body p { font-size: 0.9rem; margin-bottom: 18px; }
@@ -419,177 +408,6 @@
   .footer-social:hover svg { stroke: white; }
   .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
   .footer-logo span { font-size: 1.1rem; font-weight: 700; color: white; }
-
-  /* ── CALCULATOR ── */
-  .calc-section { background: var(--navy); }
-  .calc-section .section-label { color: var(--teal); }
-  .calc-section .section-title { color: white; }
-  .calc-section .section-sub { color: rgba(255,255,255,0.6); }
-  .calc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-  .calc-services { display: flex; flex-direction: column; gap: 12px; }
-  .calc-service-btn {
-    display: flex; align-items: center; gap: 14px;
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px; padding: 16px 20px; cursor: pointer;
-    transition: background 0.2s, border-color 0.2s; text-align: left;
-  }
-  .calc-service-btn:hover { background: rgba(0,180,180,0.1); border-color: rgba(0,180,180,0.3); }
-  .calc-service-btn.active { background: rgba(0,180,180,0.15); border-color: var(--teal); }
-  .calc-service-btn .csb-icon {
-    width: 44px; height: 44px; border-radius: 10px;
-    display: grid; place-items: center; flex-shrink: 0;
-  }
-  .calc-service-btn .csb-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; }
-  .calc-service-btn.active .csb-icon { background: rgba(0,180,180,0.25); color: var(--teal); }
-  .calc-service-btn:not(.active) .csb-icon { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); }
-  .calc-service-btn h4 { font-size: 0.97rem; font-weight: 600; color: white; }
-  .calc-service-btn p { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
-  .calc-service-btn.active h4 { color: #7EE8E8; }
-  .calc-controls { margin-top: 20px; }
-  .calc-control-group { margin-bottom: 20px; }
-  .calc-control-group label { display: flex; justify-content: space-between; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
-  .calc-control-group label span { color: var(--teal); font-weight: 600; }
-  input[type=range].calc-slider {
-    width: 100%; -webkit-appearance: none; appearance: none;
-    height: 4px; border-radius: 4px; background: rgba(255,255,255,0.15); outline: none;
-  }
-  input[type=range].calc-slider::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
-    background: var(--teal); cursor: pointer; box-shadow: 0 0 0 4px rgba(0,180,180,0.2);
-  }
-  .calc-toggle-row { display: flex; gap: 10px; }
-  .calc-toggle-btn {
-    flex: 1; padding: 10px; border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.05); border-radius: 10px;
-    color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 600;
-    cursor: pointer; transition: all 0.2s;
-  }
-  .calc-toggle-btn.active { background: rgba(0,180,180,0.2); border-color: var(--teal); color: var(--teal); }
-  .calc-result {
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px; padding: 32px; position: sticky; top: 88px;
-  }
-  .calc-result-title { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
-  .calc-price-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .calc-price-row:last-of-type { border-bottom: none; }
-  .calc-price-row .label { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
-  .calc-price-row .val { font-size: 1.05rem; font-weight: 600; }
-  .calc-price-row .val.our { color: var(--teal); font-size: 1.4rem; }
-  .calc-price-row .val.uk { color: rgba(255,255,255,0.35); text-decoration: line-through; font-size: 0.95rem; }
-  .calc-price-row .val.save { color: var(--green); font-weight: 700; }
-  .calc-savings-bar { margin: 20px 0; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
-  .calc-savings-bar-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--green)); border-radius: 4px; transition: width 0.5s ease; }
-  .calc-savings-label { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-top: 6px; }
-  .calc-cta-btn {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    width: 100%; margin-top: 24px; background: var(--teal); color: white;
-    border: none; border-radius: 10px; padding: 14px; font-size: 0.95rem;
-    font-weight: 600; cursor: pointer; transition: background 0.2s;
-    text-decoration: none;
-  }
-  .calc-cta-btn:hover { background: var(--teal-d); }
-  .calc-disclaimer { font-size: 0.72rem; color: rgba(255,255,255,0.3); text-align: center; margin-top: 10px; line-height: 1.5; }
-  @media (max-width: 768px) {
-    .calc-inner { grid-template-columns: 1fr; }
-    .calc-result { position: static; }
-  }
-
-  /* ── BOOKING FORM ── */
-  .booking-section { background: var(--off); }
-  .booking-section .section-title { color: var(--navy); }
-  .booking-wrap { max-width: 760px; margin: 0 auto; }
-  .booking-steps { display: flex; gap: 0; margin-bottom: 40px; position: relative; }
-  .booking-steps::before {
-    content: ''; position: absolute; top: 20px; left: 0; right: 0;
-    height: 2px; background: var(--border); z-index: 0;
-  }
-  .bstep {
-    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px;
-    position: relative; z-index: 1;
-  }
-  .bstep-num {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: white; border: 2px solid var(--border);
-    display: grid; place-items: center; font-size: 0.88rem; font-weight: 700;
-    color: var(--gray); transition: all 0.3s;
-  }
-  .bstep.active .bstep-num { background: var(--teal); border-color: var(--teal); color: white; }
-  .bstep.done .bstep-num { background: var(--green); border-color: var(--green); color: white; }
-  .bstep-label { font-size: 0.72rem; font-weight: 600; color: var(--gray); text-align: center; }
-  .bstep.active .bstep-label { color: var(--teal); }
-  .bstep.done .bstep-label { color: var(--green); }
-  .booking-card {
-    background: white; border-radius: 20px; padding: 36px;
-    box-shadow: 0 4px 32px rgba(13,43,69,0.08);
-  }
-  .booking-panel { display: none; }
-  .booking-panel.active { display: block; }
-  .booking-panel h3 { color: var(--navy); margin-bottom: 6px; font-size: 1.15rem; }
-  .booking-panel > p { color: var(--gray); font-size: 0.88rem; margin-bottom: 24px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-  .form-row.full { grid-template-columns: 1fr; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
-  .form-group input, .form-group select, .form-group textarea {
-    padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 10px;
-    font-size: 0.92rem; color: var(--text); background: white;
-    transition: border-color 0.2s; outline: none; font-family: inherit;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); }
-  .form-group textarea { resize: vertical; min-height: 90px; }
-  .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7A8B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
-  .service-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
-  .service-pick-btn {
-    border: 1.5px solid var(--border); border-radius: 12px; padding: 14px 12px;
-    background: white; cursor: pointer; text-align: center; transition: all 0.2s;
-  }
-  .service-pick-btn:hover { border-color: var(--teal); }
-  .service-pick-btn.selected { border-color: var(--teal); background: #E0F8F8; }
-  .service-pick-btn .spb-icon { font-size: 1.5rem; margin-bottom: 6px; }
-  .service-pick-btn h4 { font-size: 0.82rem; font-weight: 600; color: var(--navy); }
-  .service-pick-btn.selected h4 { color: var(--teal-d); }
-  .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .timeslots { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-  .timeslot {
-    padding: 8px 14px; border: 1.5px solid var(--border); border-radius: 8px;
-    font-size: 0.82rem; font-weight: 600; color: var(--gray); cursor: pointer;
-    background: white; transition: all 0.2s;
-  }
-  .timeslot:hover { border-color: var(--teal); color: var(--teal); }
-  .timeslot.selected { background: var(--teal); border-color: var(--teal); color: white; }
-  .privacy-row { display: flex; align-items: flex-start; gap: 10px; margin-top: 8px; }
-  .privacy-row input[type=checkbox] { margin-top: 3px; accent-color: var(--teal); flex-shrink: 0; width: 16px; height: 16px; }
-  .privacy-row span { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
-  .privacy-row a { color: var(--teal); }
-  .booking-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; gap: 12px; }
-  .btn-back {
-    background: var(--off); border: 1.5px solid var(--border); color: var(--navy);
-    padding: 12px 24px; border-radius: 10px; font-size: 0.92rem; font-weight: 600;
-    cursor: pointer; transition: border-color 0.2s;
-  }
-  .btn-back:hover { border-color: var(--teal); color: var(--teal); }
-  .btn-next {
-    flex: 1; background: var(--teal); color: white; border: none;
-    padding: 13px 28px; border-radius: 10px; font-size: 0.95rem; font-weight: 600;
-    cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .btn-next:hover { background: var(--teal-d); }
-  .booking-success {
-    text-align: center; padding: 20px 0;
-  }
-  .booking-success .success-icon {
-    width: 72px; height: 72px; background: #E0F5EC; border-radius: 50%;
-    display: grid; place-items: center; margin: 0 auto 20px;
-  }
-  .booking-success .success-icon svg { width: 36px; height: 36px; stroke: var(--green); fill: none; stroke-width: 2; }
-  .booking-success h3 { color: var(--navy); margin-bottom: 10px; }
-  .booking-success p { max-width: 400px; margin: 0 auto 24px; }
-  @media (max-width: 640px) {
-    .form-row { grid-template-columns: 1fr; }
-    .service-picker { grid-template-columns: 1fr 1fr; }
-    .booking-card { padding: 24px 20px; }
-    .date-grid { grid-template-columns: 1fr; }
-  }
 
   /* ── AI CHAT WIDGET ── */
   .chat-widget {
