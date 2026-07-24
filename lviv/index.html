@@ -487,6 +487,7 @@
   .umi-pkg-name { font-size: 0.8rem; font-weight: 700; color: var(--navy); }
   .umi-pkg-price { font-size: 0.92rem; font-weight: 700; color: #067A7A; white-space: nowrap; }
   .umi-pkg-inc { font-size: 0.72rem; color: var(--gray); margin-top: 3px; }
+  .umi-disclaimer { font-size: 0.68rem; color: var(--gray); line-height: 1.45; margin-top: 11px; padding-top: 9px; border-top: 1px solid var(--border); }
   .umi-steps { list-style: none; margin: 11px 0 2px; padding: 0; display: flex; flex-direction: column; gap: 7px; }
   .umi-steps li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.8rem; color: var(--text); line-height: 1.45; }
   .umi-steps li::before { content: ''; width: 16px; height: 16px; margin-top: 1px; flex-shrink: 0; border-radius: 5px; background: #E0F5EC url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12' fill='none' stroke='%232EAA6E' stroke-width='2.6'%3E%3Cpolyline points='2 6 5 9 10 3'/%3E%3C/svg%3E") center / 10px no-repeat; }
@@ -1308,9 +1309,9 @@
         <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
     </div>
-    <div class="chat-disclaimer en">Umi gives a quick AI pre-assessment, not a diagnosis.</div>
-    <div class="chat-disclaimer ua">Umi дає швидку AI-оцінку, а не діагноз.</div>
-    <div class="chat-disclaimer ru">Umi даёт быструю AI-оценку, а не диагноз.</div>
+    <div class="chat-disclaimer en">Umi is an AI pre-assessment, not a diagnosis. Prices are approximate; a dentist confirms in person.</div>
+    <div class="chat-disclaimer ua">Umi — це AI-оцінка, а не діагноз. Ціни орієнтовні; лікар підтверджує очно.</div>
+    <div class="chat-disclaimer ru">Umi — это AI-оценка, а не диагноз. Цены ориентировочные; врач подтверждает очно.</div>
   </div>
   <div class="chat-fab" onclick="toggleChat()" role="button" aria-label="Open Umi assistant">
     <div class="chat-badge">1</div>
@@ -1440,6 +1441,7 @@
       pv.action_plan.forEach(function(s){ ul.appendChild(umiEl('li', null, String(s))); });
       bub.appendChild(ul);
     }
+    if(pv.disclaimer){ bub.appendChild(umiEl('div','umi-disclaimer', pv.disclaimer)); }
     bub.appendChild(umiTgBtn());
     wrap.appendChild(bub);
     wrap.appendChild(umiEl('div','chat-time', umiNow()));
