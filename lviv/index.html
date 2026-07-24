@@ -480,6 +480,13 @@
   .umi-price { display: inline-flex; align-items: baseline; gap: 6px; margin-top: 10px; background: #E4FAFA; color: #067A7A; border: 1px solid #B7EFEF; border-radius: 8px; padding: 5px 11px; font-size: 0.85rem; font-weight: 700; }
   .umi-price small { font-weight: 600; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: #4A9A9A; }
   .umi-notes { font-size: 0.76rem; color: var(--green-d); margin-top: 6px; font-weight: 600; }
+  .umi-packages { margin-top: 11px; }
+  .umi-pkg { padding: 8px 0; border-top: 1px solid var(--border); }
+  .umi-pkg:first-child { border-top: none; padding-top: 2px; }
+  .umi-pkg-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .umi-pkg-name { font-size: 0.8rem; font-weight: 700; color: var(--navy); }
+  .umi-pkg-price { font-size: 0.92rem; font-weight: 700; color: #067A7A; white-space: nowrap; }
+  .umi-pkg-inc { font-size: 0.72rem; color: var(--gray); margin-top: 3px; }
   .umi-steps { list-style: none; margin: 11px 0 2px; padding: 0; display: flex; flex-direction: column; gap: 7px; }
   .umi-steps li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.8rem; color: var(--text); line-height: 1.45; }
   .umi-steps li::before { content: ''; width: 16px; height: 16px; margin-top: 1px; flex-shrink: 0; border-radius: 5px; background: #E0F5EC url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12' fill='none' stroke='%232EAA6E' stroke-width='2.6'%3E%3Cpolyline points='2 6 5 9 10 3'/%3E%3C/svg%3E") center / 10px no-repeat; }
@@ -1409,7 +1416,19 @@
     var bub = umiEl('div','chat-bubble');
     if(pv.title)   bub.appendChild(umiEl('div','umi-title', pv.title));
     if(pv.summary) bub.appendChild(umiEl('div','umi-summary', pv.summary));
-    if(!funny && pv.estimated_price_range){
+    if(!funny && Array.isArray(pv.packages) && pv.packages.length){
+      var pk = umiEl('div','umi-packages');
+      pv.packages.forEach(function(op){
+        var row = umiEl('div','umi-pkg');
+        var top = umiEl('div','umi-pkg-top');
+        top.appendChild(umiEl('span','umi-pkg-name', op.name || ''));
+        top.appendChild(umiEl('span','umi-pkg-price', op.price || ''));
+        row.appendChild(top);
+        if(op.includes) row.appendChild(umiEl('div','umi-pkg-inc', op.includes));
+        pk.appendChild(row);
+      });
+      bub.appendChild(pk);
+    } else if(!funny && pv.estimated_price_range){
       var p = umiEl('div','umi-price');
       p.appendChild(umiEl('small', null, umiT().price));
       p.appendChild(document.createTextNode(pv.estimated_price_range));
