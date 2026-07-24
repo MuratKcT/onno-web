@@ -409,89 +409,114 @@
   .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 2px; }
   .footer-logo span { font-size: 1.1rem; font-weight: 700; color: white; }
 
-  /* ── AI CHAT WIDGET ── */
-  .chat-widget {
-    position: fixed; bottom: 28px; left: 28px; z-index: 200;
-  }
+  /* ── AI CHAT WIDGET (Umi) ── */
+  .chat-widget { position: fixed; bottom: 28px; left: 28px; z-index: 200; }
   .chat-fab {
-    width: 56px; height: 56px; border-radius: 50%;
+    width: 58px; height: 58px; border-radius: 50%;
     background: var(--navy); border: 2px solid var(--teal);
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 20px rgba(13,43,69,0.4);
+    cursor: pointer; box-shadow: 0 6px 22px rgba(17,221,221,0.28);
+    transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease;
   }
-  .chat-fab:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(13,43,69,0.5); }
+  .chat-fab:hover { transform: translateY(-2px) scale(1.06); box-shadow: 0 10px 30px rgba(17,221,221,0.42); }
   .chat-fab svg { width: 26px; height: 26px; stroke: var(--teal); fill: none; stroke-width: 2; }
   .chat-badge {
-    position: absolute; top: -4px; right: -4px; width: 18px; height: 18px;
+    position: absolute; top: -3px; right: -3px; width: 18px; height: 18px;
     background: var(--green); border-radius: 50%; border: 2px solid white;
     font-size: 0.62rem; font-weight: 700; color: white;
     display: flex; align-items: center; justify-content: center;
   }
   .chat-panel {
-    position: absolute; bottom: 70px; left: 0;
-    width: 320px; background: white; border-radius: 18px;
-    box-shadow: 0 8px 48px rgba(13,43,69,0.2); overflow: hidden;
-    display: none; flex-direction: column;
-    border: 1px solid var(--border);
+    position: absolute; bottom: 74px; left: 0;
+    width: 344px; max-width: calc(100vw - 40px);
+    background: white; border-radius: 18px; overflow: hidden;
+    display: flex; flex-direction: column; border: 1px solid var(--border);
+    box-shadow: 0 14px 50px rgba(20,20,20,0.22);
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transform: translateY(12px) scale(0.98); transform-origin: bottom left;
+    transition: opacity 0.22s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1), visibility 0.22s;
   }
-  .chat-panel.open { display: flex; }
+  .chat-panel.open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
   .chat-header {
-    background: var(--navy); padding: 16px 18px;
+    background: var(--navy); padding: 15px 18px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .chat-header-left { display: flex; align-items: center; gap: 10px; }
+  .chat-header-left { display: flex; align-items: center; gap: 11px; }
   .chat-avatar {
-    width: 36px; height: 36px; background: var(--teal); border-radius: 50%;
-    display: grid; place-items: center;
+    width: 38px; height: 38px; background: var(--teal); border-radius: 50%;
+    display: grid; place-items: center; flex-shrink: 0;
   }
-  .chat-avatar svg { width: 18px; height: 18px; stroke: white; fill: none; stroke-width: 2; }
-  .chat-header h4 { color: white; font-size: 0.9rem; margin-bottom: 2px; }
-  .chat-status { font-size: 0.72rem; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 5px; }
+  .chat-avatar svg { width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 2; }
+  .chat-header h4 { color: white; font-size: 0.92rem; margin-bottom: 2px; letter-spacing: -0.01em; }
+  .chat-status { font-size: 0.72rem; color: rgba(255,255,255,0.65); display: flex; align-items: center; gap: 5px; }
   .chat-status::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; display: inline-block; }
-  .chat-close { background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer; padding: 4px; font-size: 1.2rem; line-height: 1; }
+  .chat-close { background: none; border: none; color: rgba(255,255,255,0.55); cursor: pointer; padding: 4px; font-size: 1.2rem; line-height: 1; transition: color 0.2s; }
   .chat-close:hover { color: white; }
-  .chat-beta { background: rgba(0,180,180,0.15); border-bottom: 1px solid var(--border); padding: 7px 18px; font-size: 0.7rem; color: var(--teal); font-weight: 600; text-align: center; }
-  .chat-messages { padding: 16px; display: flex; flex-direction: column; gap: 12px; max-height: 240px; overflow-y: auto; }
-  .chat-msg { max-width: 85%; }
+  .chat-messages {
+    padding: 16px; display: flex; flex-direction: column; gap: 12px;
+    height: 340px; max-height: 52vh; overflow-y: auto; scroll-behavior: smooth;
+    background: linear-gradient(180deg, #FBFDFD, #ffffff);
+  }
+  .chat-msg { max-width: 87%; animation: chatIn 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+  @keyframes chatIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
   .chat-msg.bot .chat-bubble {
     background: var(--off); border: 1px solid var(--border);
-    border-radius: 0 12px 12px 12px; padding: 10px 14px;
-    font-size: 0.85rem; color: var(--text); line-height: 1.5;
+    border-radius: 3px 14px 14px 14px; padding: 11px 14px;
+    font-size: 0.86rem; color: var(--text); line-height: 1.55;
   }
   .chat-msg.user { align-self: flex-end; }
   .chat-msg.user .chat-bubble {
-    background: var(--teal); color: white;
-    border-radius: 12px 12px 0 12px; padding: 10px 14px;
-    font-size: 0.85rem; line-height: 1.5;
+    background: var(--teal); color: #06312F;
+    border-radius: 14px 14px 3px 14px; padding: 11px 14px;
+    font-size: 0.86rem; line-height: 1.55; font-weight: 500;
   }
-  .chat-msg .chat-time { font-size: 0.68rem; color: var(--gray); margin-top: 4px; }
+  .chat-thumb { display: block; width: 128px; border-radius: 10px; margin-bottom: 7px; }
+  .chat-msg .chat-time { font-size: 0.66rem; color: var(--gray); margin-top: 4px; }
   .chat-msg.user .chat-time { text-align: right; }
-  .chat-quick-actions { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 7px; }
-  .chat-quick-label { font-size: 0.7rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
-  .chat-quick-btn {
-    display: flex; align-items: center; gap: 8px;
-    background: var(--off); border: 1px solid var(--border); border-radius: 8px;
-    padding: 8px 12px; font-size: 0.82rem; color: var(--navy); font-weight: 500;
-    cursor: pointer; transition: all 0.2s; text-align: left;
-  }
-  .chat-quick-btn:hover { border-color: var(--teal); color: var(--teal); background: #E0F8F8; }
-  .chat-quick-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
-  .chat-input-row { padding: 12px 16px; border-top: 1px solid var(--border); display: flex; gap: 8px; }
+
+  /* Umi structured result */
+  .umi-title { font-weight: 700; font-size: 0.92rem; color: var(--navy); margin-bottom: 4px; letter-spacing: -0.01em; }
+  .umi-summary { font-size: 0.85rem; color: var(--text); line-height: 1.55; }
+  .umi-price { display: inline-flex; align-items: baseline; gap: 6px; margin-top: 10px; background: #E4FAFA; color: #067A7A; border: 1px solid #B7EFEF; border-radius: 8px; padding: 5px 11px; font-size: 0.85rem; font-weight: 700; }
+  .umi-price small { font-weight: 600; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; color: #4A9A9A; }
+  .umi-notes { font-size: 0.76rem; color: var(--green-d); margin-top: 6px; font-weight: 600; }
+  .umi-steps { list-style: none; margin: 11px 0 2px; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  .umi-steps li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.8rem; color: var(--text); line-height: 1.45; }
+  .umi-steps li::before { content: ''; width: 16px; height: 16px; margin-top: 1px; flex-shrink: 0; border-radius: 5px; background: #E0F5EC url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12' fill='none' stroke='%232EAA6E' stroke-width='2.6'%3E%3Cpolyline points='2 6 5 9 10 3'/%3E%3C/svg%3E") center / 10px no-repeat; }
+  .umi-cta { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; background: var(--navy); color: #fff; border-radius: 9px; padding: 8px 14px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+  .umi-cta:hover { background: #000; transform: translateY(-1px); }
+  .umi-cta svg { width: 15px; height: 15px; fill: var(--teal); }
+
+  /* Typing indicator */
+  .chat-typing { display: inline-flex; align-items: center; gap: 4px; padding: 13px 15px; background: var(--off); border: 1px solid var(--border); border-radius: 3px 14px 14px 14px; }
+  .chat-typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: umiDot 1.2s infinite ease-in-out; }
+  .chat-typing span:nth-child(2) { animation-delay: 0.18s; }
+  .chat-typing span:nth-child(3) { animation-delay: 0.36s; }
+  @keyframes umiDot { 0%, 60%, 100% { opacity: 0.3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+
+  /* Photo preview + input */
+  .chat-preview { display: none; align-items: center; gap: 8px; padding: 9px 16px 0; }
+  .chat-preview.show { display: flex; }
+  .chat-preview img { width: 40px; height: 40px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); flex-shrink: 0; }
+  .chat-preview span { font-size: 0.74rem; color: var(--gray); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chat-preview button { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 1rem; line-height: 1; padding: 2px 4px; }
+  .chat-preview button:hover { color: #D64545; }
+  .chat-input-row { padding: 12px 14px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+  .chat-attach { width: 38px; height: 38px; flex-shrink: 0; border: 1.5px solid var(--border); background: white; border-radius: 9px; cursor: pointer; display: grid; place-items: center; color: var(--gray); transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .chat-attach:hover { border-color: var(--teal); color: var(--teal); }
+  .chat-attach.has-img { border-color: var(--teal); color: var(--teal); background: #E4FAFA; }
+  .chat-attach svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
   .chat-input {
-    flex: 1; border: 1.5px solid var(--border); border-radius: 8px;
-    padding: 8px 12px; font-size: 0.85rem; outline: none; font-family: inherit;
+    flex: 1; min-width: 0; border: 1.5px solid var(--border); border-radius: 9px;
+    padding: 9px 13px; font-size: 0.85rem; outline: none; font-family: inherit; color: var(--text);
     transition: border-color 0.2s;
   }
+  .chat-input::placeholder { color: var(--gray); }
   .chat-input:focus { border-color: var(--teal); }
-  .chat-send {
-    width: 36px; height: 36px; background: var(--teal); border: none;
-    border-radius: 8px; cursor: pointer; display: grid; place-items: center;
-    flex-shrink: 0; transition: background 0.2s;
-  }
-  .chat-send:hover { background: var(--teal-d); }
-  .chat-send svg { width: 16px; height: 16px; stroke: white; fill: none; stroke-width: 2; }
-  .chat-disclaimer { padding: 8px 16px; font-size: 0.65rem; color: var(--gray); text-align: center; border-top: 1px solid var(--border); line-height: 1.4; }
+  .chat-send { width: 38px; height: 38px; background: var(--teal); border: none; border-radius: 9px; cursor: pointer; display: grid; place-items: center; flex-shrink: 0; transition: background 0.2s, transform 0.15s; }
+  .chat-send:hover { background: var(--teal-d); transform: translateY(-1px); }
+  .chat-send svg { width: 17px; height: 17px; stroke: var(--navy); fill: none; stroke-width: 2.2; }
+  .chat-disclaimer { padding: 9px 16px 11px; font-size: 0.66rem; color: var(--gray); text-align: center; line-height: 1.4; }
 
   /* ── WHATSAPP FAB ── */
   .wa-fab {
@@ -1243,71 +1268,44 @@
   </div>
 </footer>
 
-<!-- AI CHAT WIDGET -->
+<!-- AI CHAT WIDGET (Umi) -->
 <div class="chat-widget" id="chat-widget">
-  <div class="chat-panel" id="chat-panel">
+  <div class="chat-panel" id="chat-panel" role="dialog" aria-label="Umi — ONNO">
     <div class="chat-header">
       <div class="chat-header-left">
         <div class="chat-avatar">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 3C8 3 5 6 5 9c0 4 2 9 3.5 12 .5 1 1.5 1 2 0L12 18l1.5 3c.5 1 1.5 1 2 0C17 18 19 13 19 9c0-3-3-6-7-6z"/></svg>
         </div>
         <div>
-          <h4>ONNO Асистент</h4>
-          <div class="chat-status en">Replies quickly</div>
-          <div class="chat-status ua">Відповідає швидко</div>
-          <div class="chat-status ru">Отвечает быстро</div>
+          <h4>Umi · ONNO</h4>
+          <div class="chat-status en">AI dental assistant</div>
+          <div class="chat-status ua">AI-асистент стоматолога</div>
+          <div class="chat-status ru">AI-ассистент стоматолога</div>
         </div>
       </div>
-      <button class="chat-close" onclick="toggleChat()">✕</button>
+      <button class="chat-close" onclick="toggleChat()" aria-label="Close">✕</button>
     </div>
-    <div class="chat-messages" id="chat-messages">
-      <div class="chat-msg bot">
-        <div class="chat-bubble en">👋 Hi! I'm ONNO's assistant. Ask me about dental treatment, transfer and accommodation, or how to book a consultation.</div>
-        <div class="chat-bubble ua">👋 Привіт! Я асистент ONNO. Запитайте про стоматологічне лікування, трансфер і проживання, або як записатися на консультацію.</div>
-        <div class="chat-bubble ru">👋 Привет! Я ассистент ONNO. Спросите о стоматологическом лечении, трансфере и проживании, или как записаться на консультацию.</div>
-        <div class="chat-time">—</div>
-      </div>
-    </div>
-    <div class="chat-quick-actions" id="chat-quick">
-      <div class="chat-quick-label en">Quick questions</div>
-      <div class="chat-quick-label ua">Швидкі питання</div>
-      <div class="chat-quick-label ru">Быстрые вопросы</div>
-      <button class="chat-quick-btn" onclick="chatQuick(this, 'dental_price')">
-        <svg viewBox="0 0 24 24"><path d="M12 3C8 3 5 6 5 9c0 4 2 9 3.5 12 .5 1 1.5 1 2 0L12 18l1.5 3c.5 1 1.5 1 2 0C17 18 19 13 19 9c0-3-3-6-7-6z"/></svg>
-        <span class="en">How much does treatment cost?</span>
-        <span class="ua">Скільки коштує лікування?</span>
-        <span class="ru">Сколько стоит лечение?</span>
-      </button>
-      <button class="chat-quick-btn" onclick="chatQuick(this, 'transfer')">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span class="en">How does transfer &amp; accommodation work?</span>
-        <span class="ua">Як працює трансфер і проживання?</span>
-        <span class="ru">Как работает трансфер и проживание?</span>
-      </button>
-      <button class="chat-quick-btn" onclick="chatQuick(this, 'eligibility')">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <span class="en">Can I travel to Lviv?</span>
-        <span class="ua">Чи можу я приїхати до Львова?</span>
-        <span class="ru">Могу ли я приехать во Львов?</span>
-      </button>
-      <button class="chat-quick-btn" onclick="chatQuick(this, 'book')">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span class="en">Book a consultation</span>
-        <span class="ua">Записатися на консультацію</span>
-        <span class="ru">Записаться на консультацию</span>
-      </button>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-preview" id="chat-preview">
+      <img id="chat-preview-img" alt="">
+      <span id="chat-preview-name"></span>
+      <button type="button" onclick="umiClearPhoto()" aria-label="Remove photo">✕</button>
     </div>
     <div class="chat-input-row">
-      <input class="chat-input" id="chat-input" type="text" placeholder="..." onkeydown="if(event.key==='Enter')chatSend()">
-      <button class="chat-send" onclick="chatSend()">
+      <input type="file" id="chat-file" accept="image/*" hidden onchange="umiPickPhoto(this)">
+      <button class="chat-attach" id="chat-attach" type="button" onclick="document.getElementById('chat-file').click()" aria-label="Add photo">
+        <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </button>
+      <input class="chat-input" id="chat-input" type="text" autocomplete="off" onkeydown="if(event.key==='Enter')umiSend()">
+      <button class="chat-send" id="chat-send" type="button" onclick="umiSend()" aria-label="Send">
         <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
     </div>
-    <div class="chat-disclaimer en">* This is a scaffold — connect to the real n8n assistant before launch.</div>
-    <div class="chat-disclaimer ua">* Це заготовка — до запуску підключити до реального n8n-асистента.</div>
-    <div class="chat-disclaimer ru">* Это заготовка — до запуска подключить к реальному n8n-ассистенту.</div>
+    <div class="chat-disclaimer en">Umi gives a quick AI pre-assessment, not a diagnosis.</div>
+    <div class="chat-disclaimer ua">Umi дає швидку AI-оцінку, а не діагноз.</div>
+    <div class="chat-disclaimer ru">Umi даёт быструю AI-оценку, а не диагноз.</div>
   </div>
-  <div class="chat-fab" onclick="toggleChat()">
+  <div class="chat-fab" onclick="toggleChat()" role="button" aria-label="Open Umi assistant">
     <div class="chat-badge">1</div>
     <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
   </div>
@@ -1319,70 +1317,142 @@
 </a>
 
 <script>
-  // ── CHAT WIDGET ──
-  var chatOpen = false;
-  function toggleChat(){
-    chatOpen = !chatOpen;
-    document.getElementById('chat-panel').classList.toggle('open', chatOpen);
-    document.querySelector('.chat-badge').style.display = chatOpen ? 'none' : 'flex';
-  }
-  var chatReplies = {
-    dental_price: {
-      ua: "Вартість залежить від типу лікування (імплант, вінір, коронка тощо) і кількості зубів. Надішліть фото та опишіть ситуацію — координатор дасть точну вартість без зобов'язань. 🦷",
-      ru: "Стоимость зависит от типа лечения (имплант, винир, коронка и т.д.) и количества зубов. Отправьте фото и опишите ситуацию — координатор даст точную стоимость без обязательств. 🦷",
-      en: "Cost depends on the type of treatment (implant, veneer, crown, etc.) and how many teeth are involved. Send photos and describe your situation — your coordinator will give you an exact, no-obligation quote. 🦷"
-    },
-    transfer: {
-      ua: "Трансфер і проживання — опційна послуга, яку узгоджуємо під ваші дати лікування. Координатор запропонує варіанти після того, як буде відомий план лікування. 🚐",
-      ru: "Трансфер и проживание — опциональная услуга, которую согласовываем под ваши даты лечения. Координатор предложит варианты после того, как будет известен план лечения. 🚐",
-      en: "Transfer and accommodation are optional, arranged around your treatment dates. Your coordinator will suggest options once your treatment plan is confirmed. 🚐"
-    },
-    eligibility: {
-      ua: "Львів за 70 км від польського кордону і вважається відносно безпечним регіоном. Жінки, діти й чоловіки з правом перетину кордону можуть приїхати без обмежень. Чоловікам призовного віку варто заздалегідь перевірити актуальні правила виїзду — можу з'єднати вас із координатором для уточнення деталей. ℹ️",
-      ru: "Львов в 70 км от польской границы и считается относительно безопасным регионом. Женщины, дети и мужчины с правом пересечения границы могут приехать без ограничений. Мужчинам призывного возраста стоит заранее проверить актуальные правила выезда — могу связать вас с координатором для уточнения деталей. ℹ️",
-      en: "Lviv is 70km from the Polish border and considered a relatively safe region. Women, children and men with a legal right to cross the border can travel without restriction. Men of conscription age should check current exit rules first — I can connect you with a coordinator to confirm the details. ℹ️"
-    },
-    book: {
-      ua: "Чудово — напишіть мені кілька слів про ситуацію, і я передам координатору. Або одразу перейдіть у Telegram для швидшої відповіді. 📅",
-      ru: "Отлично — напишите мне пару слов о ситуации, и я передам координатору. Или сразу перейдите в Telegram для более быстрого ответа. 📅",
-      en: "Great — tell me a bit about your situation and I'll pass it to a coordinator. Or message us directly on Telegram for a faster response. 📅"
-    }
+  // ── UMI CHAT WIDGET ──
+  var UMI_WEBHOOK = 'https://ai.vashausmishka.com/webhook/onno-umi'; // n8n "OnnO Umi" (path aktivasyonda onno-umi olacak)
+  var UMI_SOURCE  = 'onno-lviv';
+  var UMI_TG      = 'https://t.me/getonno_bot';
+  var umiPhoto = null;   // dataURL veya null
+  var umiOpen  = false;
+
+  var UMI_T = {
+    ua: { ph:"Опишіть проблему...", greet:"👋 Привіт! Я Umi, AI-асистент ONNO. Надішліть фото зубів і коротко опишіть проблему — дам швидку попередню оцінку.", price:"Орієнтовно", tg:"Написати в Telegram", err:"Не вдалося звʼязатися з асистентом. Спробуйте ще раз або напишіть нам у Telegram." },
+    ru: { ph:"Опишите проблему...", greet:"👋 Привет! Я Umi, AI-ассистент ONNO. Отправьте фото зубов и коротко опишите проблему — дам быструю предварительную оценку.", price:"Ориентировочно", tg:"Написать в Telegram", err:"Не удалось связаться с ассистентом. Попробуйте ещё раз или напишите нам в Telegram." },
+    en: { ph:"Describe the issue...", greet:"👋 Hi! I'm Umi, ONNO's AI assistant. Send a photo of your teeth and briefly describe the issue — I'll give you a quick pre-assessment.", price:"Estimated", tg:"Message on Telegram", err:"Couldn't reach the assistant. Please try again or message us on Telegram." }
   };
-  function chatQuick(btn, key){
-    btn.style.display = 'none';
-    var lang = document.body.classList.contains('ua') ? 'ua' : document.body.classList.contains('ru') ? 'ru' : 'en';
-    var label = btn.querySelector('.' + lang).textContent.trim();
-    appendChatMsg('user', label);
-    setTimeout(function(){
-      var reply = chatReplies[key];
-      appendChatMsg('bot', reply[lang] || reply.en);
-      if(key==='book'){ setTimeout(function(){ window.open('https://t.me/REPLACE_TELEGRAM','_blank'); }, 1200); }
-    }, 700);
+  function umiLang(){ return document.body.classList.contains('ua') ? 'ua' : document.body.classList.contains('ru') ? 'ru' : 'en'; }
+  function umiT(){ return UMI_T[umiLang()]; }
+  function umiSession(){ var s = localStorage.getItem('onno-session'); if(!s){ s = 'web-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,7); localStorage.setItem('onno-session', s); } return s; }
+  function umiApplyLang(){ var i = document.getElementById('chat-input'); if(i) i.placeholder = umiT().ph; }
+
+  function toggleChat(){
+    umiOpen = !umiOpen;
+    document.getElementById('chat-panel').classList.toggle('open', umiOpen);
+    var b = document.querySelector('.chat-badge'); if(b) b.style.display = umiOpen ? 'none' : 'flex';
+    if(umiOpen){
+      umiApplyLang();
+      if(!document.getElementById('chat-messages').children.length){ appendBot(umiT().greet); }
+      setTimeout(function(){ var i = document.getElementById('chat-input'); if(i) i.focus(); }, 260);
+    }
   }
-  function chatSend(){
+
+  function umiNow(){ return new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); }
+  function umiScroll(){ var m = document.getElementById('chat-messages'); m.scrollTop = m.scrollHeight; }
+  function umiEl(tag, cls, txt){ var e = document.createElement(tag); if(cls) e.className = cls; if(txt != null) e.textContent = txt; return e; }
+  function umiTgBtn(){
+    var a = document.createElement('a'); a.className = 'umi-cta'; a.href = UMI_TG; a.target = '_blank'; a.rel = 'noopener';
+    a.innerHTML = '<svg viewBox="0 0 24 24"><path d="M21.5 4.5L2.75 11.9c-1.27.5-1.27 1.2-.23 1.53l4.8 1.5 1.86 5.66c.22.6.37.85.76.85.32 0 .46-.15.64-.32l2.8-2.7 4.9 3.6c.9.5 1.55.24 1.78-.83l3.22-15.2c.34-1.32-.5-1.9-1.73-1.5z"/></svg>';
+    a.appendChild(document.createTextNode(umiT().tg));
+    return a;
+  }
+
+  function appendBot(text){
+    var m = document.getElementById('chat-messages');
+    var wrap = umiEl('div','chat-msg bot');
+    wrap.appendChild(umiEl('div','chat-bubble', text));
+    wrap.appendChild(umiEl('div','chat-time', umiNow()));
+    m.appendChild(wrap); umiScroll();
+  }
+  function appendUser(text, img){
+    var m = document.getElementById('chat-messages');
+    var wrap = umiEl('div','chat-msg user');
+    var bub = umiEl('div','chat-bubble');
+    if(img){ var im = document.createElement('img'); im.className = 'chat-thumb'; im.src = img; im.alt = ''; bub.appendChild(im); }
+    if(text){ bub.appendChild(document.createTextNode(text)); }
+    wrap.appendChild(bub);
+    wrap.appendChild(umiEl('div','chat-time', umiNow()));
+    m.appendChild(wrap); umiScroll();
+  }
+  function showTyping(){
+    var m = document.getElementById('chat-messages');
+    var t = umiEl('div','chat-msg bot'); t.id = 'umi-typing';
+    var d = umiEl('div','chat-typing'); d.appendChild(umiEl('span')); d.appendChild(umiEl('span')); d.appendChild(umiEl('span'));
+    t.appendChild(d); m.appendChild(t); umiScroll();
+  }
+  function hideTyping(){ var t = document.getElementById('umi-typing'); if(t) t.remove(); }
+
+  function umiPickPhoto(input){
+    var f = input.files && input.files[0]; if(!f) return;
+    var r = new FileReader();
+    r.onload = function(e){
+      umiPhoto = e.target.result;
+      document.getElementById('chat-preview-img').src = umiPhoto;
+      document.getElementById('chat-preview-name').textContent = f.name;
+      document.getElementById('chat-preview').classList.add('show');
+      document.getElementById('chat-attach').classList.add('has-img');
+    };
+    r.readAsDataURL(f);
+  }
+  function umiClearPhoto(){
+    umiPhoto = null;
+    document.getElementById('chat-file').value = '';
+    document.getElementById('chat-preview').classList.remove('show');
+    document.getElementById('chat-attach').classList.remove('has-img');
+  }
+
+  function renderUmi(data){
+    var a = data && data.analysis;
+    if(!a){ appendErr(); return; }
+    var pv = a.patient_view || {};
+    var funny = (a.image_validation && a.image_validation.is_valid === false) || (a.triage && a.triage.level === 'FUNNY');
+    var m = document.getElementById('chat-messages');
+    var wrap = umiEl('div','chat-msg bot');
+    var bub = umiEl('div','chat-bubble');
+    if(pv.title)   bub.appendChild(umiEl('div','umi-title', pv.title));
+    if(pv.summary) bub.appendChild(umiEl('div','umi-summary', pv.summary));
+    if(!funny && pv.estimated_price_range){
+      var p = umiEl('div','umi-price');
+      p.appendChild(umiEl('small', null, umiT().price));
+      p.appendChild(document.createTextNode(pv.estimated_price_range));
+      bub.appendChild(p);
+    }
+    if(!funny && pv.price_notes){ bub.appendChild(umiEl('div','umi-notes', pv.price_notes)); }
+    if(Array.isArray(pv.action_plan) && pv.action_plan.length){
+      var ul = umiEl('ul','umi-steps');
+      pv.action_plan.forEach(function(s){ ul.appendChild(umiEl('li', null, String(s))); });
+      bub.appendChild(ul);
+    }
+    bub.appendChild(umiTgBtn());
+    wrap.appendChild(bub);
+    wrap.appendChild(umiEl('div','chat-time', umiNow()));
+    m.appendChild(wrap); umiScroll();
+  }
+  function appendErr(){
+    var m = document.getElementById('chat-messages');
+    var wrap = umiEl('div','chat-msg bot');
+    var bub = umiEl('div','chat-bubble');
+    bub.appendChild(umiEl('div','umi-summary', umiT().err));
+    bub.appendChild(umiTgBtn());
+    wrap.appendChild(bub);
+    wrap.appendChild(umiEl('div','chat-time', umiNow()));
+    m.appendChild(wrap); umiScroll();
+  }
+
+  function umiSend(){
     var inp = document.getElementById('chat-input');
-    var msg = inp.value.trim();
-    if(!msg) return;
-    appendChatMsg('user', msg);
-    inp.value = '';
-    var lang = document.body.classList.contains('ua') ? 'ua' : document.body.classList.contains('ru') ? 'ru' : 'en';
-    setTimeout(function(){
-      var r = lang === 'ua'
-        ? 'Дякую за повідомлення! Координатор зв\'яжеться з вами найближчим часом. 💬'
-        : lang === 'ru'
-        ? 'Спасибо за сообщение! Координатор свяжется с вами в ближайшее время. 💬'
-        : 'Thanks for your message! A coordinator will get back to you shortly. 💬';
-      appendChatMsg('bot', r);
-    }, 800);
-  }
-  function appendChatMsg(type, html){
-    var msgs = document.getElementById('chat-messages');
-    var now  = new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-    var div  = document.createElement('div');
-    div.className = 'chat-msg ' + type;
-    div.innerHTML = '<div class="chat-bubble">'+html+'</div><div class="chat-time">'+now+'</div>';
-    msgs.appendChild(div);
-    msgs.scrollTop = msgs.scrollHeight;
+    var text = inp.value.trim();
+    if(!text && !umiPhoto) return;
+    var img = umiPhoto;
+    appendUser(text, img);
+    inp.value = ''; umiClearPhoto();
+    showTyping();
+    fetch(UMI_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text, image: img || '', lang: umiLang(), source: UMI_SOURCE, sessionId: umiSession() })
+    })
+    .then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.json(); })
+    .then(function(d){ hideTyping(); renderUmi(d); })
+    .catch(function(){ hideTyping(); appendErr(); });
   }
 
   // ── LANGUAGE ──
@@ -1391,6 +1461,7 @@
     document.body.classList.add(lang);
     document.documentElement.setAttribute('lang', lang === 'ua' ? 'uk' : lang);
     localStorage.setItem('onno-lang', lang);
+    if (typeof umiApplyLang === 'function') umiApplyLang();
     ['lb-en','lb-ua','lb-ru'].forEach(function(id){
       var el = document.getElementById(id);
       if(el) el.classList.remove('active');
