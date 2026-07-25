@@ -277,6 +277,38 @@
   .wp-text strong { font-size: 0.95rem; color: var(--navy); display: block; margin-bottom: 2px; }
   .wp-text span { font-size: 0.85rem; color: var(--gray); }
 
+  /* ── GUARANTEE + VISITS ── */
+  .guarantee { background: var(--off); }
+  .g-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 60px; }
+  .g-card {
+    background: white; border: 1px solid var(--border); border-radius: 18px;
+    padding: 30px; box-shadow: 0 2px 16px rgba(20,20,20,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .g-card:hover { transform: translateY(-4px); box-shadow: 0 10px 34px rgba(20,20,20,0.09); }
+  .g-icon { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 16px; }
+  .g-icon svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.9; }
+  .g-icon.t { background: #E0F8F8; color: var(--teal-d); }
+  .g-icon.g { background: #E0F5EC; color: var(--green-d); }
+  .g-term { font-size: 1.45rem; font-weight: 700; color: var(--navy); line-height: 1.15; letter-spacing: -0.01em; }
+  .g-card h3 { font-size: 1rem; color: var(--navy); margin: 6px 0 8px; }
+  .g-card p { font-size: 0.9rem; line-height: 1.6; }
+  .visits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .visit { position: relative; padding-top: 22px; border-top: 2px solid var(--border); }
+  .visit.key { border-top-color: var(--teal); }
+  .visit-tag {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
+    color: var(--gray); margin-bottom: 8px; text-transform: uppercase;
+  }
+  .visit.key .visit-tag { color: var(--teal-d); }
+  .visit h3 { font-size: 1.02rem; color: var(--navy); margin-bottom: 7px; }
+  .visit p { font-size: 0.87rem; line-height: 1.6; }
+  .visit-when { display: block; font-size: 0.78rem; font-weight: 600; color: var(--green-d); margin-top: 9px; }
+  @media (max-width: 860px) {
+    .g-grid { grid-template-columns: 1fr; gap: 18px; margin-bottom: 44px; }
+    .visits { grid-template-columns: 1fr; gap: 18px; }
+  }
+
   /* ── PROCESS ── */
   .process { background: var(--navy); }
   .process .section-label { color: var(--teal); }
@@ -321,6 +353,19 @@
   .tcard-avatar.n { background: linear-gradient(135deg, var(--navy), var(--navy-m)); }
   .tcard-name { font-size: 0.9rem; font-weight: 600; color: var(--navy); }
   .tcard-loc { font-size: 0.78rem; color: var(--gray); margin-top: 1px; }
+  /* Empty slots — fill with real reviews / photos before promoting the page */
+  .slot {
+    border: 1.5px dashed #CBD8D8; border-radius: 16px; background: rgba(255,255,255,0.5);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 30px 22px; min-height: 178px; gap: 9px;
+  }
+  .slot svg { width: 26px; height: 26px; stroke: #A9BCBC; fill: none; stroke-width: 1.6; }
+  .slot-label { font-size: 0.83rem; font-weight: 600; color: #8A9C9C; }
+  .slot-hint { font-size: 0.74rem; color: #A9BCBC; line-height: 1.5; max-width: 210px; }
+  .photo-slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 46px; }
+  .photo-slots .slot { min-height: 148px; }
+  .slots-head { font-size: 1rem; font-weight: 700; color: var(--navy); margin-top: 54px; }
+  @media (max-width: 860px) { .photo-slots { grid-template-columns: 1fr 1fr; } }
   .tcard-service {
     display: inline-block; margin-top: 6px;
     font-size: 0.72rem; font-weight: 600; color: var(--teal);
@@ -707,7 +752,8 @@
         <div class="hero-stats">
           <div class="stat"><div class="stat-num">70<span>km</span></div><div class="stat-label en">From the Polish border</div><div class="stat-label ua">До кордону з Польщею</div><div class="stat-label ru">До границы с Польшей</div></div>
           <div class="stat"><div class="stat-num">3</div><div class="stat-label en">Languages: UA / RU / EN</div><div class="stat-label ua">Мови: UA / RU / EN</div><div class="stat-label ru">Языки: UA / RU / EN</div></div>
-          <div class="stat"><div class="stat-num" data-placeholder="years">[YEARS]<span>+</span></div><div class="stat-label en">Years in practice</div><div class="stat-label ua">Років роботи клініки</div><div class="stat-label ru">Лет работы клиники</div></div>
+          <div class="stat"><div class="stat-num">17<span>+</span></div><div class="stat-label en">Years in practice</div><div class="stat-label ua">Років роботи клініки</div><div class="stat-label ru">Лет работы клиники</div></div>
+          <div class="stat"><div class="stat-num">4.5<span>k+</span></div><div class="stat-label en">Patients treated</div><div class="stat-label ua">Задоволених пацієнтів</div><div class="stat-label ru">Довольных пациентов</div></div>
         </div>
       </div>
       <div class="hero-visual">
@@ -942,17 +988,108 @@
           <div class="wlabel ru">Языки координаторов</div>
         </div>
         <div class="why-stat-card">
-          <div class="wnum" style="color:var(--green)" data-placeholder="patients">[PATIENTS]</div>
-          <div class="wlabel en">Patients treated (placeholder — insert real figure)</div>
-          <div class="wlabel ua">Проліковано пацієнтів (вставити реальну цифру)</div>
-          <div class="wlabel ru">Пролечено пациентов (вставить реальную цифру)</div>
+          <div class="wnum" style="color:var(--green)">4.5k+</div>
+          <div class="wlabel en">Patients treated</div>
+          <div class="wlabel ua">Задоволених пацієнтів</div>
+          <div class="wlabel ru">Довольных пациентов</div>
         </div>
         <div class="why-stat-card">
-          <div class="wnum" style="color:var(--navy)" data-placeholder="years">[YEARS]</div>
-          <div class="wlabel en">Years in practice (placeholder)</div>
-          <div class="wlabel ua">Років практики (вставити цифру)</div>
-          <div class="wlabel ru">Лет практики (вставить цифру)</div>
+          <div class="wnum" style="color:var(--navy)">17</div>
+          <div class="wlabel en">Years in practice</div>
+          <div class="wlabel ua">Років роботи клініки</div>
+          <div class="wlabel ru">Лет работы клиники</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE + VISITS -->
+<section id="guarantee" class="guarantee">
+  <div class="container">
+    <div class="section-label en">Guarantee &amp; Timing</div>
+    <div class="section-label ua">Гарантія та терміни</div>
+    <div class="section-label ru">Гарантия и сроки</div>
+    <h2 class="section-title en">Work that is backed, time that is planned</h2>
+    <h2 class="section-title ua">Робота, за яку відповідають. Час, який можна спланувати</h2>
+    <h2 class="section-title ru">Работа, за которую отвечают. Время, которое можно спланировать</h2>
+    <p class="section-sub en">You are travelling from abroad, so two things matter most: how long the result lasts, and how many days it takes.</p>
+    <p class="section-sub ua">Ви їдете з-за кордону, тож найважливіші дві речі: наскільки довго тримається результат і скільки днів це займе.</p>
+    <p class="section-sub ru">Вы едете из-за границы, поэтому важнее всего две вещи: насколько долго держится результат и сколько дней это займёт.</p>
+
+    <div class="g-grid">
+      <div class="g-card">
+        <div class="g-icon t">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="g-term en">Lifetime guarantee</div>
+        <div class="g-term ua">Довічна гарантія</div>
+        <div class="g-term ru">Пожизненная гарантия</div>
+        <h3 class="en">on implants</h3>
+        <h3 class="ua">на імпланти</h3>
+        <h3 class="ru">на импланты</h3>
+        <p class="en">MegaGen and Osstem implants (South Korea) carry a lifetime guarantee. The only condition: a check-up once or twice a year, which can be done remotely or at your dentist abroad.</p>
+        <p class="ua">Імпланти MegaGen та Osstem (Південна Корея) мають довічну гарантію. Єдина умова — огляд один-два рази на рік, який можна пройти дистанційно або у свого лікаря за кордоном.</p>
+        <p class="ru">Импланты MegaGen и Osstem (Южная Корея) имеют пожизненную гарантию. Единственное условие — осмотр один-два раза в год, который можно пройти дистанционно или у своего врача за границей.</p>
+      </div>
+      <div class="g-card">
+        <div class="g-icon g">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+        </div>
+        <div class="g-term en">5–10 years</div>
+        <div class="g-term ua">5–10 років</div>
+        <div class="g-term ru">5–10 лет</div>
+        <h3 class="en">on crowns and veneers</h3>
+        <h3 class="ua">на коронки та вініри</h3>
+        <h3 class="ru">на коронки и виниры</h3>
+        <p class="en">Ceramic and zirconia work is guaranteed for 5 to 10 years depending on the material. The exact term is written into your treatment plan before anything begins.</p>
+        <p class="ua">На керамічні та цирконієві роботи діє гарантія від 5 до 10 років залежно від матеріалу. Точний строк прописується у вашому плані лікування ще до початку робіт.</p>
+        <p class="ru">На керамические и циркониевые работы действует гарантия от 5 до 10 лет в зависимости от материала. Точный срок прописывается в вашем плане лечения ещё до начала работ.</p>
+      </div>
+    </div>
+
+    <div class="visits">
+      <div class="visit key">
+        <div class="visit-tag en">First visit</div>
+        <div class="visit-tag ua">Перший приїзд</div>
+        <div class="visit-tag ru">Первый приезд</div>
+        <h3 class="en">Diagnosis and implant placement</h3>
+        <h3 class="ua">Діагностика та встановлення імпланта</h3>
+        <h3 class="ru">Диагностика и установка импланта</h3>
+        <p class="en">A 3D scan, the treatment plan, then the placement itself: 20 to 40 minutes per implant under local anaesthetic. In many cases you leave with a temporary crown the same day.</p>
+        <p class="ua">3D-знімок, план лікування, далі саме встановлення: 20–40 хвилин на один імплант під місцевою анестезією. У багатьох випадках тимчасову коронку ставлять того ж дня.</p>
+        <p class="ru">3D-снимок, план лечения, затем сама установка: 20–40 минут на один имплант под местной анестезией. Во многих случаях временную коронку ставят в тот же день.</p>
+        <span class="visit-when en">2–3 days in Lviv</span>
+        <span class="visit-when ua">2–3 дні у Львові</span>
+        <span class="visit-when ru">2–3 дня во Львове</span>
+      </div>
+      <div class="visit">
+        <div class="visit-tag en">In between</div>
+        <div class="visit-tag ua">Між приїздами</div>
+        <div class="visit-tag ru">Между приездами</div>
+        <h3 class="en">Healing happens at home</h3>
+        <h3 class="ua">Загоєння — вдома</h3>
+        <h3 class="ru">Заживление — дома</h3>
+        <p class="en">The implant fuses with the bone while you carry on with your normal life abroad. Your coordinator stays in touch and checks in on how healing is going.</p>
+        <p class="ua">Імплант зростається з кісткою, поки ви живете звичайним життям за кордоном. Координатор залишається на зв'язку і перевіряє, як минає загоєння.</p>
+        <p class="ru">Имплант срастается с костью, пока вы живёте обычной жизнью за границей. Координатор остаётся на связи и проверяет, как проходит заживление.</p>
+        <span class="visit-when en">3–6 months, no travel</span>
+        <span class="visit-when ua">3–6 місяців, без поїздок</span>
+        <span class="visit-when ru">3–6 месяцев, без поездок</span>
+      </div>
+      <div class="visit">
+        <div class="visit-tag en">Second visit</div>
+        <div class="visit-tag ua">Другий приїзд</div>
+        <div class="visit-tag ru">Второй приезд</div>
+        <h3 class="en">The permanent crown</h3>
+        <h3 class="ua">Постійна коронка</h3>
+        <h3 class="ru">Постоянная коронка</h3>
+        <p class="en">A short trip to fit the permanent crown and check the bite. You go home with the finished result and a written guarantee.</p>
+        <p class="ua">Коротка поїздка, щоб встановити постійну коронку та перевірити прикус. Додому ви їдете з готовим результатом і письмовою гарантією.</p>
+        <p class="ru">Короткая поездка, чтобы установить постоянную коронку и проверить прикус. Домой вы едете с готовым результатом и письменной гарантией.</p>
+        <span class="visit-when en">1–2 days in Lviv</span>
+        <span class="visit-when ua">1–2 дні у Львові</span>
+        <span class="visit-when ru">1–2 дня во Львове</span>
       </div>
     </div>
   </div>
@@ -1032,7 +1169,8 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS + PHOTO SLOTS -->
+<!-- TODO: replace each .slot with a real review card / real before-after photo. Do not invent reviews. -->
 <section id="testimonials" class="testimonials">
   <div class="container">
     <div class="section-label en">Patient Reviews</div>
@@ -1041,54 +1179,66 @@
     <h2 class="section-title en">What patients say</h2>
     <h2 class="section-title ua">Що кажуть пацієнти</h2>
     <h2 class="section-title ru">Что говорят пациенты</h2>
-    <p class="section-sub en">Placeholder reviews below — replace with real patient feedback before launch.</p>
-    <p class="section-sub ua">Нижче — заготовки. Замініть на реальні відгуки пацієнтів перед публікацією сайту.</p>
-    <p class="section-sub ru">Ниже — заготовки. Замените на реальные отзывы пациентов перед публикацией сайта.</p>
+    <p class="section-sub en">We publish reviews only from patients who have actually been treated with us. The first ones are on their way.</p>
+    <p class="section-sub ua">Ми публікуємо відгуки лише від пацієнтів, які справді лікувалися у нас. Перші вже готуються.</p>
+    <p class="section-sub ru">Мы публикуем отзывы только от пациентов, которые действительно лечились у нас. Первые уже готовятся.</p>
     <div class="testimonials-grid">
-      <div class="tcard">
-        <div class="tcard-stars">★★★★★</div>
-        <blockquote class="en">"[Placeholder] Everything was explained clearly before I traveled, so there were no surprises when I arrived."</blockquote>
-        <blockquote class="ua">"[Заготовка] Мені все чітко пояснили ще до поїздки, тож жодних сюрпризів після приїзду не було."</blockquote>
-        <blockquote class="ru">"[Заготовка] Мне всё чётко объяснили ещё до поездки, поэтому никаких сюрпризов по приезду не было."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar t">O</div>
-          <div>
-            <div class="tcard-name">Оксана, [місто]</div>
-            <div class="tcard-service en">Dental treatment</div>
-            <div class="tcard-service ua">Стоматологічне лікування</div>
-            <div class="tcard-service ru">Стоматологическое лечение</div>
-          </div>
-        </div>
+      <div class="slot">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="slot-label en">Review slot</div>
+        <div class="slot-label ua">Місце для відгуку</div>
+        <div class="slot-label ru">Место для отзыва</div>
+        <div class="slot-hint en">A real patient review goes here.</div>
+        <div class="slot-hint ua">Тут буде реальний відгук пацієнта.</div>
+        <div class="slot-hint ru">Здесь будет реальный отзыв пациента.</div>
       </div>
-      <div class="tcard">
-        <div class="tcard-stars">★★★★★</div>
-        <blockquote class="en">"[Placeholder] The transfer made the whole trip much easier — I didn't have to figure out logistics myself."</blockquote>
-        <blockquote class="ua">"[Заготовка] Трансфер дуже спростив поїздку — не довелося самостійно розбиратися з логістикою."</blockquote>
-        <blockquote class="ru">"[Заготовка] Трансфер сильно упростил поездку — не пришлось самостоятельно разбираться с логистикой."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar g">M</div>
-          <div>
-            <div class="tcard-name">Марія, [місто]</div>
-            <div class="tcard-service en">Transfer &amp; accommodation</div>
-            <div class="tcard-service ua">Трансфер і проживання</div>
-            <div class="tcard-service ru">Трансфер и проживание</div>
-          </div>
-        </div>
+      <div class="slot">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="slot-label en">Review slot</div>
+        <div class="slot-label ua">Місце для відгуку</div>
+        <div class="slot-label ru">Место для отзыва</div>
+        <div class="slot-hint en">A real patient review goes here.</div>
+        <div class="slot-hint ua">Тут буде реальний відгук пацієнта.</div>
+        <div class="slot-hint ru">Здесь будет реальный отзыв пациента.</div>
       </div>
-      <div class="tcard">
-        <div class="tcard-stars">★★★★★</div>
-        <blockquote class="en">"[Placeholder] It was good to speak with someone in my own language about my treatment plan."</blockquote>
-        <blockquote class="ua">"[Заготовка] Було приємно обговорити план лікування рідною мовою."</blockquote>
-        <blockquote class="ru">"[Заготовка] Было приятно обсудить план лечения на родном языке."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar n">I</div>
-          <div>
-            <div class="tcard-name">Ігор, [місто]</div>
-            <div class="tcard-service en">Dental treatment</div>
-            <div class="tcard-service ua">Стоматологічне лікування</div>
-            <div class="tcard-service ru">Стоматологическое лечение</div>
-          </div>
-        </div>
+      <div class="slot">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="slot-label en">Review slot</div>
+        <div class="slot-label ua">Місце для відгуку</div>
+        <div class="slot-label ru">Место для отзыва</div>
+        <div class="slot-hint en">A real patient review goes here.</div>
+        <div class="slot-hint ua">Тут буде реальний відгук пацієнта.</div>
+        <div class="slot-hint ru">Здесь будет реальный отзыв пациента.</div>
+      </div>
+    </div>
+
+    <h3 class="slots-head en">Before and after</h3>
+    <h3 class="slots-head ua">До і після</h3>
+    <h3 class="slots-head ru">До и после</h3>
+    <div class="photo-slots">
+      <div class="slot">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <div class="slot-label en">Photo slot</div>
+        <div class="slot-label ua">Місце для фото</div>
+        <div class="slot-label ru">Место для фото</div>
+      </div>
+      <div class="slot">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <div class="slot-label en">Photo slot</div>
+        <div class="slot-label ua">Місце для фото</div>
+        <div class="slot-label ru">Место для фото</div>
+      </div>
+      <div class="slot">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <div class="slot-label en">Photo slot</div>
+        <div class="slot-label ua">Місце для фото</div>
+        <div class="slot-label ru">Место для фото</div>
+      </div>
+      <div class="slot">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <div class="slot-label en">Photo slot</div>
+        <div class="slot-label ua">Місце для фото</div>
+        <div class="slot-label ru">Место для фото</div>
       </div>
     </div>
   </div>
