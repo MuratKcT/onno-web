@@ -533,6 +533,34 @@
   .umi-pkg-price { font-size: 0.92rem; font-weight: 700; color: #067A7A; white-space: nowrap; }
   .umi-pkg-inc { font-size: 0.72rem; color: var(--gray); margin-top: 3px; }
   .umi-disclaimer { font-size: 0.68rem; color: var(--gray); line-height: 1.45; margin-top: 11px; padding-top: 9px; border-top: 1px solid var(--border); }
+
+  /* Lead capture card */
+  .umi-lead {
+    background: var(--navy); border-radius: 3px 14px 14px 14px;
+    padding: 15px 16px; color: #fff;
+  }
+  .umi-lead h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+  .umi-lead > p { font-size: 0.78rem; color: rgba(255,255,255,0.62); line-height: 1.5; margin-bottom: 12px; }
+  .umi-lead input[type=text] {
+    width: 100%; margin-bottom: 8px; padding: 9px 12px; font-size: 0.85rem; font-family: inherit;
+    color: #fff; background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.16);
+    border-radius: 9px; outline: none; transition: border-color 0.2s, background 0.2s;
+  }
+  .umi-lead input[type=text]::placeholder { color: rgba(255,255,255,0.42); }
+  .umi-lead input[type=text]:focus { border-color: var(--teal); background: rgba(255,255,255,0.12); }
+  .umi-consent { display: flex; align-items: flex-start; gap: 8px; margin: 4px 0 12px; }
+  .umi-consent input { margin-top: 2px; accent-color: var(--teal); width: 15px; height: 15px; flex-shrink: 0; }
+  .umi-consent span { font-size: 0.7rem; color: rgba(255,255,255,0.55); line-height: 1.45; }
+  .umi-lead-btn {
+    width: 100%; background: var(--teal); color: #06312F; border: none; border-radius: 9px;
+    padding: 10px; font-size: 0.87rem; font-weight: 700; font-family: inherit; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .umi-lead-btn:hover:not(:disabled) { background: #3BE9E9; transform: translateY(-1px); }
+  .umi-lead-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  .umi-lead-err { font-size: 0.72rem; color: #FFB4A8; margin-top: 8px; }
+  .umi-lead-ok { display: flex; align-items: center; gap: 9px; font-size: 0.85rem; }
+  .umi-lead-ok svg { width: 19px; height: 19px; stroke: var(--teal); fill: none; stroke-width: 2.4; flex-shrink: 0; }
   .umi-steps { list-style: none; margin: 11px 0 2px; padding: 0; display: flex; flex-direction: column; gap: 7px; }
   .umi-steps li { display: flex; align-items: flex-start; gap: 8px; font-size: 0.8rem; color: var(--text); line-height: 1.45; }
   .umi-steps li::before { content: ''; width: 16px; height: 16px; margin-top: 1px; flex-shrink: 0; border-radius: 5px; background: #E0F5EC url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12' fill='none' stroke='%232EAA6E' stroke-width='2.6'%3E%3Cpolyline points='2 6 5 9 10 3'/%3E%3C/svg%3E") center / 10px no-repeat; }
@@ -1483,9 +1511,18 @@
   var umiOpen  = false;
 
   var UMI_T = {
-    ua: { ph:"Опишіть проблему...", greet:"👋 Привіт! Я Umi, AI-асистент ONNO. Надішліть фото зубів і коротко опишіть проблему — дам швидку попередню оцінку.", price:"Орієнтовно", tg:"Написати в Telegram", err:"Не вдалося звʼязатися з асистентом. Спробуйте ще раз або напишіть нам у Telegram." },
-    ru: { ph:"Опишите проблему...", greet:"👋 Привет! Я Umi, AI-ассистент ONNO. Отправьте фото зубов и коротко опишите проблему — дам быструю предварительную оценку.", price:"Ориентировочно", tg:"Написать в Telegram", err:"Не удалось связаться с ассистентом. Попробуйте ещё раз или напишите нам в Telegram." },
-    en: { ph:"Describe the issue...", greet:"👋 Hi! I'm Umi, ONNO's AI assistant. Send a photo of your teeth and briefly describe the issue — I'll give you a quick pre-assessment.", price:"Estimated", tg:"Message on Telegram", err:"Couldn't reach the assistant. Please try again or message us on Telegram." }
+    ua: { ph:"Опишіть проблему...", greet:"👋 Привіт! Я Umi, AI-асистент ONNO. Надішліть фото зубів і коротко опишіть проблему — дам швидку попередню оцінку.", price:"Орієнтовно", tg:"Написати в Telegram", err:"Не вдалося звʼязатися з асистентом. Спробуйте ще раз або напишіть нам у Telegram.",
+          leadTitle:"Підготувати для вас детальний план?", leadSub:"Координатор порахує точну вартість і підбере зручні дати. Без зобовʼязань.",
+          leadName:"Ваше імʼя", leadContact:"Телефон, email або @telegram", leadConsent:"Погоджуюсь на обробку моїх даних для звʼязку з координатором.",
+          leadBtn:"Хочу план", leadErr:"Заповніть імʼя, контакт і позначте згоду.", leadOk:"Дякуємо! Координатор звʼяжеться з вами найближчим часом." },
+    ru: { ph:"Опишите проблему...", greet:"👋 Привет! Я Umi, AI-ассистент ONNO. Отправьте фото зубов и коротко опишите проблему — дам быструю предварительную оценку.", price:"Ориентировочно", tg:"Написать в Telegram", err:"Не удалось связаться с ассистентом. Попробуйте ещё раз или напишите нам в Telegram.",
+          leadTitle:"Подготовить для вас детальный план?", leadSub:"Координатор рассчитает точную стоимость и подберёт удобные даты. Без обязательств.",
+          leadName:"Ваше имя", leadContact:"Телефон, email или @telegram", leadConsent:"Согласен на обработку моих данных для связи с координатором.",
+          leadBtn:"Хочу план", leadErr:"Заполните имя, контакт и отметьте согласие.", leadOk:"Спасибо! Координатор свяжется с вами в ближайшее время." },
+    en: { ph:"Describe the issue...", greet:"👋 Hi! I'm Umi, ONNO's AI assistant. Send a photo of your teeth and briefly describe the issue — I'll give you a quick pre-assessment.", price:"Estimated", tg:"Message on Telegram", err:"Couldn't reach the assistant. Please try again or message us on Telegram.",
+          leadTitle:"Shall we prepare a detailed plan for you?", leadSub:"A coordinator will work out the exact cost and suitable dates. No obligation.",
+          leadName:"Your name", leadContact:"Phone, email or @telegram", leadConsent:"I agree to my data being processed so a coordinator can contact me.",
+          leadBtn:"Get my plan", leadErr:"Please add your name, a contact and tick the consent box.", leadOk:"Thank you! A coordinator will get in touch shortly." }
   };
   function umiLang(){ return document.body.classList.contains('ua') ? 'ua' : document.body.classList.contains('ru') ? 'ru' : 'en'; }
   function umiT(){ return UMI_T[umiLang()]; }
@@ -1596,6 +1633,7 @@
     wrap.appendChild(bub);
     wrap.appendChild(umiEl('div','chat-time', umiNow()));
     m.appendChild(wrap); umiScroll();
+    setTimeout(umiLeadCard, 600);
   }
   function appendErr(){
     var m = document.getElementById('chat-messages');
@@ -1606,6 +1644,68 @@
     wrap.appendChild(bub);
     wrap.appendChild(umiEl('div','chat-time', umiNow()));
     m.appendChild(wrap); umiScroll();
+  }
+
+  // ── LEAD CAPTURE ──
+  function umiLeadGiven(){ return localStorage.getItem('onno-lead') === '1'; }
+  function umiLeadCard(){
+    if (umiLeadGiven()) return;
+    var t = umiT();
+    var m = document.getElementById('chat-messages');
+    var wrap = umiEl('div','chat-msg bot'); wrap.id = 'umi-lead-card'; wrap.style.maxWidth = '95%';
+    var box = umiEl('div','umi-lead');
+    box.appendChild(umiEl('h4', null, t.leadTitle));
+    box.appendChild(umiEl('p', null, t.leadSub));
+    var nm = document.createElement('input'); nm.type='text'; nm.id='umi-lead-name'; nm.placeholder=t.leadName; nm.autocomplete='name';
+    var ct = document.createElement('input'); ct.type='text'; ct.id='umi-lead-contact'; ct.placeholder=t.leadContact;
+    box.appendChild(nm); box.appendChild(ct);
+    var cons = umiEl('label','umi-consent');
+    var cb = document.createElement('input'); cb.type='checkbox'; cb.id='umi-lead-consent';
+    cons.appendChild(cb); cons.appendChild(umiEl('span', null, t.leadConsent));
+    box.appendChild(cons);
+    var btn = document.createElement('button'); btn.type='button'; btn.className='umi-lead-btn'; btn.textContent=t.leadBtn;
+    btn.onclick = umiLeadSubmit;
+    box.appendChild(btn);
+    wrap.appendChild(box);
+    m.appendChild(wrap); umiScroll();
+  }
+  function umiLeadSubmit(){
+    var t = umiT();
+    var card = document.getElementById('umi-lead-card');
+    var name = (document.getElementById('umi-lead-name').value || '').trim();
+    var contact = (document.getElementById('umi-lead-contact').value || '').trim();
+    var ok = document.getElementById('umi-lead-consent').checked;
+    var old = card.querySelector('.umi-lead-err'); if(old) old.remove();
+    if(!name || !contact || !ok){
+      card.querySelector('.umi-lead').appendChild(umiEl('div','umi-lead-err', t.leadErr));
+      return;
+    }
+    var btn = card.querySelector('.umi-lead-btn');
+    btn.disabled = true; btn.textContent = '…';
+    var transcript = Array.prototype.slice.call(document.querySelectorAll('.chat-msg.user .chat-bubble'))
+      .map(function(el){ return el.textContent.trim(); }).filter(Boolean).join(' | ');
+    fetch(UMI_WEBHOOK, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'lead', name:name, contact:contact, message:transcript,
+                             lang:umiLang(), source:UMI_SOURCE, sessionId:umiSession() })
+    })
+    .then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); })
+    .then(function(){
+      localStorage.setItem('onno-lead','1');
+      var box = card.querySelector('.umi-lead');
+      box.innerHTML = '';
+      var okRow = umiEl('div','umi-lead-ok');
+      var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      svg.setAttribute('viewBox','0 0 24 24');
+      var pl = document.createElementNS('http://www.w3.org/2000/svg','polyline');
+      pl.setAttribute('points','20 6 9 17 4 12'); svg.appendChild(pl);
+      okRow.appendChild(svg); okRow.appendChild(document.createTextNode(t.leadOk));
+      box.appendChild(okRow);
+    })
+    .catch(function(){
+      btn.disabled = false; btn.textContent = t.leadBtn;
+      card.querySelector('.umi-lead').appendChild(umiEl('div','umi-lead-err', t.err));
+    });
   }
 
   function umiSend(){
