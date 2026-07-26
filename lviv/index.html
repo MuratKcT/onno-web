@@ -96,15 +96,36 @@
   /* ── HERO ── */
   .hero {
     padding-top: 130px; padding-bottom: 80px;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-m) 60%, #0F4A6E 100%);
     position: relative; overflow: hidden;
+    background: #101414 url('../assets/hero-clinic.webp') center right / cover no-repeat;
   }
+  /* Metnin okunduğu sol taraf koyu kalsın, sağda klinik görünsün */
   .hero::before {
     content: '';
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 60% 70% at 80% 50%, rgba(0,180,180,0.18) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(46,170,110,0.12) 0%, transparent 70%);
+      linear-gradient(100deg,
+        rgba(14,17,17,0.95) 0%,
+        rgba(14,17,17,0.90) 34%,
+        rgba(14,17,17,0.62) 62%,
+        rgba(14,17,17,0.42) 100%),
+      radial-gradient(ellipse 55% 70% at 80% 45%, rgba(17,221,221,0.20) 0%, transparent 70%),
+      radial-gradient(ellipse 45% 60% at 5% 85%, rgba(46,170,110,0.12) 0%, transparent 70%);
+  }
+  /* Üstteki koyu şerit: sabit nav'ın altında logo/menü okunaklı kalsın */
+  .hero::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 150px;
+    background: linear-gradient(180deg, rgba(10,12,12,0.75) 0%, transparent 100%);
+    pointer-events: none;
+  }
+  @media (max-width: 960px) {
+    .hero { background-position: 70% center; }
+    .hero::before {
+      background:
+        linear-gradient(180deg, rgba(14,17,17,0.93) 0%, rgba(14,17,17,0.88) 55%, rgba(14,17,17,0.80) 100%),
+        radial-gradient(ellipse 70% 50% at 70% 25%, rgba(17,221,221,0.18) 0%, transparent 70%);
+    }
   }
   .hero-inner {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -120,7 +141,8 @@
   .hero h1 { color: white; margin-bottom: 20px; }
   .hero h1 em { font-style: normal; color: var(--teal); }
   .hero > .container > .hero-inner > .hero-text > p {
-    color: rgba(255,255,255,0.72); font-size: 1.08rem; margin-bottom: 36px;
+    color: rgba(255,255,255,0.84); font-size: 1.08rem; margin-bottom: 36px;
+    max-width: 34rem;
   }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
   .btn-primary {
