@@ -8,6 +8,9 @@
 <meta property="og:title" content="ONNO — Стоматологія у Львові">
 <meta property="og:description" content="Стоматологічне лікування у Львові для українців, які зараз живуть за кордоном. Прозорі умови, трансфер, проживання.">
 <meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -22,18 +25,23 @@
     --gray:    #6D6D6D;
     --border:  #E2E7E7;
     --text:    #232323;
+    --mint:    #EAF7F6;
+    --mint-2:  #F4FBFA;
+    --ink:     #16302E;
     --radius:  14px;
     --shadow:  0 4px 32px rgba(20,20,20,0.08);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
+  body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.65; }
   img { max-width: 100%; display: block; }
   a { text-decoration: none; color: inherit; }
 
   /* ── TYPOGRAPHY ── */
-  h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.15; }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; line-height: 1.2; }
+  h1, h2 { font-family: 'Source Serif 4', Georgia, serif; text-wrap: balance; }
+  h1 { font-size: clamp(2rem, 5vw, 3.35rem); font-weight: 700; line-height: 1.14; letter-spacing: -0.018em; }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); font-weight: 700; line-height: 1.22; letter-spacing: -0.012em; }
+  p  { text-wrap: pretty; }
   h3 { font-size: 1.15rem; font-weight: 600; }
   p  { font-size: 1rem; color: var(--gray); }
 
@@ -95,37 +103,22 @@
 
   /* ── HERO ── */
   .hero {
-    padding-top: 130px; padding-bottom: 80px;
+    padding-top: 132px; padding-bottom: 84px;
     position: relative; overflow: hidden;
-    background: #101414 url('../assets/hero-clinic.webp') center right / cover no-repeat;
+    background:
+      linear-gradient(90deg,
+        var(--mint-2) 0%, var(--mint-2) 40%,
+        rgba(244,251,250,0.72) 54%, rgba(244,251,250,0) 72%),
+      url('../assets/hero-smile.webp') right center / cover no-repeat,
+      linear-gradient(135deg, #E8F6F5 0%, #F7FCFB 60%, #EEF8F4 100%);
+    border-bottom: 1px solid var(--border);
   }
-  /* Metnin okunduğu sol taraf koyu kalsın, sağda klinik görünsün */
   .hero::before {
     content: '';
-    position: absolute; inset: 0;
+    position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(100deg,
-        rgba(14,17,17,0.95) 0%,
-        rgba(14,17,17,0.90) 34%,
-        rgba(14,17,17,0.62) 62%,
-        rgba(14,17,17,0.42) 100%),
-      radial-gradient(ellipse 55% 70% at 80% 45%, rgba(17,221,221,0.20) 0%, transparent 70%),
-      radial-gradient(ellipse 45% 60% at 5% 85%, rgba(46,170,110,0.12) 0%, transparent 70%);
-  }
-  /* Üstteki koyu şerit: sabit nav'ın altında logo/menü okunaklı kalsın */
-  .hero::after {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 150px;
-    background: linear-gradient(180deg, rgba(10,12,12,0.75) 0%, transparent 100%);
-    pointer-events: none;
-  }
-  @media (max-width: 960px) {
-    .hero { background-position: 70% center; }
-    .hero::before {
-      background:
-        linear-gradient(180deg, rgba(14,17,17,0.93) 0%, rgba(14,17,17,0.88) 55%, rgba(14,17,17,0.80) 100%),
-        radial-gradient(ellipse 70% 50% at 70% 25%, rgba(17,221,221,0.18) 0%, transparent 70%);
-    }
+      radial-gradient(ellipse 46% 62% at 6% 16%, rgba(17,221,221,0.13) 0%, transparent 68%),
+      radial-gradient(ellipse 40% 55% at 88% 92%, rgba(46,170,110,0.10) 0%, transparent 70%);
   }
   .hero-inner {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -133,15 +126,16 @@
   }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0,180,180,0.18); border: 1px solid rgba(0,180,180,0.4);
-    border-radius: 50px; padding: 6px 16px; margin-bottom: 22px;
-    font-size: 0.82rem; font-weight: 600; color: #7EE8E8; letter-spacing: 0.04em;
+    background: #FFFFFF; border: 1px solid #BFEDEA;
+    border-radius: 50px; padding: 7px 16px; margin-bottom: 22px;
+    font-size: 0.82rem; font-weight: 600; color: #0A6E6B; letter-spacing: 0.02em;
+    box-shadow: 0 2px 10px rgba(16,48,46,0.06);
   }
   .hero-badge span:first-child { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; flex-shrink: 0; display: inline-block; }
-  .hero h1 { color: white; margin-bottom: 20px; }
-  .hero h1 em { font-style: normal; color: var(--teal); }
+  .hero h1 { color: var(--ink); margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: #0A8F8B; }
   .hero > .container > .hero-inner > .hero-text > p {
-    color: rgba(255,255,255,0.84); font-size: 1.08rem; margin-bottom: 36px;
+    color: #3F5F5C; font-size: 1.07rem; margin-bottom: 36px;
     max-width: 34rem;
   }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -155,26 +149,26 @@
   .btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,180,180,0.45); }
   .btn-secondary {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
-    color: white; padding: 14px 28px; border-radius: 10px;
-    font-size: 1rem; font-weight: 600; transition: background 0.2s;
+    background: #FFFFFF; border: 1.5px solid #CFE9E7;
+    color: var(--ink); padding: 13px 26px; border-radius: 10px;
+    font-size: 1rem; font-weight: 600; transition: border-color 0.2s, transform 0.15s;
   }
-  .btn-secondary:hover { background: rgba(255,255,255,0.18); }
+  .btn-secondary:hover { border-color: var(--teal-d); transform: translateY(-1px); }
   .hero-stats {
     display: flex; gap: 28px; margin-top: 44px; padding-top: 36px;
-    border-top: 1px solid rgba(255,255,255,0.12);
+    border-top: 1px solid #D6EAE8;
   }
   .stat { }
-  .stat-num { font-size: 1.9rem; font-weight: 700; color: white; line-height: 1; }
-  .stat-num span { color: var(--teal); }
-  .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .stat-num { font-size: 1.9rem; font-weight: 700; color: var(--ink); line-height: 1; font-family: 'Source Serif 4', Georgia, serif; }
+  .stat-num span { color: #0A8F8B; }
+  .stat-label { font-size: 0.8rem; color: #5C7A77; margin-top: 4px; }
   .hero-visual {
     display: flex; flex-direction: column; gap: 16px;
   }
   .hero-card {
-    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px; padding: 22px 26px;
-    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.94); border: 1px solid #DCEFED;
+    border-radius: 16px; padding: 20px 24px;
+    box-shadow: 0 6px 24px rgba(16,48,46,0.07);
     transition: transform 0.3s;
   }
   .hero-card:hover { transform: translateY(-3px); }
@@ -184,11 +178,11 @@
     display: grid; place-items: center; flex-shrink: 0;
   }
   .hero-card-icon svg { width: 24px; height: 24px; }
-  .hero-card-icon.teal  { background: rgba(0,180,180,0.25); }
-  .hero-card-icon.green { background: rgba(46,170,110,0.25); }
-  .hero-card-icon.navy  { background: rgba(255,255,255,0.15); }
-  .hero-card h3 { color: white; font-size: 1rem; }
-  .hero-card p { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 2px; }
+  .hero-card-icon.teal  { background: #DFF6F5; }
+  .hero-card-icon.green { background: #E2F5EC; }
+  .hero-card-icon.navy  { background: #E9F1F0; }
+  .hero-card h3 { color: var(--ink); font-size: 1rem; }
+  .hero-card p { color: #5C7A77; font-size: 0.85rem; margin-top: 2px; }
 
   /* ── TRUST BAR ── */
   .trust-bar { padding: 32px 0; border-bottom: 1px solid var(--border); }
@@ -688,6 +682,27 @@
   }
 
   /* ── RESPONSIVE ── */
+  /* Dar ekranlarda fotoğraf metnin altına kaçmasın: perde güçlensin */
+  @media (max-width: 1180px) {
+    .hero {
+      background:
+        linear-gradient(90deg,
+          var(--mint-2) 0%, var(--mint-2) 56%,
+          rgba(244,251,250,0.86) 70%, rgba(244,251,250,0.15) 100%),
+        url('../assets/hero-smile.webp') right center / cover no-repeat,
+        linear-gradient(135deg, #E8F6F5 0%, #F7FCFB 60%, #EEF8F4 100%);
+    }
+  }
+  @media (max-width: 860px) {
+    .hero {
+      background:
+        linear-gradient(180deg,
+          rgba(244,251,250,0.55) 0%, rgba(244,251,250,0.93) 30%, var(--mint-2) 58%),
+        url('../assets/hero-smile.webp') 72% top / cover no-repeat,
+        linear-gradient(135deg, #E8F6F5 0%, #F7FCFB 60%, #EEF8F4 100%);
+      padding-top: 190px;
+    }
+  }
   @media (max-width: 960px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero-visual { display: none; }
@@ -810,7 +825,7 @@
         <div class="hero-card">
           <div class="hero-card-top">
             <div class="hero-card-icon green">
-              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(46,170,110,0.9)" stroke-width="1.8"><path d="M12 2C7 2 3 6 3 11c0 3 1.5 5.5 3.5 7H12h5.5C19.5 16.5 21 14 21 11c0-5-4-9-9-9z"/><path d="M8 14c0 0 1 3 4 3s4-3 4-3"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1E7A4E" stroke-width="1.8"><path d="M12 2C7 2 3 6 3 11c0 3 1.5 5.5 3.5 7H12h5.5C19.5 16.5 21 14 21 11c0-5-4-9-9-9z"/><path d="M8 14c0 0 1 3 4 3s4-3 4-3"/></svg>
             </div>
             <div>
               <h3><span class="en">Dental treatment</span><span class="ua">Стоматологічне лікування</span><span class="ru">Стоматологическое лечение</span></h3>
@@ -821,7 +836,7 @@
         <div class="hero-card">
           <div class="hero-card-top">
             <div class="hero-card-icon navy">
-              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2C4B48" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </div>
             <div>
               <h3><span class="en">Transfer &amp; accommodation</span><span class="ua">Трансфер і проживання</span><span class="ru">Трансфер и проживание</span></h3>
