@@ -351,6 +351,41 @@
   /* ── TESTIMONIALS ── */
   .testimonials { background: var(--off); }
   .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  /* Once / sonra vakalari */
+  .cases { margin-top: 64px; }
+  .cases-head {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;
+  }
+  .cases-note { font-size: 0.86rem; color: var(--gray); margin-bottom: 30px; max-width: 44rem; }
+  .cases-grid { display: grid; gap: 20px; }
+  .case {
+    background: #fff; border: 1px solid var(--border); border-radius: 18px;
+    overflow: hidden; box-shadow: 0 2px 16px rgba(16,48,46,0.05);
+    display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    align-items: center;
+  }
+  .case-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+  .case-shot { position: relative; aspect-ratio: 4 / 3; background: #EDF4F3; }
+  .case-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .case-tag {
+    position: absolute; left: 8px; bottom: 8px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 6px; backdrop-filter: blur(4px);
+  }
+  .case-tag.b { background: rgba(22,48,46,0.72); color: #fff; }
+  .case-tag.a { background: rgba(10,143,139,0.9); color: #fff; }
+  .case-cap { padding: 22px 26px; }
+  .case-cap h4 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1.12rem; font-weight: 700; color: var(--ink); margin-bottom: 7px;
+  }
+  .case-cap p { font-size: 0.87rem; color: var(--gray); line-height: 1.6; }
+  @media (max-width: 820px) {
+    .case { grid-template-columns: 1fr; }
+    .case-cap { padding: 18px 20px 20px; }
+  }
+
   /* Google puani */
   .g-rating {
     display: inline-flex; align-items: center; gap: 14px;
@@ -1297,6 +1332,65 @@
             <div class="rcard-src en">Review on Google</div>
             <div class="rcard-src ua">Відгук у Google</div>
             <div class="rcard-src ru">Отзыв в Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cases">
+      <h3 class="cases-head en">Before and after</h3>
+      <h3 class="cases-head ua">До і після</h3>
+      <h3 class="cases-head ru">До и после</h3>
+      <p class="cases-note en">Real cases from the partner clinic, cropped to the treated area only. Every mouth is different — these are examples, not a promise of the same result.</p>
+      <p class="cases-note ua">Реальні випадки з клініки-партнера, обрізані лише до зони лікування. Кожен випадок індивідуальний — це приклади, а не обіцянка такого ж результату.</p>
+      <p class="cases-note ru">Реальные случаи из клиники-партнёра, обрезаны только до зоны лечения. Каждый случай индивидуален — это примеры, а не обещание такого же результата.</p>
+      <div class="cases-grid">
+        <div class="case">
+          <div class="case-pair">
+            <div class="case-shot">
+              <img src="../assets/cases/case-decay-before.webp" alt="" loading="lazy" width="720" height="540">
+              <span class="case-tag b en">Before</span><span class="case-tag b ua">До</span><span class="case-tag b ru">До</span>
+            </div>
+            <div class="case-shot">
+              <img src="../assets/cases/case-decay-after.webp" alt="" loading="lazy" width="720" height="540">
+              <span class="case-tag a en">After</span><span class="case-tag a ua">Після</span><span class="case-tag a ru">После</span>
+            </div>
+          </div>
+          <div class="case-cap">
+            <h4 class="en">Caries treatment and restoration</h4><h4 class="ua">Лікування карієсу та реставрація</h4><h4 class="ru">Лечение кариеса и реставрация</h4>
+            <p class="en">Multiple decayed front teeth restored in one treatment plan.</p><p class="ua">Кілька уражених карієсом передніх зубів відновлено за один план лікування.</p><p class="ru">Несколько поражённых кариесом передних зубов восстановлены за один план лечения.</p>
+          </div>
+        </div>
+        <div class="case">
+          <div class="case-pair">
+            <div class="case-shot">
+              <img src="../assets/cases/case-hygiene-before.webp" alt="" loading="lazy" width="720" height="540">
+              <span class="case-tag b en">Before</span><span class="case-tag b ua">До</span><span class="case-tag b ru">До</span>
+            </div>
+            <div class="case-shot">
+              <img src="../assets/cases/case-hygiene-after.webp" alt="" loading="lazy" width="720" height="540">
+              <span class="case-tag a en">After</span><span class="case-tag a ua">Після</span><span class="case-tag a ru">После</span>
+            </div>
+          </div>
+          <div class="case-cap">
+            <h4 class="en">Professional cleaning</h4><h4 class="ua">Професійна гігієна</h4><h4 class="ru">Профессиональная гигиена</h4>
+            <p class="en">Hardened calculus removed, gum line back to healthy.</p><p class="ua">Затверділий зубний камінь знято, ясна повернулися до здорового стану.</p><p class="ru">Затвердевший зубной камень снят, дёсны вернулись к здоровому состоянию.</p>
+          </div>
+        </div>
+        <div class="case">
+          <div class="case-pair">
+            <div class="case-shot">
+              <img src="../assets/cases/case-implant-before.webp" alt="" loading="lazy" width="720" height="540">
+              <span class="case-tag b en">Before</span><span class="case-tag b ua">До</span><span class="case-tag b ru">До</span>
+            </div>
+            <div class="case-shot">
+              <img src="../assets/cases/case-implant-after.webp" alt="" loading="lazy" width="720" height="540">
+              <span class="case-tag a en">After</span><span class="case-tag a ua">Після</span><span class="case-tag a ru">После</span>
+            </div>
+          </div>
+          <div class="case-cap">
+            <h4 class="en">Missing tooth replaced</h4><h4 class="ua">Заміщення втраченого зуба</h4><h4 class="ru">Замещение утраченного зуба</h4>
+            <p class="en">The gap closed with a fixed restoration — chewing side restored.</p><p class="ua">Проміжок закрито незнімною конструкцією — жувальний бік відновлено.</p><p class="ru">Промежуток закрыт несъёмной конструкцией — жевательная сторона восстановлена.</p>
           </div>
         </div>
       </div>
