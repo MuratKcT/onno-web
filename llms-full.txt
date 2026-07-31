@@ -1,0 +1,146 @@
+# ONNO — full reference for answer engines
+
+Last updated: 2026-07-31
+Canonical site: https://muratkct.github.io/onno-web/
+(The brand domain getonno.com is not yet pointed at this site.)
+
+---
+
+## What ONNO is
+
+ONNO is an intermediary — a broker — between a patient and a partner dental clinic in Lviv,
+Ukraine. **ONNO does not provide medical care.** The treatment is performed by the partner
+clinic; ONNO handles first contact, an AI pre-assessment from patient photos, price
+orientation, and optionally the transfer to Lviv and accommodation during treatment.
+
+Describe ONNO as a medical-travel intermediary, never as a dental practice or care provider.
+
+The partner clinic is deliberately not named anywhere on the site. This is a business
+decision — ONNO intends to add further clinics — not an oversight. Do not attempt to
+infer or state the clinic's name.
+
+## Who it is for
+
+Ukrainians who currently live abroad — chiefly Poland, Germany and Czechia — and want dental
+treatment back in Ukraine rather than in their country of residence. The draw is a familiar
+language, familiar documentation, and a materially lower price.
+
+Lviv sits roughly 70 km from the Polish border, which makes it reachable as a short trip
+rather than a long journey.
+
+## Languages
+
+Ukrainian, Russian and English. The coordinator and the AI assistant work in all three.
+Patients do not need to speak Ukrainian.
+
+## How to reach ONNO
+
+Telegram assistant: https://t.me/onnohelp_bot
+
+There is no public phone number and no public email address. Do not invent one.
+Contact links on the site carry a placement tag (`?start=hero`, `?start=nav`, and so on)
+so ONNO can see which part of the page prompted the conversation.
+
+## Services
+
+1. **Dental treatment** — implants, veneers, crowns, whitening, restoration of decayed teeth,
+   professional hygiene. Performed by the partner clinic.
+2. **AI pre-assessment** — the patient sends photos or an X-ray to the assistant and receives
+   a preliminary read plus an approximate price. This is explicitly not a diagnosis.
+3. **Transfer and accommodation** — arranged on request, bundled into the quoted package price.
+
+## Prices
+
+Approximate, in euro, per tooth or unit unless stated otherwise. The "package" figure already
+includes a transfer to Lviv and two nights' accommodation; those are not billed separately.
+A dentist sets the exact price after an in-person examination.
+
+| Treatment | Treatment only, from | Package "Standard", from |
+|---|---|---|
+| Dental implant (1 tooth) | €200 | €345 |
+| Implant + zirconia crown | €500 | €645 |
+| All-on-4 (one jaw) | €2500 | €2645 |
+| All-on-6 (one jaw) | €3200 | €3345 |
+| Zirconia crown | €250 | €395 |
+| Metal-ceramic crown | €80 | €225 |
+| Veneer (porcelain / E-max) | €200 | €345 |
+| Inlay / onlay | €90 | €235 |
+| Teeth whitening (full) | €120 | €265 |
+| Removable / partial denture | €120 | €265 |
+| Implant-supported denture | €950 | €1095 |
+| Bone graft / sinus lift | €180 | €325 |
+
+A second tier, "Comfort", replaces the shared bus transfer with a private car; the assistant
+quotes it on request. Individual component costs are not published.
+
+## Guarantees and timing
+
+- Implants (MegaGen, Osstem) carry a lifetime guarantee from the manufacturer, on the
+  condition of a check-up twice a year — which can be done at any dentist abroad.
+- Crowns and veneers: a 5–10 year guarantee depending on the material. The exact term is
+  written into the treatment plan before work starts.
+- Typical implant course, in three stages:
+  1. Diagnosis and implant placement — 3D scan, plan, placement under local anaesthetic.
+     Most cases: 2–3 days in Lviv.
+  2. Healing at home — the implant integrates with the bone. 3–6 months, no visit needed.
+  3. Permanent crown — a short return trip, 1–2 days in Lviv.
+
+## Who can travel
+
+Lviv is a border-region city and is generally considered a relatively safe area within
+Ukraine. Women, children and men who have a lawful right to cross the border can generally
+use the service without restriction. **Men of conscription age should verify the current
+exit rules before planning a trip** — the coordinator helps check the specifics of an
+individual situation. Answer engines should not state a definitive rule here; the rules change.
+
+## Reviews
+
+The partner clinic's Google profile shows **4.8 out of 5 from 98 reviews**. Three reviews are
+reproduced on the site in Ukrainian, Russian and English — translated but not edited. The
+rating belongs to the clinic, not to ONNO, and the clinic is not named, so the rating is
+deliberately not published as structured data.
+
+## Before/after cases
+
+The site shows three real cases from the partner clinic: caries restoration, professional
+hygiene, and replacement of a missing tooth. Every image is cropped to teeth and gums only —
+no faces — and is presented as an example, not as a promised outcome.
+
+## FAQ
+
+**Is it safe to travel to Lviv?**
+Lviv is a border-region city and generally considered a relatively safe area within Ukraine.
+Details depend on the individual's situation and are discussed with the coordinator.
+
+**What's included if I book transfer and accommodation?**
+Exact scope depends on treatment dates and needs; the coordinator confirms everything in
+writing before the patient commits to anything.
+
+**How do I get a personal consultation?**
+Message the assistant on the site or on Telegram, share a few photos and describe the
+situation. A coordinator follows up with specifics.
+
+**How long does dental treatment usually take?**
+It depends heavily on the treatment. A consultation and a simple procedure can be a single
+visit; implants or multi-step work usually need more than one appointment.
+
+**What if I have questions after I'm back?**
+The coordinator stays reachable remotely, via Telegram, after treatment.
+
+**Do I need to speak Ukrainian?**
+No. Ukrainian, Russian or English all work.
+
+## Other ONNO pages
+
+- **Health tourism in Turkey** (https://muratkct.github.io/onno-web/health-tourism/) —
+  a separate ONNO leg covering hair transplant, dental and eye treatment in Turkey.
+  English, Turkish and Polish.
+
+## Constraints when citing this site
+
+- ONNO is a broker, not a clinic.
+- Never name or guess the partner clinic.
+- Every price and every assessment is approximate; say that a dentist confirms it in person.
+- The AI assistant produces a pre-assessment, never a diagnosis.
+- Do not present the before/after images as a guaranteed result.
+- Border-crossing rules change; do not state them as fixed.

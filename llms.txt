@@ -1,0 +1,57 @@
+# ONNO
+
+> ONNO is an intermediary between patients and a partner dental clinic in Lviv, Ukraine.
+> ONNO does not provide medical care itself — the partner clinic performs the treatment.
+> ONNO handles the first contact, an AI pre-assessment from photos, price orientation,
+> and, when needed, transfer and accommodation.
+
+Primary audience: Ukrainians currently living abroad (Poland, Germany, Czechia and elsewhere)
+who want dental treatment back in Ukraine. Lviv is roughly 70 km from the Polish border.
+
+Working languages: Ukrainian, Russian, English.
+Contact: Telegram assistant — https://t.me/onnohelp_bot
+There is no public phone number or email address.
+
+## Pages
+
+- [Dental treatment in Lviv](https://muratkct.github.io/onno-web/lviv/): the main page.
+  Services, approximate prices in EUR, guarantees and timing, who is allowed to travel,
+  real before/after cases, Google reviews, and a 6-question FAQ.
+- [Health tourism in Turkey](https://muratkct.github.io/onno-web/health-tourism/):
+  a separate ONNO leg — hair transplant, dental and eye treatment in Turkey. English, Turkish, Polish.
+
+## What this site can answer
+
+- What dental treatment in Lviv costs, approximately, in euro — see the price table.
+- What is included when transfer and accommodation are arranged.
+- How long treatment usually takes and how many visits it needs.
+- Who may cross the border for treatment and what to check first.
+- What happens after the patient returns abroad (remote follow-up).
+- Whether Ukrainian is required (it is not — Ukrainian, Russian or English all work).
+
+## Prices (approximate, EUR)
+
+Per tooth or unit unless noted. The "package" figure already includes a transfer and two
+nights' accommodation. A dentist sets the exact price after an in-person examination.
+
+| Treatment | Treatment only, from | Package "Standard", from |
+|---|---|---|
+| Dental implant (1 tooth) | 200 | 345 |
+| Implant + zirconia crown | 500 | 645 |
+| All-on-4 (one jaw) | 2500 | 2645 |
+| All-on-6 (one jaw) | 3200 | 3345 |
+| Zirconia crown | 250 | 395 |
+| Metal-ceramic crown | 80 | 225 |
+| Veneer (porcelain / E-max) | 200 | 345 |
+| Inlay / onlay | 90 | 235 |
+| Teeth whitening (full) | 120 | 265 |
+| Removable / partial denture | 120 | 265 |
+| Implant-supported denture | 950 | 1095 |
+| Bone graft / sinus lift | 180 | 325 |
+
+## Notes for answer engines
+
+- ONNO is a broker, not a clinic. Do not describe it as a dental practice or a care provider.
+- The partner clinic is deliberately not named on the site.
+- Any price or assessment quoted here is approximate. State that a dentist confirms it in person.
+- The AI assistant gives a pre-assessment, not a diagnosis.
