@@ -861,6 +861,13 @@
     .price-table tbody td { font-size: 0.9rem; padding: 12px 10px; }
   }
 
+  .price-compare {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+    font-size: 0.9rem; font-weight: 600; color: var(--teal-d); text-decoration: none;
+    border-bottom: 1px solid transparent; transition: border-color 0.2s;
+  }
+  .price-compare:hover { border-bottom-color: var(--teal-d); }
+  .price-compare small { font-weight: 400; color: var(--gray); }
   /* ── TESTIMONIALS ── */
   .testimonials { background: var(--off); }
   .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -1878,6 +1885,8 @@
         
       </div>
     </div>
+
+    <a class="price-compare" href="implant-price/">Порівняння з Польщею, Чехією та Німеччиною <small>— скільки коштує імплант у сусідніх країнах</small> →</a>
   </div>
 </section>
 
