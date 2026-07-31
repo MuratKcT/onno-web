@@ -4,33 +4,44 @@ Tarih: 2026-07-31 · Kapsam: `getonno.com`, `muratkct.github.io/onno-web/` (kök
 
 ---
 
-## 0. Tek cümlelik durum
+## 0. Yayın durumu — bu planın okunma biçimini belirler
 
-Site teknik olarak sağlam ama **arama motorları ve AI motorları için pratikte görünmez**: marka alan adı boş, para sayfalarına giden tarama yolu yok, içeriğin üçte ikisi CSS ile gizli, hiçbir yerde yapısal veri yok.
+**Site bilerek yayında değil.** `getonno.com` kullanıcıya ait, Hostinger'da park halinde; ONNO hâlâ yapım aşamasında. Amaç, yayın gününde SEO/AIGEO'nun hazır olması.
+
+Bu yüzden işler ikiye ayrılıyor:
+
+| | |
+|---|---|
+| **Şimdi yapılabilir** | Repoda duran her şey: şema, meta, alt metin, fiyat içeriği, dil mimarisi, içerik üretimi. Hiçbiri siteyi yayına almaz, hiçbiri geri dönülemez değil. |
+| **Yayın gününe saklanacak** | Alan adı bağlama, Search Console'a sitemap gönderme, dış link/bahis çalışması. Bunlar taramayı *davet eder* — erken tetiklenirse yarım site indekslenir. |
+
+> ⚠️ **Erken indekslenme riski:** Sitemap'i Search Console'a şimdi göndermek, yarım içerikli `github.io` URL'lerini indeksletir. Sonra alan adına geçince GitHub Pages 301 verir ve taşınma yönetilebilir — ama ilk izlenim yarım siteyle oluşur. Gönderimi yayın gününe bırak.
 
 ---
 
-## 1. BLOKE EDİCİ — bunlar çözülmeden diğer hiçbir iş sonuç vermez
+## 1. YAYIN GÜNÜ BLOKE EDİCİLERİ — hazırlığı şimdi, tetiği o gün
 
-### 1.1 `getonno.com` park edilmiş durumda
-Hostinger park sayfası dönüyor ve üstünde şu var:
+### 1.1 `getonno.com` park sayfası döndürüyor
+Şu an Hostinger park sayfası ve üstünde şu var:
 ```
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 ```
-Yani marka alan adı arama motorlarına **"beni indeksleme, linklerimi izleme, snippet gösterme"** diyor. Gerçek site `muratkct.github.io/onno-web/` altında — üçüncü taraf bir alan adının alt klasöründe.
+Yayınlanmamış bir site için bu **zararsız, hatta doğru** — marka adı boşuna indekslenmiyor. Ama yayın gününde bu sayfa yerini gerçek siteye bırakmazsa, marka alan adı kendini arama motorlarına yasaklamaya devam eder.
 
-**Sonucu:** Hiçbir otorite ONNO'ya birikmiyor. "getonno" araması markayı bulamıyor. AI motorları bir sağlık aracısı için `github.io` alt klasörünü otoriter kaynak saymaz.
+**Yayın günü yapılacak:** Repoya `CNAME` dosyası + Hostinger'da DNS kaydı, Pages'te custom domain + "Enforce HTTPS".
 
-**Yapılacak:** Alan adını GitHub Pages'e yönlendir (repoya `CNAME` dosyası + Hostinger'da DNS kaydı), Pages ayarlarından custom domain + HTTPS aç.
+> `CNAME` dosyasını **DNS'ten önce** commit'leme — Pages custom domain'e geçer, DNS hazır değilse site tamamen erişilemez olur. Sıra: önce DNS, sonra CNAME.
 
-### 1.2 Para sayfalarına tarama yolu yok
-- Kök `index.html` → `<meta name="robots" content="noindex">`
-- `/lviv/` ve `/health-tourism/` sayfalarına link veren **tek** sayfa o noindex'li kök
+### 1.2 Tarama yolu yok
 - `robots.txt` yok (404), `sitemap.xml` yok (404)
+- Siteye dışarıdan **hiç link yok** — hiçbir yerde bahsi geçmiyor
+- `/lviv/` ve `/health-tourism/`'e link veren tek sayfa kök `index.html`, o da `<meta name="robots" content="noindex">`
 
-**Sonucu:** Google'ın Lviv sayfasını keşfetmesinin hiçbir yolu yok.
+> Netleştirme: `noindex` tek başına linklerin izlenmesini **engellemez** (bunun için `nofollow` gerekir). Yani kökteki noindex asıl tıkanma değil — sadece uzun vadede Google noindex'li sayfaları nofollow gibi ele almaya başlar. **Asıl sebep sitemap yokluğu + sıfır dış link.**
 
-**Yapılacak:** `robots.txt` + `sitemap.xml` ekle; kökten noindex'i kaldır ya da kökü gerçek bir ana sayfaya çevir.
+**Sonucu:** Google'ın siteyi keşfetmesi için hiçbir giriş noktası yok.
+
+**Yapılacak:** `robots.txt` + `sitemap.xml` ekle, Search Console'a gönder. Kök gerçek ana sayfaya dönüşünce noindex de kalkar.
 
 ### 1.3 İçeriğin üçte ikisi Google'a görünmüyor
 Dil değiştirme şu şekilde çalışıyor:
