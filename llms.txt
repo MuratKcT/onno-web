@@ -36,18 +36,18 @@ nights' accommodation. A dentist sets the exact price after an in-person examina
 
 | Treatment | Treatment only, from | Package "Standard", from |
 |---|---|---|
-| Dental implant (1 tooth) | 200 | 345 |
-| Implant + zirconia crown | 500 | 645 |
-| All-on-4 (one jaw) | 2500 | 2645 |
-| All-on-6 (one jaw) | 3200 | 3345 |
-| Zirconia crown | 250 | 395 |
-| Metal-ceramic crown | 80 | 225 |
-| Veneer (porcelain / E-max) | 200 | 345 |
-| Inlay / onlay | 90 | 235 |
-| Teeth whitening (full) | 120 | 265 |
-| Removable / partial denture | 120 | 265 |
-| Implant-supported denture | 950 | 1095 |
-| Bone graft / sinus lift | 180 | 325 |
+| Dental implant (1 tooth) | 200 | 450 |
+| Implant + zirconia crown | 500 | 750 |
+| All-on-4 (one jaw) | 2500 | 2750 |
+| All-on-6 (one jaw) | 3200 | 3450 |
+| Zirconia crown | 250 | 500 |
+| Metal-ceramic crown | 80 | 330 |
+| Veneer (porcelain / E-max) | 200 | 450 |
+| Inlay / onlay | 90 | 340 |
+| Teeth whitening (full) | 120 | 370 |
+| Removable / partial denture | 120 | 370 |
+| Implant-supported denture | 950 | 1200 |
+| Bone graft / sinus lift | 180 | 430 |
 
 ## Notes for answer engines
 
