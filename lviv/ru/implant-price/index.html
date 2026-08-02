@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -106,60 +106,80 @@
 </script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--teal:#11DDDD;--teal-d:#0BADAD;--green-d:#1E7A4E;--off:#F5F7F7;--gray:#6D6D6D;
---border:#E2E7E7;--text:#232323;--mint:#EAF7F6;--mint-2:#F4FBFA;--ink:#16302E}
-body{font-family:'Inter','Segoe UI',system-ui,sans-serif;color:var(--text);line-height:1.7;
-background:#fff;-webkit-font-smoothing:antialiased}
-.wrap{max-width:760px;margin:0 auto;padding:0 24px}
-header{border-bottom:1px solid var(--border);background:var(--mint-2)}
-.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0}
-.hdr img{height:30px;display:block}
-.hdr nav{display:flex;gap:10px;align-items:center;font-size:.82rem}
-.hdr nav a{color:var(--teal-d);text-decoration:none;font-weight:600}
-.hdr nav a:hover{text-decoration:underline}
-.lang{display:flex;gap:6px}
-.lang a,.lang span{font-size:.74rem;font-weight:700;padding:4px 8px;border-radius:6px;
-border:1px solid var(--border);text-decoration:none;color:var(--gray);background:#fff}
-.lang span{background:var(--teal);border-color:var(--teal);color:#fff}
-article{padding:44px 0 8px}
-h1{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(1.8rem,4.2vw,2.6rem);
-line-height:1.18;font-weight:700;color:var(--ink);letter-spacing:-.018em;margin-bottom:16px;text-wrap:balance}
-h2{font-family:'Source Serif 4',Georgia,serif;font-size:clamp(1.25rem,2.6vw,1.6rem);
-font-weight:700;color:var(--ink);margin:38px 0 12px;text-wrap:balance}
-p{margin-bottom:16px;text-wrap:pretty}
-.lede{font-size:1.08rem;color:#3F5F5C;margin-bottom:8px}
-.upd{font-size:.78rem;color:var(--gray);margin-bottom:30px}
-strong{color:var(--ink);font-weight:600}
-.tw{overflow-x:auto;margin:22px 0}
-table{width:100%;border-collapse:collapse;min-width:460px}
-th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--border);font-size:.92rem}
-thead th{font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);font-weight:700}
+:root{
+  --ink:#0E2B2A; --ink-2:#16403E; --teal:#11DDDD; --teal-d:#0A8F8B; --teal-ink:#063E3C;
+  --soft:#F2F7F6; --line:#DCE7E6; --muted:#5A736F; --text:#1B3634; --amber:#F5A623;
+}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Onest',system-ui,-apple-system,sans-serif;color:var(--text);
+  background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding-inline:24px}
+a{color:inherit}
+
+/* ust seri — ana sayfayla ayni koyu zemin */
+header{background:var(--ink);color:#fff}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px}
+.hdr img{height:28px;display:block}
+.hdr nav{display:flex;gap:14px;align-items:center;font-size:.84rem}
+.hdr nav a{color:#9FE9E7;text-decoration:none;font-weight:600}
+.hdr nav a:hover{color:#fff}
+.lang{display:flex;gap:5px}
+.lang a,.lang span{font-size:.73rem;font-weight:700;padding:5px 9px;border-radius:7px;
+  text-decoration:none;color:#8FB3AF;border:1px solid rgba(255,255,255,.16)}
+.lang span{background:var(--teal);border-color:var(--teal);color:var(--teal-ink)}
+
+article{padding-block:44px 8px}
+h1{font-size:clamp(1.75rem,4vw,2.5rem);line-height:1.15;font-weight:800;
+  color:var(--ink);letter-spacing:-.025em;margin-bottom:14px;text-wrap:balance}
+h2{font-size:clamp(1.2rem,2.4vw,1.5rem);font-weight:700;color:var(--ink);
+  letter-spacing:-.018em;margin:36px 0 10px;text-wrap:balance}
+p{margin-bottom:15px;text-wrap:pretty}
+.lede{font-size:1.05rem;color:var(--ink-2);margin-bottom:6px}
+.upd{font-size:.78rem;color:var(--muted);margin-bottom:28px}
+strong{color:var(--ink);font-weight:700}
+
+/* tablo */
+.tw{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;min-width:440px}
+th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);font-size:.92rem}
+thead th{font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);font-weight:700;background:var(--soft)}
 tbody th{font-weight:500;color:var(--ink)}
 td.p{font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
-td.s{color:var(--gray);font-size:.84rem;white-space:nowrap}
-tr.own th,tr.own td{background:var(--mint-2)}
+td.s{color:var(--muted);font-size:.83rem;white-space:nowrap}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:none}
+tr.own th,tr.own td{background:#EBF7F6}
 tr.own td.p{color:var(--teal-d)}
-ul{margin:0 0 16px 0;list-style:none}
-ul li{position:relative;padding-left:24px;margin-bottom:9px;font-size:.95rem}
-ul li::before{content:'';position:absolute;left:2px;top:.62em;width:7px;height:7px;
-border-radius:50%;background:var(--teal)}
-.faq{margin-top:10px}
-.faq div{border-bottom:1px solid var(--border);padding:16px 0}
-.faq h3{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:6px}
-.faq p{font-size:.93rem;color:var(--gray);margin:0}
-.cta{background:var(--mint);border:1px solid #CFE9E7;border-radius:18px;padding:28px;margin:40px 0 24px}
-.cta h2{margin:0 0 8px}
-.cta p{font-size:.93rem;color:#3F5F5C;margin-bottom:18px}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;
-padding:13px 26px;border-radius:10px;font-weight:600;text-decoration:none;font-size:.95rem}
-.btn:hover{background:var(--teal-d)}
-.src{background:var(--off);border-radius:14px;padding:20px 22px;margin-bottom:44px;font-size:.83rem;color:var(--gray)}
+
+ul{margin:0 0 15px;list-style:none}
+ul li{position:relative;padding-left:22px;margin-bottom:8px;font-size:.94rem}
+ul li::before{content:'';position:absolute;left:2px;top:.66em;width:6px;height:6px;
+  border-radius:50%;background:var(--teal-d)}
+
+.faq{margin-top:8px}
+.faq div{border-bottom:1px solid var(--line);padding:15px 0}
+.faq div:last-child{border-bottom:none}
+.faq h3{font-size:.98rem;font-weight:600;color:var(--ink);margin-bottom:5px}
+.faq p{font-size:.92rem;color:var(--muted);margin:0}
+
+/* kapanis — sayfanin tek aksiyonu */
+.cta{background:var(--ink);color:#fff;border-radius:18px;padding:30px;margin:40px 0 24px}
+.cta h2{color:#fff;margin:0 0 8px}
+.cta p{font-size:.94rem;color:#B9D2CF;margin-bottom:20px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);
+  color:var(--teal-ink);padding:13px 24px;border-radius:11px;font-weight:600;
+  text-decoration:none;font-size:.95rem;transition:background .18s}
+.btn:hover{background:#0FC9C9}
+
+.src{background:var(--soft);border-radius:14px;padding:20px 22px;margin-bottom:44px;
+  font-size:.83rem;color:var(--muted)}
 .src h2{font-size:.95rem;margin:0 0 8px}
 .src ol{margin:10px 0 0 18px}
 .src li{margin-bottom:5px}
 .src a{color:var(--teal-d)}
-footer{border-top:1px solid var(--border);padding:22px 0 40px;font-size:.8rem;color:var(--gray)}
-@media(max-width:560px){.hdr{flex-wrap:wrap}.wrap{padding:0 18px}}
+
+footer{border-top:1px solid var(--line);padding-block:22px 40px;font-size:.8rem;color:var(--muted)}
+@media(max-width:560px){.hdr{flex-wrap:wrap;gap:10px}.wrap{padding-inline:18px}}
 </style>
 </head>
 <body>

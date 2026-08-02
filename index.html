@@ -4,64 +4,114 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://muratkct.github.io/onno-web/">
-<title>ONNO — getonno.com</title>
-<meta name="description" content="ONNO — sağlık turizmi ve dijital altyapı hizmetleri. Tek marka, çok bacak.">
+<title>ONNO — sağlık turizmi ve dijital altyapı</title>
+<meta name="description" content="ONNO, yurt dışındaki hastayı kliniğe bağlayan bir aracı. Lviv'de diş tedavisi, Türkiye'de saç ekimi, diş ve göz tedavisi. İletişim, fiyat, ulaşım ve konaklama bizde.">
 <meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ONNO">
+<meta property="og:description" content="Sağlık turizmi ve dijital altyapı. Tek marka, iki bacak.">
+<meta property="og:url" content="https://muratkct.github.io/onno-web/">
+<meta property="og:image" content="https://muratkct.github.io/onno-web/assets/og-lviv.jpg">
+<meta property="og:site_name" content="ONNO">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --teal: #11DDDD; --teal-d: #0BADAD; --gray: #6D6D6D;
-    --navy: #1E1E1E; --off: #F5F7F7; --border: #E2E7E7;
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --ink:#0E2B2A; --teal:#11DDDD; --teal-d:#0A8F8B; --teal-ink:#063E3C;
+    --line:rgba(255,255,255,.14); --muted:#9FB8B5;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: linear-gradient(135deg, #1E1E1E 0%, #2a2a2a 60%, #0F4A4A 100%);
-    color: #fff; min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 40px 24px; line-height: 1.6;
+  html,body{min-height:100%}
+  body{
+    font-family:'Onest',system-ui,-apple-system,sans-serif;
+    background:var(--ink); color:#fff; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column;
   }
-  .logo { width: min(320px, 70vw); margin-bottom: 28px; }
-  .logo img { width: 100%; height: auto; display: block; }
-  .tagline { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 8px; text-align: center; }
-  .note { color: rgba(255,255,255,0.4); font-size: 0.82rem; margin-bottom: 44px; text-align: center; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; width: 100%; max-width: 720px; }
-  .card {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px; padding: 28px; text-decoration: none; color: #fff;
-    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+  body::before{
+    content:''; position:fixed; inset:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 55% 60% at 12% 8%, rgba(17,221,221,.16), transparent 62%),
+      radial-gradient(ellipse 50% 55% at 92% 96%, rgba(46,170,110,.12), transparent 66%);
   }
-  .card:hover { transform: translateY(-4px); border-color: var(--teal); background: rgba(17,221,221,0.08); }
-  .card h2 { font-size: 1.2rem; margin-bottom: 8px; color: #fff; }
-  .card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 14px; }
-  .card .go { color: var(--teal); font-weight: 600; font-size: 0.9rem; }
-  .card.soon { opacity: 0.5; pointer-events: none; }
-  .card.soon .go { color: var(--gray); }
-  footer { margin-top: 48px; color: rgba(255,255,255,0.3); font-size: 0.78rem; }
+  .wrap{max-width:940px;margin:0 auto;padding-inline:24px;position:relative;z-index:1;width:100%}
+
+  header{padding-block:34px 0}
+  .logo{width:150px;display:block}
+  .logo img{width:100%;height:auto;display:block}
+
+  main{flex:1;display:flex;align-items:center;padding-block:48px 64px}
+  h1{font-size:clamp(1.9rem,4.4vw,3rem);line-height:1.14;font-weight:800;
+     letter-spacing:-.028em;margin-bottom:16px;text-wrap:balance;max-width:22ch}
+  h1 em{font-style:normal;color:var(--teal)}
+  .lede{color:#B9D2CF;font-size:1.05rem;max-width:46ch;margin-bottom:40px;text-wrap:pretty}
+
+  .legs{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:16px}
+  .leg{
+    display:flex; flex-direction:column; text-decoration:none; color:#fff;
+    background:rgba(255,255,255,.045); border:1px solid var(--line);
+    border-radius:16px; padding:24px;
+    transition:border-color .2s ease-out, background .2s ease-out, transform .2s ease-out;
+  }
+  .leg:hover{border-color:var(--teal);background:rgba(17,221,221,.07);transform:translateY(-2px)}
+  .leg h2{font-size:1.12rem;font-weight:700;letter-spacing:-.015em;margin-bottom:6px}
+  .leg p{color:var(--muted);font-size:.9rem;margin-bottom:16px;flex:1}
+  .leg .meta{font-size:.78rem;color:#7FA5A1;margin-bottom:14px}
+  .leg .go{color:var(--teal);font-weight:600;font-size:.9rem}
+  .leg.soon{opacity:.45;pointer-events:none}
+  .leg.soon .go{color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding-block:20px 32px;
+    color:#7FA5A1;font-size:.79rem}
+  .foot{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between}
+  .foot a{color:#9FE9E7;text-decoration:none}
+  .foot a:hover{text-decoration:underline}
+
+  @media(prefers-reduced-motion:reduce){.leg{transition:none}.leg:hover{transform:none}}
 </style>
 </head>
 <body>
-  <div class="logo"><img src="assets/onno-logo.svg" alt="ONNO"></div>
-  <p class="tagline">Sağlık turizmi + dijital altyapı — tek marka, çok bacak.</p>
-  <p class="note">Geçici yönlendirme sayfası — ana sayfa yapım aşamasında.</p>
 
-  <div class="cards">
-    <a class="card" href="health-tourism/index.html">
-      <h2>Sağlık Turizmi</h2>
-      <p>Türkiye — saç ekimi, diş ve göz tedavisi. EN / TR / PL.</p>
+<header><div class="wrap">
+  <span class="logo"><img src="assets/onno-logo.svg" alt="ONNO"></span>
+</div></header>
+
+<main><div class="wrap">
+  <h1>Tedavi için <em>yurt dışına</em> giden hastanın yanındaki taraf</h1>
+  <p class="lede">ONNO bir klinik değil, aracı. Hastayı doğru kliniğe bağlar; iletişimi,
+    fiyatı, ulaşımı ve konaklamayı üstlenir.</p>
+
+  <div class="legs">
+    <a class="leg" href="lviv/">
+      <h2>Lviv — diş tedavisi</h2>
+      <p>Yurt dışında yaşayan Ukraynalılar için Lviv'de diş tedavisi. Varşova'dan
+        transfer ve konaklama dahil paketler.</p>
+      <span class="meta">Українська · Русский · English</span>
       <span class="go">Siteye git →</span>
     </a>
-    <a class="card" href="lviv/index.html">
-      <h2>Lviv — Diş Tedavisi 🇺🇦</h2>
-      <p>Yurt dışındaki Ukraynalılar için Lviv'de diş tedavisi. UA / RU / EN.</p>
+
+    <a class="leg" href="health-tourism/">
+      <h2>Türkiye — sağlık turizmi</h2>
+      <p>Saç ekimi, diş ve göz tedavisi. Transfer, otel ve tedavi sonrası takip
+        organizasyonuyla birlikte.</p>
+      <span class="meta">English · Türkçe · Polski</span>
       <span class="go">Siteye git →</span>
     </a>
-    <span class="card soon">
-      <h2>Teknik Destek</h2>
-      <p>Klinikler için dijital altyapı ve outreach.</p>
+
+    <span class="leg soon">
+      <h2>Klinikler için altyapı</h2>
+      <p>Hasta iletişimi, ön değerlendirme ve randevu akışı için dijital altyapı.</p>
+      <span class="meta">Hazırlanıyor</span>
       <span class="go">Yakında</span>
     </span>
   </div>
+</div></main>
 
-  <footer>© 2026 ONNO · getonno.com</footer>
+<footer><div class="wrap foot">
+  <span>© 2026 ONNO · getonno.com</span>
+  <a href="https://t.me/onnohelp_bot?start=hub">Telegram asistanı</a>
+</div></footer>
+
 </body>
 </html>
