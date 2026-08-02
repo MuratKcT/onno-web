@@ -6,26 +6,38 @@ ONNO fiyat ureticisi — tek kaynak: pricing.json
   python tools/pricing.py check    uretilen dosyalar pricing.json ile tutuyor mu, dogrular
   python tools/pricing.py n8n      sadece n8n blogunu basar
 
-Tasarim notu: hicbir yerde eski degeri okuyup yenisiyle degistirmiyoruz.
-Bolgeler yapidan bulunur ve icerigi komple yeniden yazilir. Boylece
-"eski degeri bul, yenisiyle degistir" zincirinden dogan hatalar imkansiz.
+Model
+-----
+Yazilan sey SERVIS. Paketler servis x katman olarak turetiliyor, kimlik: "<servis>.<katman>".
+Hastaya SADECE paket fiyati gosterilir; tedavi/yol/otel/kar kalemleri asla ayri gorunmez.
+
+  lojistik = transfer[katman] x visits + nights x otel + kar[katman]
+  paket    = yuvarla5(tedavi x adet + lojistik)
+
+Adet sadece tedaviyi carpar. Iki implant icin iki transfer ve iki kat gece odenmez;
+eski surumde bu yanlisti.
+
+Bot fiyat HESAPLAMAZ: katalogdan bir kimlik secer, hesabi JSON Cleaner yapar.
+Bilinmeyen kimlik gelirse fiyat hic gosterilmez — yanlis fiyat gosterilmez.
+
+Bolgeler dosyalarda aranip degistirilmez, yapidan bulunup sifirdan yazilir.
+Boylece "eski degeri bul, yenisiyle degistir" zincirinden dogan hatalar imkansiz.
 """
 import io, json, os, re, sys, hashlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CFG = os.path.join(ROOT, 'pricing.json')
 
-# n8n Code node'undaki degisken adlari — uretilen blok mevcut kodla birebir uyusmali
-VARNAME = {'standard': 'STD', 'comfort': 'CMF'}
-
-# Gece sayisi tabloda rakamla yaziliyor; ua/ru cekim sorunundan kacinmak icin
-# kisaltma kullaniyoruz (2 ноч. / 6 ноч.), tam kelime cekimi gerektirirdi.
-NIGHTS_WORD = {'ua': 'ноч.', 'ru': 'ноч.', 'en': 'nights'}
-
 PAGES = {'ua': 'lviv/index.html', 'ru': 'lviv/ru/index.html', 'en': 'lviv/en/index.html'}
 CMP = {'ua': 'lviv/implant-price/index.html',
        'ru': 'lviv/ru/implant-price/index.html',
        'en': 'lviv/en/implant-price/index.html'}
+
+TH = {
+ 'ua': ('Послуга', 'Пакет «під ключ», від', 'ноч.'),
+ 'ru': ('Услуга', 'Пакет «под ключ», от', 'ноч.'),
+ 'en': ('Treatment', 'Turnkey package, from', 'nights'),
+}
 
 
 def load():
@@ -33,26 +45,33 @@ def load():
 
 
 # ── hesap ────────────────────────────────────────────────────────────────
-def package(cfg, tr, tier_id):
-    """tedavi + (transfer x ziyaret) + (gece x otel) + marj, en yakin 5'e yuvarli."""
-    lg, r = cfg['logistics'], cfg['meta']['roundTo']
-    tier = next(t for t in cfg['tiers'] if t['id'] == tier_id)
-    visits = tr.get('visits', cfg['defaults']['visits'])
-    nights = tr.get('nights', cfg['defaults']['nights'])
-    total = (tr['price']
-             + lg['transfer'][tier['transfer']] * visits
-             + sum(nights) * lg['hotelPerNight']
-             + cfg['margin'][tier_id])
-    return int(round(total / r) * r)
+def tier_of(cfg, tid):
+    return next(t for t in cfg['tiers'] if t['id'] == tid)
+
+
+def logistics(cfg, svc, tid):
+    """Hastaya asla ayri gosterilmeyen toplam ek."""
+    lg, t = cfg['logistics'], tier_of(cfg, tid)
+    return (lg['transfer'][t['transfer']] * svc['visits']
+            + svc['nights'] * lg['hotelPerNight']
+            + cfg['margin'][t['transfer']])
+
+
+def price(cfg, svc, tid, qty=1):
+    r = cfg['meta']['roundTo']
+    return int(round((svc['treatment'] * qty + logistics(cfg, svc, tid)) / r) * r)
 
 
 def site_tier(cfg):
     return next(t for t in cfg['tiers'] if t.get('showOnSite'))
 
 
+def featured(cfg):
+    return next((s for s in cfg['services'] if s.get('featured')), cfg['services'][0])
+
+
 def fingerprint(cfg):
-    """n8n blogunun pricing.json ile ayni surumden gelip gelmedigini anlamak icin."""
-    core = json.dumps({k: cfg[k] for k in ('logistics', 'margin', 'defaults', 'treatments')},
+    core = json.dumps({k: cfg[k] for k in ('logistics', 'margin', 'tiers', 'services')},
                       sort_keys=True, ensure_ascii=False)
     return hashlib.sha256(core.encode('utf-8')).hexdigest()[:8]
 
@@ -60,29 +79,33 @@ def fingerprint(cfg):
 # ── site fiyat tablosu ───────────────────────────────────────────────────
 def rewrite_table(cfg, path, lang):
     s = io.open(path, encoding='utf-8').read()
-    tier = site_tier(cfg)
-    i = s.index('<tbody>', s.index('id="prices"'))
-    j = s.index('</tbody>', i)
+    t = site_tier(cfg)
+    hs, hp, nw = TH[lang]
     rows = ''
-    for tr in cfg['treatments']:
-        n = sum(tr.get('nights', cfg['defaults']['nights']))
+    for svc in cfg['services']:
         rows += ('          <tr>\n'
                  '            <th scope="row"><span class="%s">%s</span></th>\n'
-                 '            <td class="pr-base">€%d</td>\n'
                  '            <td class="pr-pkg">€%d <small class="pr-n">· %d %s</small></td>\n'
                  '          </tr>\n'
-                 % (lang, tr['label'][lang], tr['price'],
-                    package(cfg, tr, tier['id']), n, NIGHTS_WORD[lang]))
-    s = s[:i] + '<tbody>\n' + rows + '        ' + s[j:]
+                 % (lang, svc['name'][lang], price(cfg, svc, t['id']), svc['nights'], nw))
+    table = ('<table class="price-table">\n'
+             '          <thead>\n'
+             '            <tr><th scope="col">%s</th>'
+             '<th scope="col" class="price-head-pkg">%s</th></tr>\n'
+             '          </thead>\n'
+             '          <tbody>\n%s        </tbody>\n        </table>' % (hs, hp, rows))
+    a = s.index('<table class="price-table">')
+    b = s.index('</table>', a) + len('</table>')
+    s = s[:a] + table + s[b:]
     io.open(path, 'w', encoding='utf-8').write(s)
-    return len(cfg['treatments'])
+    return len(cfg['services'])
 
 
-# ── JSON-LD OfferCatalog ─────────────────────────────────────────────────
+# ── JSON-LD ──────────────────────────────────────────────────────────────
 DESC = {
- 'ua': 'Орієнтовна ціна: від {b} € лише за лікування, або від {p} € у пакеті «{t}» ({inc}).',
- 'ru': 'Ориентировочная цена: от {b} € только за лечение, или от {p} € в пакете «{t}» ({inc}).',
- 'en': 'Approximate price: from {b} € for treatment only, or from {p} € in the "{t}" package ({inc}).',
+ 'ua': 'Пакет «під ключ» від {p} € — {inc}. {n} ночей у Львові.',
+ 'ru': 'Пакет «под ключ» от {p} € — {inc}. {n} ночей во Львове.',
+ 'en': 'Turnkey package from {p} € — {inc}. {n} nights in Lviv.',
 }
 
 
@@ -90,21 +113,21 @@ def rewrite_schema(cfg, path, lang):
     s = io.open(path, encoding='utf-8').read()
     m = re.search(r'<script type="application/ld\+json">(.*?)</script>', s, re.S)
     d = json.loads(m.group(1))
-    tier = site_tier(cfg)
     cat = next((n for n in d['@graph'] if n.get('@type') == 'OfferCatalog'), None)
     if cat is None:
         return 0
     org = {'@id': [n for n in d['@graph'] if n['@type'] == 'Organization'][0]['@id']}
+    t = site_tier(cfg)
     items = []
-    for k, tr in enumerate(cfg['treatments'], 1):
-        p = package(cfg, tr, tier['id'])
+    for k, svc in enumerate(cfg['services'], 1):
+        p = price(cfg, svc, t['id'])
         items.append({
             '@type': 'Offer',
-            'itemOffered': {'@type': 'Service', 'name': tr['label'][lang], 'provider': org},
-            'priceSpecification': {'@type': 'PriceSpecification', 'priceCurrency': cfg['meta']['currency'],
-                                   'minPrice': tr['price'], 'valueAddedTaxIncluded': True},
-            'description': DESC[lang].format(b=tr['price'], p=p,
-                                             t=tier['label'][lang], inc=tier['includes'][lang]),
+            'itemOffered': {'@type': 'Service', 'name': svc['name'][lang], 'provider': org},
+            'priceSpecification': {'@type': 'PriceSpecification',
+                                   'priceCurrency': cfg['meta']['currency'],
+                                   'minPrice': p, 'valueAddedTaxIncluded': True},
+            'description': DESC[lang].format(p=p, inc=t['includes'][lang], n=svc['nights']),
             'position': k,
         })
     cat['itemListElement'] = items
@@ -120,37 +143,27 @@ def rewrite_schema(cfg, path, lang):
 def rewrite_llms(cfg, fname, euro):
     path = os.path.join(ROOT, fname)
     s = io.open(path, encoding='utf-8').read()
-    tier = site_tier(cfg)
-    head = '| Treatment | Treatment only, from | Package "%s", from |' % tier['label']['en']
-    sep = '|---|---|---|'
-    body = ''
-    for tr in cfg['treatments']:
-        p = package(cfg, tr, tier['id'])
-        f = (lambda v: '€%d' % v) if euro else (lambda v: '%d' % v)
-        body += '| %s | %s | %s |\n' % (tr['label']['en'], f(tr['price']), f(p))
-    block = head + '\n' + sep + '\n' + body
-    m = re.search(r'\| Treatment \| Treatment only.*?\n(?:\|.*\n)+', s)
+    t = site_tier(cfg)
+    f = (lambda v: '€%d' % v) if euro else (lambda v: '%d' % v)
+    block = ('| Package | Price, from | Nights in Lviv |\n|---|---|---|\n'
+             + ''.join('| %s | %s | %d |\n' % (s2['name']['en'], f(price(cfg, s2, t['id'])), s2['nights'])
+                       for s2 in cfg['services']))
+    m = re.search(r'\| (?:Treatment|Package) \|.*?\n(?:\|.*\n)+', s)
     assert m, fname + ': fiyat tablosu bulunamadi'
     s = s[:m.start()] + block + s[m.end():]
     io.open(path, 'w', encoding='utf-8').write(s)
-    return len(cfg['treatments'])
+    return len(cfg['services'])
 
 
-# ── karsilastirma sayfasi ────────────────────────────────────────────────
-def pv_values(cfg, style='euro-first'):
-    """data-pv isaretli rakamlar. Karsilastirma sayfasi '€950', teklif karti '950 €' yazar."""
-    tr = next(t for t in cfg['treatments'] if t['id'] == cfg['comparison']['basedOn'])
-    tier = site_tier(cfg)
-    pkg = package(cfg, tr, tier['id'])
-    cmf = package(cfg, tr, 'comfort')
-    f = (lambda v: '€%d' % v) if style == 'euro-first' else (lambda v: '%d €' % v)
-    return {
-        'base': f(tr['price']),
-        'pkg': f(pkg),
-        'pkgCmf': f(cmf),
-        'addon': f(pkg - tr['price']),
-        'saving': f(cfg['comparison']['polandMin'] - pkg),
-    }
+# ── data-pv isaretli rakamlar ────────────────────────────────────────────
+def pv_values(cfg, euro_first):
+    svc = featured(cfg)
+    std = price(cfg, svc, site_tier(cfg)['id'])
+    cmf = price(cfg, svc, next(t['id'] for t in cfg['tiers'] if not t.get('showOnSite')))
+    f = (lambda v: '€%d' % v) if euro_first else (lambda v: '%d €' % v)
+    return {'base': f(svc['treatment']), 'pkg': f(std), 'pkgCmf': f(cmf),
+            'addon': f(std - svc['treatment']),
+            'saving': f(cfg['comparison']['polandMin'] - std)}
 
 
 def rewrite_pv(path, vals):
@@ -164,128 +177,87 @@ def rewrite_pv(path, vals):
     return n
 
 
-def rewrite_comparison(cfg, path, lang):
-    """Dinamik rakamlar <span data-pv="..."> ile isaretli; iceriklerini yeniden yazar."""
-    s = io.open(path, encoding='utf-8').read()
-    tr = next(t for t in cfg['treatments'] if t['id'] == cfg['comparison']['basedOn'])
-    tier = site_tier(cfg)
-    pkg = package(cfg, tr, tier['id'])
-    vals = {
-        'base': '€%d' % tr['price'],
-        'pkg': '€%d' % pkg,
-        'addon': '€%d' % (pkg - tr['price']),
-        'saving': '€%d' % (cfg['comparison']['polandMin'] - pkg),
-    }
-    n = 0
-    for key, val in vals.items():
-        s, k = re.subn(r'(<span data-pv="%s">)[^<]*(</span>)' % key,
-                       lambda m: m.group(1) + val + m.group(2), s)
-        n += k
-    io.open(path, 'w', encoding='utf-8').write(s)
-    return n
-
-
 # ── n8n blogu ────────────────────────────────────────────────────────────
 def n8n_block(cfg):
-    fp = fingerprint(cfg)
-    lg = cfg['logistics']
-    lines = ['ONNO ORIENTATIONAL PRICE LIST — in EUR, per tooth/unit unless noted. '
-             'APPROXIMATE only; the final price is set by a dentist after an in-person exam.']
-    for tr in cfg['treatments']:
-        lines.append('- %s: from %d EUR' % (tr['botLabel'], tr['price']))
-
-    a = ['// ===== PRICING %s · hash %s — pricing.json tarafindan uretildi, ELLE DEGISTIRME =====' %
-         (cfg['meta']['updated'], fp),
-         '// `buffer clinic and price` node\'unda 1. bolume yapistir:',
-         'const pricesText = [']
-    for i, l in enumerate(lines):
-        a.append('  %s%s' % (json.dumps(l, ensure_ascii=False), ',' if i < len(lines) - 1 else ''))
-    a.append('].join("\\n");')
-    a.append('')
-    a.append("// `JSON Cleaner1` node'unda (HER IKI workflow'da) 3. bolume yapistir:")
-
-    # Taban fiyata gore paket toplami. Cleaner zaten metinden taban rakami cikariyor,
-    # o rakamla buradan bakiyor — boylece tedaviye ozel gece sayisi bota da yansiyor.
-    pkg, seen = {}, {}
-    for tr in cfg['treatments']:
-        b = tr['price']
-        row = {t['id']: package(cfg, tr, t['id']) for t in cfg['tiers']}
-        if b in seen and seen[b] != row:
-            raise SystemExit(
-                'CAKISMA: "%s" ve "%s" ayni taban fiyati (%d) tasiyor ama paketleri farkli.\n'
-                'Bot tabana gore baktigi icin ayirt edemez. Birinin fiyatini veya gecesini degistir.'
-                % (seen[b + 0.5], tr['id'], b))
-        seen[b], seen[b + 0.5] = row, tr['id']
-        pkg[b] = row
-
-    a.append('const PKG = {')
-    for b in sorted(pkg):
-        a.append('  %d: { std: %d, cmf: %d },' % (b, pkg[b]['standard'], pkg[b]['comfort']))
+    t_std = site_tier(cfg)
+    t_cmf = next(t for t in cfg['tiers'] if not t.get('showOnSite'))
+    a = ['// ===== ONNO PAKET KATALOGU  %s · hash %s =====' % (cfg['meta']['updated'], fingerprint(cfg)),
+         '// tools/pricing.py tarafindan uretildi. ELLE DEGISTIRME.',
+         '// Bot fiyat hesaplamaz: bir kimlik secer, hesap burada yapilir.',
+         '//   t = tedavi (adetle carpilir), l = lojistik (carpilmaz)',
+         'const PKG = {']
+    for svc in cfg['services']:
+        for t in (t_std, t_cmf):
+            a.append('  "%s.%s": { t: %d, l: %d, n: %d },'
+                     % (svc['id'], t['id'], svc['treatment'], logistics(cfg, svc, t['id']), svc['nights']))
     a.append('};')
-    for t in cfg['tiers']:
-        tot = (lg['transfer'][t['transfer']] * cfg['defaults']['visits']
-               + sum(cfg['defaults']['nights']) * lg['hotelPerNight']
-               + cfg['margin'][t['id']])
-        a.append('const ADDON_%s = %d;   // listede olmayan taban icin yedek'
-                 % (VARNAME[t['id']], tot))
     a.append('const r5 = (x) => Math.round(x / %d) * %d;' % (cfg['meta']['roundTo'], cfg['meta']['roundTo']))
-    a.append('// kullanim: const P = PKG[base] || { std: r5(base+ADDON_STD), cmf: r5(base+ADDON_CMF) };')
+    a.append('const pkgPrice = (id, qty) => { const p = PKG[id]; '
+             'return p ? r5(p.t * (qty || 1) + p.l) : null; };')
+    a.append('')
+    a.append('// --- ajana verilecek katalog metni (buffer node) ---')
+    a.append('const pricesText = [')
+    a.append('  "ONNO PACKAGE CATALOGUE — pick ONE id. Prices are turnkey and already include '
+             'the transfer from Warsaw, accommodation and coordination. Never invent a price; '
+             'never add anything up yourself.",')
+    for svc in cfg['services']:
+        a.append('  "- %s.%s | %s | from %d EUR | %d nights | %s",'
+                 % (svc['id'], t_std['id'], svc['name']['en'],
+                    price(cfg, svc, t_std['id']), svc['nights'], svc['botDesc']))
+    a.append('  "Add \\".%s\\" instead of \\".%s\\" if the patient asks for a private car transfer."'
+             % (t_cmf['id'], t_std['id']))
+    a.append('].join("\\n");')
     return '\n'.join(a)
 
 
 # ── komutlar ─────────────────────────────────────────────────────────────
 def cmd_build():
     cfg = load()
-    tier = site_tier(cfg)
-    print('pricing.json %s · hash %s · site katmani: %s\n'
-          % (cfg['meta']['updated'], fingerprint(cfg), tier['label']['en']))
-    print('%-34s %s' % ('DOSYA', 'SONUC'))
-    offer_vals = pv_values(cfg, style='num-first')
+    t = site_tier(cfg)
+    print('pricing.json %s · hash %s · %d hizmet · site katmani: %s\n'
+          % (cfg['meta']['updated'], fingerprint(cfg), len(cfg['services']), t['label']['en']))
+    offer = pv_values(cfg, euro_first=False)
     for lang, rel in PAGES.items():
         p = os.path.join(ROOT, rel)
-        print('%-34s tablo %d satir, sema %d teklif, kart %d rakam' %
-              (rel, rewrite_table(cfg, p, lang), rewrite_schema(cfg, p, lang),
-               rewrite_pv(p, offer_vals)))
+        print('%-34s tablo %d, sema %d, kart %d' %
+              (rel, rewrite_table(cfg, p, lang), rewrite_schema(cfg, p, lang), rewrite_pv(p, offer)))
     for f, euro in (('llms.txt', False), ('llms-full.txt', True)):
-        print('%-34s tablo %d satir' % (f, rewrite_llms(cfg, f, euro)))
+        print('%-34s tablo %d' % (f, rewrite_llms(cfg, f, euro)))
+    cmpv = pv_values(cfg, euro_first=True)
     for lang, rel in CMP.items():
-        p = os.path.join(ROOT, rel)
-        print('%-34s %d rakam' % (rel, rewrite_comparison(cfg, p, lang)))
-    print('\n' + '=' * 70)
+        print('%-34s %d rakam' % (rel, rewrite_pv(os.path.join(ROOT, rel), cmpv)))
+    print('\n' + '=' * 72)
     print(n8n_block(cfg))
-    print('=' * 70)
+    print('=' * 72)
 
 
 def cmd_check():
     cfg = load()
-    tier = site_tier(cfg)
+    t = site_tier(cfg)
     bad = []
-    want = {tr['label']['en']: (tr['price'], package(cfg, tr, tier['id']))
-            for tr in cfg['treatments']}
+    exp = [str(price(cfg, s, t['id'])) for s in cfg['services']]
     for lang, rel in PAGES.items():
         s = io.open(os.path.join(ROOT, rel), encoding='utf-8').read()
-        got = re.findall(r'<td class="pr-base">€(\d+)</td>\s*'
-                         r'<td class="pr-pkg">€(\d+)', s)
-        exp = [(str(tr['price']), str(package(cfg, tr, tier['id']))) for tr in cfg['treatments']]
-        if got != exp:
-            bad.append('%s: tablo pricing.json ile tutmuyor' % rel)
+        if re.findall(r'<td class="pr-pkg">€(\d+)', s) != exp:
+            bad.append('%s: tablo tutmuyor' % rel)
+        if '<td class="pr-base"' in s:
+            bad.append('%s: eski "sadece tedavi" sutunu duruyor' % rel)
         j = json.loads(re.search(r'application/ld\+json">(.*?)</script>', s, re.S).group(1))
         cat = next((n for n in j['@graph'] if n.get('@type') == 'OfferCatalog'), None)
-        if cat and [o['priceSpecification']['minPrice'] for o in cat['itemListElement']] != \
-                   [t['price'] for t in cfg['treatments']]:
+        if cat and [o['priceSpecification']['minPrice'] for o in cat['itemListElement']] != [int(x) for x in exp]:
             bad.append('%s: OfferCatalog tutmuyor' % rel)
     for f in ('llms.txt', 'llms-full.txt'):
-        t = io.open(os.path.join(ROOT, f), encoding='utf-8').read()
-        for name, (b, p) in want.items():
-            if not re.search(r'\|\s*%s\s*\|\s*€?%d\s*\|\s*€?%d\s*\|' % (re.escape(name), b, p), t):
-                bad.append('%s: "%s" satiri tutmuyor' % (f, name)); break
-    tr = next(t for t in cfg['treatments'] if t['id'] == cfg['comparison']['basedOn'])
-    pkg = package(cfg, tr, tier['id'])
+        txt = io.open(os.path.join(ROOT, f), encoding='utf-8').read()
+        for s2 in cfg['services']:
+            p = price(cfg, s2, t['id'])
+            if not re.search(r'\|\s*%s\s*\|\s*€?%d\s*\|' % (re.escape(s2['name']['en']), p), txt):
+                bad.append('%s: "%s" tutmuyor' % (f, s2['name']['en'])); break
+    v = pv_values(cfg, euro_first=True)
     for lang, rel in CMP.items():
         s = io.open(os.path.join(ROOT, rel), encoding='utf-8').read()
-        for key, val in (('pkg', pkg), ('saving', cfg['comparison']['polandMin'] - pkg)):
-            if ('<span data-pv="%s">€%d</span>' % (key, val)) not in s:
-                bad.append('%s: data-pv="%s" tutmuyor' % (rel, key))
+        for k in ('pkg', 'saving'):
+            if ('<span data-pv="%s">%s</span>' % (k, v[k])) not in s:
+                bad.append('%s: data-pv="%s" tutmuyor' % (rel, k))
     print('SONUC:', 'TUTARLI' if not bad else 'SORUN VAR')
     for b in bad:
         print('  -', b)

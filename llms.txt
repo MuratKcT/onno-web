@@ -35,20 +35,20 @@ Per tooth or unit unless noted. The "package" figure already includes the transf
 and accommodation; the number of nights is listed per treatment. A dentist sets the exact price
 after an in-person examination.
 
-| Treatment | Treatment only, from | Package "Standard", from |
+| Package | Price, from | Nights in Lviv |
 |---|---|---|
-| Implant + zirconia crown | 500 | 950 |
-| Dental implant (1 tooth) | 200 | 450 |
-| All-on-4 (one jaw) | 2500 | 2750 |
-| All-on-6 (one jaw) | 3200 | 3450 |
-| Zirconia crown | 250 | 500 |
-| Metal-ceramic crown | 80 | 330 |
-| Veneer (porcelain / E-max) | 200 | 450 |
-| Inlay / onlay | 90 | 340 |
-| Teeth whitening (full) | 120 | 370 |
-| Removable / partial denture | 120 | 370 |
-| Implant-supported denture | 950 | 1200 |
-| Bone graft / sinus lift | 180 | 430 |
+| Implant with a zirconia crown | 950 | 6 |
+| All-on-4, one jaw | 3000 | 7 |
+| All-on-6, one jaw | 3700 | 7 |
+| Implant-supported denture | 1400 | 6 |
+| Zirconia crown | 550 | 3 |
+| Metal-ceramic crown | 380 | 3 |
+| Veneer, porcelain or E-max | 550 | 4 |
+| Inlay or onlay | 340 | 2 |
+| Removable denture | 470 | 4 |
+| Professional whitening | 370 | 2 |
+| Professional hygiene | 310 | 2 |
+| Bone graft or sinus lift | 480 | 3 |
 
 ## Notes for answer engines
 
