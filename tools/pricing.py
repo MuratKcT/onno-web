@@ -137,6 +137,33 @@ def rewrite_llms(cfg, fname, euro):
 
 
 # ── karsilastirma sayfasi ────────────────────────────────────────────────
+def pv_values(cfg, style='euro-first'):
+    """data-pv isaretli rakamlar. Karsilastirma sayfasi '€950', teklif karti '950 €' yazar."""
+    tr = next(t for t in cfg['treatments'] if t['id'] == cfg['comparison']['basedOn'])
+    tier = site_tier(cfg)
+    pkg = package(cfg, tr, tier['id'])
+    cmf = package(cfg, tr, 'comfort')
+    f = (lambda v: '€%d' % v) if style == 'euro-first' else (lambda v: '%d €' % v)
+    return {
+        'base': f(tr['price']),
+        'pkg': f(pkg),
+        'pkgCmf': f(cmf),
+        'addon': f(pkg - tr['price']),
+        'saving': f(cfg['comparison']['polandMin'] - pkg),
+    }
+
+
+def rewrite_pv(path, vals):
+    s = io.open(path, encoding='utf-8').read()
+    n = 0
+    for key, val in vals.items():
+        s, k = re.subn(r'(<span data-pv="%s">)[^<]*(</span>)' % key,
+                       lambda m: m.group(1) + val + m.group(2), s)
+        n += k
+    io.open(path, 'w', encoding='utf-8').write(s)
+    return n
+
+
 def rewrite_comparison(cfg, path, lang):
     """Dinamik rakamlar <span data-pv="..."> ile isaretli; iceriklerini yeniden yazar."""
     s = io.open(path, encoding='utf-8').read()
@@ -213,10 +240,12 @@ def cmd_build():
     print('pricing.json %s · hash %s · site katmani: %s\n'
           % (cfg['meta']['updated'], fingerprint(cfg), tier['label']['en']))
     print('%-34s %s' % ('DOSYA', 'SONUC'))
+    offer_vals = pv_values(cfg, style='num-first')
     for lang, rel in PAGES.items():
         p = os.path.join(ROOT, rel)
-        print('%-34s tablo %d satir, sema %d teklif' %
-              (rel, rewrite_table(cfg, p, lang), rewrite_schema(cfg, p, lang)))
+        print('%-34s tablo %d satir, sema %d teklif, kart %d rakam' %
+              (rel, rewrite_table(cfg, p, lang), rewrite_schema(cfg, p, lang),
+               rewrite_pv(p, offer_vals)))
     for f, euro in (('llms.txt', False), ('llms-full.txt', True)):
         print('%-34s tablo %d satir' % (f, rewrite_llms(cfg, f, euro)))
     for lang, rel in CMP.items():
