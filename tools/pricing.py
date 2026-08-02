@@ -18,6 +18,10 @@ CFG = os.path.join(ROOT, 'pricing.json')
 # n8n Code node'undaki degisken adlari — uretilen blok mevcut kodla birebir uyusmali
 VARNAME = {'standard': 'STD', 'comfort': 'CMF'}
 
+# Gece sayisi tabloda rakamla yaziliyor; ua/ru cekim sorunundan kacinmak icin
+# kisaltma kullaniyoruz (2 ноч. / 6 ноч.), tam kelime cekimi gerektirirdi.
+NIGHTS_WORD = {'ua': 'ноч.', 'ru': 'ноч.', 'en': 'nights'}
+
 PAGES = {'ua': 'lviv/index.html', 'ru': 'lviv/ru/index.html', 'en': 'lviv/en/index.html'}
 CMP = {'ua': 'lviv/implant-price/index.html',
        'ru': 'lviv/ru/implant-price/index.html',
@@ -61,12 +65,14 @@ def rewrite_table(cfg, path, lang):
     j = s.index('</tbody>', i)
     rows = ''
     for tr in cfg['treatments']:
+        n = sum(tr.get('nights', cfg['defaults']['nights']))
         rows += ('          <tr>\n'
                  '            <th scope="row"><span class="%s">%s</span></th>\n'
                  '            <td class="pr-base">€%d</td>\n'
-                 '            <td class="pr-pkg">€%d</td>\n'
+                 '            <td class="pr-pkg">€%d <small class="pr-n">· %d %s</small></td>\n'
                  '          </tr>\n'
-                 % (lang, tr['label'][lang], tr['price'], package(cfg, tr, tier['id'])))
+                 % (lang, tr['label'][lang], tr['price'],
+                    package(cfg, tr, tier['id']), n, NIGHTS_WORD[lang]))
     s = s[:i] + '<tbody>\n' + rows + '        ' + s[j:]
     io.open(path, 'w', encoding='utf-8').write(s)
     return len(cfg['treatments'])
@@ -169,16 +175,34 @@ def n8n_block(cfg):
         a.append('  %s%s' % (json.dumps(l, ensure_ascii=False), ',' if i < len(lines) - 1 else ''))
     a.append('].join("\\n");')
     a.append('')
-    a.append('// `JSON Cleaner1` node\'unda (HER IKI workflow\'da) 3. bolume yapistir:')
+    a.append("// `JSON Cleaner1` node'unda (HER IKI workflow'da) 3. bolume yapistir:")
+
+    # Taban fiyata gore paket toplami. Cleaner zaten metinden taban rakami cikariyor,
+    # o rakamla buradan bakiyor — boylece tedaviye ozel gece sayisi bota da yansiyor.
+    pkg, seen = {}, {}
+    for tr in cfg['treatments']:
+        b = tr['price']
+        row = {t['id']: package(cfg, tr, t['id']) for t in cfg['tiers']}
+        if b in seen and seen[b] != row:
+            raise SystemExit(
+                'CAKISMA: "%s" ve "%s" ayni taban fiyati (%d) tasiyor ama paketleri farkli.\n'
+                'Bot tabana gore baktigi icin ayirt edemez. Birinin fiyatini veya gecesini degistir.'
+                % (seen[b + 0.5], tr['id'], b))
+        seen[b], seen[b + 0.5] = row, tr['id']
+        pkg[b] = row
+
+    a.append('const PKG = {')
+    for b in sorted(pkg):
+        a.append('  %d: { std: %d, cmf: %d },' % (b, pkg[b]['standard'], pkg[b]['comfort']))
+    a.append('};')
     for t in cfg['tiers']:
         tot = (lg['transfer'][t['transfer']] * cfg['defaults']['visits']
                + sum(cfg['defaults']['nights']) * lg['hotelPerNight']
                + cfg['margin'][t['id']])
-        a.append('const ADDON_%s = %d;   // %s: transfer %d x%d + %d gece x %d otel + %d marj'
-                 % (VARNAME[t['id']], tot, t['label']['en'],
-                    lg['transfer'][t['transfer']], cfg['defaults']['visits'],
-                    sum(cfg['defaults']['nights']), lg['hotelPerNight'], cfg['margin'][t['id']]))
+        a.append('const ADDON_%s = %d;   // listede olmayan taban icin yedek'
+                 % (VARNAME[t['id']], tot))
     a.append('const r5 = (x) => Math.round(x / %d) * %d;' % (cfg['meta']['roundTo'], cfg['meta']['roundTo']))
+    a.append('// kullanim: const P = PKG[base] || { std: r5(base+ADDON_STD), cmf: r5(base+ADDON_CMF) };')
     return '\n'.join(a)
 
 
@@ -212,7 +236,7 @@ def cmd_check():
     for lang, rel in PAGES.items():
         s = io.open(os.path.join(ROOT, rel), encoding='utf-8').read()
         got = re.findall(r'<td class="pr-base">€(\d+)</td>\s*'
-                         r'<td class="pr-pkg">€(\d+)</td>', s)
+                         r'<td class="pr-pkg">€(\d+)', s)
         exp = [(str(tr['price']), str(package(cfg, tr, tier['id']))) for tr in cfg['treatments']]
         if got != exp:
             bad.append('%s: tablo pricing.json ile tutmuyor' % rel)

@@ -5,121 +5,221 @@
     "karsilastirma sayfasi ve n8n blogu bu dosyadan uretilir.",
     "Dogrulama icin: `python tools/pricing.py check`"
   ],
-
   "meta": {
     "currency": "EUR",
-    "updated": "2026-08-01",
+    "updated": "2026-08-02",
     "roundTo": 5
   },
-
   "logistics": {
     "_comment": "Alim noktasi ve birim maliyetler. Bilesenler hastaya ASLA gosterilmez.",
-    "pickup": "border",
+    "pickup": "warsaw",
     "hotelPerNight": 50,
     "transfer": {
       "standard": 100,
-      "comfort": 150
+      "comfort": 230
     }
   },
-
   "margin": {
     "standard": 50,
     "comfort": 150
   },
-
   "defaults": {
     "_comment": "Tedaviye ozel deger verilmezse bunlar kullanilir. nights = ziyaret basina gece.",
     "visits": 1,
-    "nights": [2]
+    "nights": [
+      2
+    ]
   },
-
   "tiers": [
     {
       "id": "standard",
       "transfer": "standard",
       "showOnSite": true,
-      "label": { "ua": "Стандарт", "ru": "Стандарт", "en": "Standard", "tr": "Standart", "pl": "Standard" },
+      "label": {
+        "ua": "Стандарт",
+        "ru": "Стандарт",
+        "en": "Standard",
+        "tr": "Standart",
+        "pl": "Standard"
+      },
       "includes": {
-        "ua": "лікування + трансфер + 2 ночі проживання",
-        "ru": "лечение + трансфер + 2 ночи проживания",
-        "en": "treatment + transfer + 2 nights stay",
-        "tr": "tedavi + transfer + 2 gece konaklama",
-        "pl": "leczenie + transfer + 2 noclegi"
+        "ua": "лікування + трансфер + проживання",
+        "ru": "лечение + трансфер + проживание",
+        "en": "treatment + transfer + accommodation",
+        "tr": "tedavi + transfer + konaklama",
+        "pl": "leczenie + transfer + nocleg"
       }
     },
     {
       "id": "comfort",
       "transfer": "comfort",
       "showOnSite": false,
-      "label": { "ua": "Комфорт", "ru": "Комфорт", "en": "Comfort", "tr": "Konfor", "pl": "Komfort" },
+      "label": {
+        "ua": "Комфорт",
+        "ru": "Комфорт",
+        "en": "Comfort",
+        "tr": "Konfor",
+        "pl": "Komfort"
+      },
       "includes": {
-        "ua": "лікування + авто-трансфер + 2 ночі проживання",
-        "ru": "лечение + авто-трансфер + 2 ночи проживания",
-        "en": "treatment + car transfer + 2 nights stay",
-        "tr": "tedavi + özel araç transferi + 2 gece konaklama",
-        "pl": "leczenie + transfer samochodem + 2 noclegi"
+        "ua": "лікування + авто-трансфер + проживання",
+        "ru": "лечение + авто-трансфер + проживание",
+        "en": "treatment + private car transfer + accommodation",
+        "tr": "tedavi + özel araç transferi + konaklama",
+        "pl": "leczenie + transfer samochodem + nocleg"
       }
     }
   ],
-
   "treatments": [
-    { "id": "implant",        "price": 200,
-      "label": { "ua": "Імплант (1 зуб)", "ru": "Имплант (1 зуб)", "en": "Dental implant (1 tooth)" },
-      "botLabel": "Dental implant (per tooth)" },
-
-    { "id": "implant_crown",  "price": 500,
-      "label": { "ua": "Імплант + цирконієва коронка", "ru": "Имплант + циркониевая коронка", "en": "Implant + zirconia crown" },
-      "botLabel": "Implant + zirconia crown (per tooth)" },
-
-    { "id": "all_on_4",       "price": 2500,
-      "label": { "ua": "All-on-4 (одна щелепа)", "ru": "All-on-4 (одна челюсть)", "en": "All-on-4 (one jaw)" },
-      "botLabel": "All-on-4 (fixed full arch, per jaw)" },
-
-    { "id": "all_on_6",       "price": 3200,
-      "label": { "ua": "All-on-6 (одна щелепа)", "ru": "All-on-6 (одна челюсть)", "en": "All-on-6 (one jaw)" },
-      "botLabel": "All-on-6 (fixed full arch, per jaw)" },
-
-    { "id": "zirconia_crown", "price": 250,
-      "label": { "ua": "Цирконієва коронка", "ru": "Циркониевая коронка", "en": "Zirconia crown" },
-      "botLabel": "Zirconia crown (per tooth)" },
-
-    { "id": "mc_crown",       "price": 80,
-      "label": { "ua": "Металокерамічна коронка", "ru": "Металлокерамическая коронка", "en": "Metal-ceramic crown" },
-      "botLabel": "Metal-ceramic crown (per tooth)" },
-
-    { "id": "veneer",         "price": 200,
-      "label": { "ua": "Вінір (кераміка / E-max)", "ru": "Винир (керамика / E-max)", "en": "Veneer (porcelain / E-max)" },
-      "botLabel": "Porcelain / E-max veneer (per tooth)" },
-
-    { "id": "inlay",          "price": 90,
-      "label": { "ua": "Вкладка (inlay / onlay)", "ru": "Вкладка (inlay / onlay)", "en": "Inlay / onlay" },
-      "botLabel": "Inlay / onlay (per tooth)" },
-
-    { "id": "whitening",      "price": 120,
-      "label": { "ua": "Професійне відбілювання", "ru": "Профессиональное отбеливание", "en": "Teeth whitening (full)" },
-      "botLabel": "Teeth whitening (full)" },
-
-    { "id": "denture",        "price": 120,
-      "label": { "ua": "Знімний протез", "ru": "Съёмный протез", "en": "Removable / partial denture" },
-      "botLabel": "Removable / partial denture" },
-
-    { "id": "implant_denture","price": 950,
-      "label": { "ua": "Протез на імплантах", "ru": "Протез на имплантах", "en": "Implant-supported denture" },
-      "botLabel": "Implant-supported denture" },
-
-    { "id": "bone_graft",     "price": 180,
-      "label": { "ua": "Кістковий матеріал / синус-ліфт", "ru": "Костный материал / синус-лифт", "en": "Bone graft / sinus lift" },
-      "botLabel": "Bone graft / sinus lift (adjunct)" }
+    {
+      "id": "implant_crown",
+      "price": 500,
+      "label": {
+        "ua": "Імплант + цирконієва коронка",
+        "ru": "Имплант + циркониевая коронка",
+        "en": "Implant + zirconia crown"
+      },
+      "botLabel": "Implant + zirconia crown (per tooth)",
+      "visits": 1,
+      "nights": [
+        6
+      ],
+      "headline": true
+    },
+    {
+      "id": "implant",
+      "price": 200,
+      "label": {
+        "ua": "Імплант (1 зуб)",
+        "ru": "Имплант (1 зуб)",
+        "en": "Dental implant (1 tooth)"
+      },
+      "botLabel": "Dental implant (per tooth)"
+    },
+    {
+      "id": "all_on_4",
+      "price": 2500,
+      "label": {
+        "ua": "All-on-4 (одна щелепа)",
+        "ru": "All-on-4 (одна челюсть)",
+        "en": "All-on-4 (one jaw)"
+      },
+      "botLabel": "All-on-4 (fixed full arch, per jaw)"
+    },
+    {
+      "id": "all_on_6",
+      "price": 3200,
+      "label": {
+        "ua": "All-on-6 (одна щелепа)",
+        "ru": "All-on-6 (одна челюсть)",
+        "en": "All-on-6 (one jaw)"
+      },
+      "botLabel": "All-on-6 (fixed full arch, per jaw)"
+    },
+    {
+      "id": "zirconia_crown",
+      "price": 250,
+      "label": {
+        "ua": "Цирконієва коронка",
+        "ru": "Циркониевая коронка",
+        "en": "Zirconia crown"
+      },
+      "botLabel": "Zirconia crown (per tooth)"
+    },
+    {
+      "id": "mc_crown",
+      "price": 80,
+      "label": {
+        "ua": "Металокерамічна коронка",
+        "ru": "Металлокерамическая коронка",
+        "en": "Metal-ceramic crown"
+      },
+      "botLabel": "Metal-ceramic crown (per tooth)"
+    },
+    {
+      "id": "veneer",
+      "price": 200,
+      "label": {
+        "ua": "Вінір (кераміка / E-max)",
+        "ru": "Винир (керамика / E-max)",
+        "en": "Veneer (porcelain / E-max)"
+      },
+      "botLabel": "Porcelain / E-max veneer (per tooth)"
+    },
+    {
+      "id": "inlay",
+      "price": 90,
+      "label": {
+        "ua": "Вкладка (inlay / onlay)",
+        "ru": "Вкладка (inlay / onlay)",
+        "en": "Inlay / onlay"
+      },
+      "botLabel": "Inlay / onlay (per tooth)"
+    },
+    {
+      "id": "whitening",
+      "price": 120,
+      "label": {
+        "ua": "Професійне відбілювання",
+        "ru": "Профессиональное отбеливание",
+        "en": "Teeth whitening (full)"
+      },
+      "botLabel": "Teeth whitening (full)"
+    },
+    {
+      "id": "denture",
+      "price": 120,
+      "label": {
+        "ua": "Знімний протез",
+        "ru": "Съёмный протез",
+        "en": "Removable / partial denture"
+      },
+      "botLabel": "Removable / partial denture"
+    },
+    {
+      "id": "implant_denture",
+      "price": 950,
+      "label": {
+        "ua": "Протез на імплантах",
+        "ru": "Протез на имплантах",
+        "en": "Implant-supported denture"
+      },
+      "botLabel": "Implant-supported denture"
+    },
+    {
+      "id": "bone_graft",
+      "price": 180,
+      "label": {
+        "ua": "Кістковий матеріал / синус-ліфт",
+        "ru": "Костный материал / синус-лифт",
+        "en": "Bone graft / sinus lift"
+      },
+      "botLabel": "Bone graft / sinus lift (adjunct)"
+    }
   ],
-
   "comparison": {
     "_comment": "implant-price/ karsilastirma sayfasi. Kaynakli piyasa araliklari; ONNO satiri treatments'tan gelir.",
     "basedOn": "implant_crown",
     "polandMin": 1400,
     "countries": [
-      { "id": "cz", "min": 1000, "max": 2000, "localNote": "25 000–50 000 CZK" },
-      { "id": "pl", "min": 1400, "max": 2900, "localNote": "6 000–12 500 PLN" },
-      { "id": "de", "min": 1600, "max": 3500, "localNote": null }
+      {
+        "id": "cz",
+        "min": 1000,
+        "max": 2000,
+        "localNote": "25 000–50 000 CZK"
+      },
+      {
+        "id": "pl",
+        "min": 1400,
+        "max": 2900,
+        "localNote": "6 000–12 500 PLN"
+      },
+      {
+        "id": "de",
+        "min": 1600,
+        "max": 3500,
+        "localNote": null
+      }
     ]
   }
 }

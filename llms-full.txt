@@ -52,13 +52,15 @@ so ONNO can see which part of the page prompted the conversation.
 ## Prices
 
 Approximate, in euro, per tooth or unit unless stated otherwise. The "package" figure already
-includes a transfer to Lviv and two nights' accommodation; those are not billed separately.
+includes the return transfer from Warsaw and accommodation; those are not billed separately.
+The implant-with-crown package covers a single six-night trip, which is possible where the bone
+allows it — otherwise the dentist splits the treatment into two stages and says so beforehand.
 A dentist sets the exact price after an in-person examination.
 
 | Treatment | Treatment only, from | Package "Standard", from |
 |---|---|---|
+| Implant + zirconia crown | €500 | €950 |
 | Dental implant (1 tooth) | €200 | €450 |
-| Implant + zirconia crown | €500 | €750 |
 | All-on-4 (one jaw) | €2500 | €2750 |
 | All-on-6 (one jaw) | €3200 | €3450 |
 | Zirconia crown | €250 | €500 |
