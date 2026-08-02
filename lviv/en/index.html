@@ -1379,6 +1379,77 @@
     .hero-in{grid-template-columns:1fr;gap:28px;padding-block:34px 40px}
     section{padding:48px 0}
   }
+
+  /* ── REDESIGN 2: kalan bolumler ────────────────────────────────── */
+
+  /* Guven seridi: dagilmis 5 rozet yerine tek hizali satir */
+  .trust-bar{background:#fff;border-bottom:1px solid var(--line);padding:0}
+  .trust-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+    gap:10px 28px;padding:18px 0}
+  .trust-item{display:flex;align-items:center;gap:9px;font-size:.86rem;
+    font-weight:500;color:var(--ink-2);margin:0}
+  .trust-icon{width:26px;height:26px;border-radius:8px;flex:none;display:grid;place-items:center}
+  .trust-icon svg{width:14px;height:14px}
+
+  /* Servis kartlari: 200px'lik dekoratif panel -> 56px rozet */
+  .services-grid{gap:18px}
+  .service-card{border:1px solid var(--line);box-shadow:none;border-radius:16px;
+    display:flex;flex-direction:column}
+  .service-card:hover{transform:none;box-shadow:0 8px 28px rgba(14,43,42,.08)}
+  .service-thumb{height:auto;width:52px;aspect-ratio:1;margin:24px 24px 0;
+    border-radius:13px;border-bottom:none;place-items:center}
+  .service-thumb-icon,.service-thumb-icon svg{width:28px;height:28px}
+  .service-body{padding:16px 24px 24px;display:flex;flex-direction:column;flex:1}
+  .service-body h3{font-size:1.08rem;margin-bottom:8px}
+  .service-body p{font-size:.9rem;color:var(--muted);margin-bottom:16px}
+  .service-features{margin-bottom:18px;flex:1}
+  .service-features li{border-bottom:none;padding:4px 0;font-size:.89rem}
+  .service-cta{background:transparent;padding:0;border-top:1px solid var(--line);
+    padding-top:16px;gap:12px;flex-wrap:wrap}
+  .service-cta-price .from{font-size:.82rem;color:var(--muted)}
+  .service-cta-link{background:var(--teal);color:var(--teal-ink);border-radius:10px;
+    padding:10px 18px;font-weight:600;font-size:.88rem}
+
+  /* Neden Lviv: koyu istatistik blogu markayla hizalandi */
+  .why-stat-card:first-child{background:var(--ink);border-color:var(--ink);border-radius:16px}
+  .why-stat-card{border-radius:14px;border:1px solid var(--line)}
+  .why-list li{padding:10px 0}
+
+  /* Garanti kartlari */
+  .g-card{border:1px solid var(--line);border-radius:16px;box-shadow:none}
+  .g-icon{width:40px;height:40px;border-radius:11px}
+  .g-grid{gap:18px}
+
+  /* Surec: numarali adimlar gercek bir sira, korunuyor */
+  .process{background:var(--ink)}
+  .step-num{background:var(--teal);color:var(--teal-ink);border:none;font-weight:800}
+  .step h3{font-size:1rem}
+  .step p{font-size:.87rem}
+
+  /* Yorumlar ve vakalar */
+  .rcard{border-radius:16px;box-shadow:none;border:1px solid var(--line)}
+  .rcard:hover{transform:none;box-shadow:0 8px 28px rgba(14,43,42,.08)}
+  .case{border-radius:16px;box-shadow:none}
+  .cases{margin-top:52px}
+  .g-rating{border-radius:14px;box-shadow:none}
+
+  /* SSS */
+  .faq-item{border-radius:14px;border:1px solid var(--line);box-shadow:none}
+  .faq-q{font-size:.98rem;font-weight:600}
+
+  /* Kapanis CTA: sayfanin tek aksiyonu burada tekrar */
+  .cta-banner{background:var(--ink);border-radius:0}
+  .cta-banner h2{color:#fff}
+  .cta-banner p{color:#B9D2CF}
+  .btn-white{background:var(--teal);color:var(--teal-ink);border-radius:11px;font-weight:600}
+  .btn-outline-white{border-radius:11px;border-color:rgba(255,255,255,.3)}
+
+  footer{background:var(--ink)}
+
+  @media(max-width:900px){
+    .services-grid{grid-template-columns:1fr !important}
+    .trust-inner{gap:10px 18px;padding:14px 0}
+  }
 </style>
 <body class="en">
 
@@ -1520,7 +1591,6 @@
 <!-- SERVICES -->
 <section id="services" class="services">
   <div class="container">
-    <div class="section-label en">Services</div>
     
     
     <h2 class="section-title en">Dental treatment, clearly explained</h2>
@@ -1613,7 +1683,6 @@
   <div class="container">
     <div class="why-inner">
       <div>
-        <div class="section-label en">Why Lviv</div>
         
         
         <h2 class="section-title en">Your own clinic, not a foreign one</h2>
@@ -1702,7 +1771,6 @@
 <!-- GUARANTEE + VISITS -->
 <section id="guarantee" class="guarantee">
   <div class="container">
-    <div class="section-label en">Guarantee &amp; Timing</div>
     
     
     <h2 class="section-title en">Work that is backed, time that is planned</h2>
@@ -1793,7 +1861,6 @@
 <!-- PROCESS -->
 <section id="process" class="process">
   <div class="container">
-    <div class="section-label en">How It Works</div>
     
     
     <h2 class="section-title en">From first message to follow-up</h2>
@@ -1852,7 +1919,6 @@
 <!-- WHO CAN TRAVEL -->
 <section id="eligibility" style="background:var(--off);">
   <div class="container" style="max-width:820px;">
-    <div class="section-label en">Before You Plan Your Trip</div>
     
     
     <h2 class="section-title en">Who can travel</h2>
@@ -1976,7 +2042,6 @@
 <!-- TESTIMONIALS — real Google reviews (4,8/98). Translated, not edited. -->
 <section id="testimonials" class="testimonials">
   <div class="container">
-    <div class="section-label en">Patient Reviews</div>
     
     
     <h2 class="section-title en">What patients say</h2>
@@ -2112,7 +2177,6 @@
 <section id="faq">
   <div class="container">
     <div style="text-align:center; margin-bottom: 56px;">
-      <div class="section-label en">FAQ</div>
       
       
       <h2 class="section-title en">Everything you need to know</h2>
@@ -2606,12 +2670,25 @@
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll('.service-card, .rcard, .why-stat-card, .step, .faq-item').forEach(function(el) {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-    revealObserver.observe(el);
-  });
+  // Reveal sadece bir iyilestirme olmali: gozlemci hic calismazsa (hareket azaltma,
+  // arka plan sekmesi, IntersectionObserver'i calistirmayan render) icerik gorunur kalir.
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealTargets = document.querySelectorAll('.service-card, .rcard, .why-stat-card, .step, .faq-item');
+  function showAll() {
+    revealTargets.forEach(function(el) { el.style.opacity = '1'; el.style.transform = 'none'; });
+  }
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    showAll();
+  } else {
+    revealTargets.forEach(function(el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+      revealObserver.observe(el);
+    });
+    // emniyet agi: 1,5 sn sonra hala gizli kalan varsa gorunur yap
+    setTimeout(showAll, 1500);
+  }
 
   // Section header reveal
   var headerObserver = new IntersectionObserver(function(entries) {
