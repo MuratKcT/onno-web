@@ -1371,8 +1371,10 @@
   .chat-panel{left:auto;right:0}
   .wa-fab{bottom:24px;right:24px}
   @media(max-width:640px){
-    .chat-widget{right:16px;bottom:88px}
-    .wa-fab{bottom:16px;right:16px}
+    /* Mobilde iki yuzen buton fiyat kartinin uzerine biniyordu.
+       Sayfa ici asistan kaliyor; Telegram zaten menude ve metin icinde. */
+    .wa-fab{display:none}
+    .chat-widget{right:14px;bottom:14px}
   }
 
   @media(max-width:900px){
