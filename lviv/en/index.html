@@ -2493,17 +2493,16 @@
     var bub = umiEl('div','chat-bubble');
     if(pv.title)   bub.appendChild(umiEl('div','umi-title', pv.title));
     if(pv.summary) bub.appendChild(umiEl('div','umi-summary', pv.summary));
-    if(!funny && Array.isArray(pv.packages) && pv.packages.length){
+    if(!funny && pv.package && pv.package.price){
+      // JSON Cleaner1 tek bir paket nesnesi dondurur: fiyat + gece + neler dahil.
       var pk = umiEl('div','umi-packages');
-      pv.packages.forEach(function(op){
-        var row = umiEl('div','umi-pkg');
-        var top = umiEl('div','umi-pkg-top');
-        top.appendChild(umiEl('span','umi-pkg-name', op.name || ''));
-        top.appendChild(umiEl('span','umi-pkg-price', op.price || ''));
-        row.appendChild(top);
-        if(op.includes) row.appendChild(umiEl('div','umi-pkg-inc', op.includes));
-        pk.appendChild(row);
-      });
+      var row = umiEl('div','umi-pkg');
+      var top = umiEl('div','umi-pkg-top');
+      top.appendChild(umiEl('span','umi-pkg-name', pv.package.nights || ''));
+      top.appendChild(umiEl('span','umi-pkg-price', pv.package.price));
+      row.appendChild(top);
+      if(pv.package.includes) row.appendChild(umiEl('div','umi-pkg-inc', pv.package.includes));
+      pk.appendChild(row);
       bub.appendChild(pk);
     } else if(!funny && pv.estimated_price_range){
       var p = umiEl('div','umi-price');
