@@ -2535,7 +2535,16 @@
   }
 
   // ── LEAD CAPTURE ──
-  function umiLeadGiven(){ return localStorage.getItem('onno-lead') === '1'; }
+  function umiLeadGiven(){
+    // Kart doldurulunca 30 gun sorulmaz. Kalici olarak susturmuyoruz: aylar sonra
+    // yeni bir tedavi icin donen ziyaretciye de sorabilmek gerekiyor.
+    var v = localStorage.getItem('onno-lead');
+    if(!v) return false;
+    var ts = parseInt(v, 10);
+    // Eski surum sadece '1' yaziyordu — zaman damgasi yoksa suresi dolmus say.
+    if(!ts || ts < 1600000000000) return false;
+    return (Date.now() - ts) < 30 * 24 * 60 * 60 * 1000;
+  }
   function umiLeadCard(){
     if (umiLeadGiven()) return;
     var t = umiT();
@@ -2579,7 +2588,7 @@
     })
     .then(function(r){ if(!r.ok) throw new Error('http'); return r.json(); })
     .then(function(){
-      localStorage.setItem('onno-lead','1');
+      localStorage.setItem('onno-lead', String(Date.now()));
       var box = card.querySelector('.umi-lead');
       box.innerHTML = '';
       var okRow = umiEl('div','umi-lead-ok');
